@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:context=".LogIn_Data">
+
+    <ImageView
+            android:layout_width="640dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/a1" />
+
+    <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="110dp">
+
+
+        <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.5"
+                android:background="#000000"/>
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/slidePager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></androidx.viewpager.widget.ViewPager>
+    </FrameLayout>
+
+    <LinearLayout
+            android:id="@+id/dotsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="620dp"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Back" />
+
+        <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="NEXT" />
+    </LinearLayout>
+
+</FrameLayout>
