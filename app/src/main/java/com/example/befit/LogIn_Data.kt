@@ -14,7 +14,7 @@ class LogIn_Data : AppCompatActivity() {
     lateinit var btn_back :Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        setContentView(R.layout.activity_login)
 
         mSlideViewPager = findViewById(R.id.slidePager)
         mDotLayout = findViewById(R.id.dotsLayout)

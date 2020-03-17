@@ -34,7 +34,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to"
+        android:text="@string/txt_welcome"
         android:textColor="#F6DE05"
         android:layout_marginTop="25dp"
         android:layout_marginStart="35dp"
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BEFIT"
+            android:text="@string/txt_title"
             android:textColor="#FFFFFF"
             android:textSize="45sp"
             android:layout_marginStart="140dp"
@@ -57,7 +57,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="is your"
+            android:text="@string/txt_is_your"
             android:textColor="#F6DE05"
             android:textSize="35sp"
             android:layout_marginStart="35dp"
@@ -68,7 +68,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="coach"
+            android:text="@string/txt_coach"
             android:textColor="#FFFFFF"
             android:textSize="35sp"
             android:layout_marginStart="150dp"
@@ -80,7 +80,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="is your"
+            android:text="@string/txt_is_your"
             android:textColor="#F6DE05"
             android:textSize="35sp"
             android:layout_marginStart="35dp"
@@ -92,7 +92,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="nutrionist"
+            android:text="@string/txt_nutrionist"
             android:textColor="#FFFFFF"
             android:textSize="35sp"
             android:layout_marginStart="150dp"
@@ -104,7 +104,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="is your"
+            android:text="@string/txt_is_your"
             android:textColor="#F6DE05"
             android:textSize="35sp"
             android:layout_marginStart="35dp"
@@ -116,7 +116,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="reminder"
+            android:text="@string/txt_reminder"
             android:textColor="#FFFFFF"
             android:textSize="35sp"
             android:layout_marginStart="150dp"
@@ -128,7 +128,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Perform your"
+            android:text="@string/txt_perform_your"
             android:textSize="35sp"
             android:textColor="#F6DE05"
             android:layout_marginStart="35dp"
@@ -140,7 +140,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="best"
+            android:text="@string/txt_best"
             android:textSize="35sp"
             android:textColor="#FFFFFF"
             android:layout_marginStart="250dp"
@@ -158,7 +158,7 @@
                 android:layout_marginEnd="200dp"
                 android:layout_marginBottom="30dp"
                 android:backgroundTint="#353131"
-                android:text="Sign Up"
+                android:text="@string/btn_SignUp"
                 android:textColor="#F6DE05"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -171,7 +171,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="30dp"
                 android:backgroundTint="#353131"
-                android:text="Sign In"
+                android:text="@string/btn_SignIn"
                 android:textColor="#F6DE05"
                 android:textSize="25sp"
                 android:textStyle="bold" />
