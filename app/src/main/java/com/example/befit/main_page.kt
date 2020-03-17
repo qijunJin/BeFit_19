@@ -2,14 +2,11 @@ package com.example.befit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 
-class Final_Welcome : AppCompatActivity() {
+class main_page : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_final_welcome)
-        Toast.makeText(this, "User created", Toast.LENGTH_SHORT).show()
-
+        setContentView(R.layout.activity_main_page)
     }
 }
