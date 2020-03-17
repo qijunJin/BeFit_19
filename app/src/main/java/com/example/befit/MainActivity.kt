@@ -1,5 +1,6 @@
 package com.example.befit
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -13,5 +14,16 @@ class MainActivity : AppCompatActivity() {
         var btn_signUp : Button = findViewById(R.id.btn_signUp)
         var btn_signIn : Button = findViewById(R.id.btn_SignIn)
 
+        btn_signUp.setOnClickListener {
+            val intent = Intent(this, LogIn_Data::class.java)
+            startActivity(intent)
+        }
+
+        btn_signIn.setOnClickListener {
+            val intent = Intent(this, LogIn_Data::class.java)
+            startActivity(intent)
+        }
     }
+
+
 }
