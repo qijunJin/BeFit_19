@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LogIn_Data : AppCompatActivity() {
-    lateinit var mSlideViewPager : ViewPager
+    lateinit var viewPager : ViewPager
     lateinit var mDotLayout : LinearLayout
     lateinit var btn_next : Button
     lateinit var btn_back :Button
@@ -16,9 +20,16 @@ class LogIn_Data : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        mSlideViewPager = findViewById(R.id.slidePager)
-        mDotLayout = findViewById(R.id.dotsLayout)
+        viewPager = findViewById(R.id.viewPager)
 
+        val adapter = MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
+        //Afegim tots els fragments que creem
+        adapter.addFragment(FragmentOne())
+        adapter.addFragment(FragmentTwo())
+        viewPager.adapter = adapter
+
+
+        //Inicialització botons
         btn_next=findViewById(R.id.btn_next)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
         btn_back=findViewById(R.id.btn_back)
 
@@ -31,5 +42,24 @@ class LogIn_Data : AppCompatActivity() {
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    class MyViewPagerAdapter(manager : FragmentManager) : FragmentPagerAdapter(manager){
+
+        private val fragmentList : MutableList<Fragment> = ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
+
+        override fun getItem(position: Int): Fragment {
+            return fragmentList[position]
+        }
+
+        override fun getCount(): Int {
+            return fragmentList.size  //Retorna el nombre de fragments que hi han
+        }
+
+        fun addFragment(fragment : Fragment){  //Mètode per afegir fragments al viewPager
+            fragmentList.add(fragment)
+        }
+
+
     }
 }
