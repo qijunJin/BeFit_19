@@ -16,7 +16,7 @@ class Final_Welcome : AppCompatActivity() {
         var btn_welcome_start: Button = findViewById(R.id.btn_welcome_start)
 
         btn_welcome_start.setOnClickListener {
-            val intent = Intent(this, Main_page::class.java)
+            val intent = Intent(this, Main_Interface::class.java)
             startActivity(intent)
         }
     }
