@@ -29,7 +29,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_weight="18.5"
             android:weightSum="10">
 
@@ -37,32 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.5"
-                    android:background="#000000"
-                    >
-
-                </View>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome to"
-                    android:textColor="#F6DE05"
-                    android:textSize="45sp" />
-            </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="BEFIT"
-                    android:textSize="45sp"
-                    android:textStyle="bold"
-                    android:textColor="#FFFFFF"/>
+                    android:background="#000000"/>
 
     </LinearLayout>
 
@@ -72,9 +47,8 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_weight="0.75"/>
-
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
