@@ -1,179 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10.25"
+    android:background="@drawable/a1"
     tools:context=".MainActivity">
 
-    <ImageView
-            android:layout_width="640dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="20"
+        android:layout_weight="8">
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@drawable/a1" />
+            android:orientation="horizontal"
+            android:layout_weight="0.75"/>
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="110dp">
+<!-- LinearLayout principal on tenim la lletra-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="18.5"
+            android:weightSum="10">
 
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.5"
+                    android:background="#000000"
+                    >
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.5"
-            android:background="#000000"/>
-    </FrameLayout>
+                </View>
 
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to"
-        android:textColor="#F6DE05"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="515dp"
-        android:layout_marginEnd="100dp"
-        android:textSize="45sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BEFIT"
-            android:textColor="#FFFFFF"
-            android:textSize="45sp"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="410dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="is your"
-            android:textColor="#F6DE05"
-            android:textSize="35sp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="220dp"
-            android:layout_marginEnd="230dp"
-            android:layout_marginBottom="320dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="coach"
-            android:textColor="#FFFFFF"
-            android:textSize="35sp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="220dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="320dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="is your"
-            android:textColor="#F6DE05"
-            android:textSize="35sp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="280dp"
-            android:layout_marginEnd="230dp"
-            android:layout_marginBottom="260dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="nutrionist"
-            android:textColor="#FFFFFF"
-            android:textSize="35sp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="280dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="260dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="is your"
-            android:textColor="#F6DE05"
-            android:textSize="35sp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="340dp"
-            android:layout_marginEnd="230dp"
-            android:layout_marginBottom="200dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="reminder"
-            android:textColor="#FFFFFF"
-            android:textSize="35sp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="340dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="200dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Perform your"
-            android:textSize="35sp"
-            android:textColor="#F6DE05"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="480dp"
-            android:layout_marginEnd="120dp"
-            android:layout_marginBottom="70dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="best"
-            android:textSize="35sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="250dp"
-            android:layout_marginTop="480dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="70dp"/>
-
-
-        <Button
-                android:id="@+id/btn_signUp"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="570dp"
-                android:layout_marginEnd="200dp"
-                android:layout_marginBottom="30dp"
-                android:backgroundTint="#353131"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome to"
+                    android:textColor="#F6DE05"
+                    android:textSize="45sp" />
+            </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="BEFIT"
+                    android:textSize="45sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="0.75"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_weight="0.75">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4.25"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="Sign Up"
-                android:textColor="#F6DE05"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-        <Button
-                android:id="@+id/btn_SignIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="230dp"
-                android:layout_marginTop="570dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="30dp"
-                android:backgroundTint="#353131"
-                android:text="Sign In"
-                android:textColor="#F6DE05"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="25sp"/>
+        </LinearLayout>
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4.25">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Sign In"
+                android:textSize="25sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"/>
+</LinearLayout>
