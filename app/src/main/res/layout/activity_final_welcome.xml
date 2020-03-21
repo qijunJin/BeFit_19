@@ -147,7 +147,7 @@
     android:layout_marginEnd="25dp"
     android:orientation="horizontal">
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_welcome_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/txt_startroutine"
