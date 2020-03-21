@@ -26,6 +26,7 @@ class LogIn_Data : AppCompatActivity() {
         //Afegim tots els fragments que creem
         adapter.addFragment(FragmentOne())
         adapter.addFragment(FragmentTwo())
+        adapter.addFragment(FragmentThree())
         viewPager.adapter = adapter
 
         //Inicialització botons
