@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".gym_activities"></activity>
+        <activity android:name=".gym_activities" />
         <activity android:name=".GoToGym" />
         <activity android:name=".Main_Interface" />
         <activity android:name=".Final_Welcome" />
