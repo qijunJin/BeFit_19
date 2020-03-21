@@ -73,25 +73,15 @@
                         android:textSize="35sp"
                         android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:text="BEFIT"
-                        android:textAlignment="center"
+                        android:gravity="center"
                         android:textColor="#FFFFFF"
                         android:textSize="50sp"
                         android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
