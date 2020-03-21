@@ -4,172 +4,144 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="20"
+    android:weightSum="12"
     tools:context=".FragmentThree">
 
     <!-- Marge esquerre -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="0.75"/>
+        android:layout_weight="1"
+        android:orientation="vertical" />
 
     <!--Linear central-->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="10"
         android:orientation="vertical"
         android:weightSum="20"
-        android:layout_weight="18.5"
         tools:ignore="ExtraText">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             tools:ignore="NestedWeights" />
-        <LinearLayout
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.75">
+            android:layout_weight="2"
+            android:text="@string/txt_preference"
+            android:textColor="#F6DE05"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/txt_preference"
-                android:textColor="#F6DE05"
-                android:textStyle="bold"
-                android:textSize="35sp"/>
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.5">
+            android:layout_weight="2"
+            android:text="@string/txt_gastronomy"
+            android:textColor="#FFFFFF"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="35sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:text="@string/txt_gastronomy"/>
-        </LinearLayout>
         <!-- Linear amb tots els botons-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="14"
             android:orientation="vertical"
-            android:weightSum="6"
-            android:layout_weight="13.25">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-                <Button
-                    android:id="@+id/btn_mediterranean"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/txt_mediterranean"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:backgroundTint="#FFFFFF"
-                    android:textColor="#000000"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
+            android:weightSum="6">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-                <Button
-                    android:id="@+id/btn_oriental"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/txt_oriental"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:backgroundTint="#FFFFFF"
-                    android:textColor="#000000"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/btn_mediterranean"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
-                <Button
-                    android:id="@+id/btn_american"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/txt_american"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:backgroundTint="#FFFFFF"
-                    android:textColor="#000000"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="@string/txt_mediterranean"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="NestedWeights" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-                <Button
-                    android:id="@+id/btn_halal"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/txt_halal"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:backgroundTint="#FFFFFF"
-                    android:textColor="#000000"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/btn_oriental"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
-                <Button
-                    android:id="@+id/btn_mexican"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/txt_mexican"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:backgroundTint="#FFFFFF"
-                    android:textColor="#000000"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="@string/txt_oriental"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="NestedWeights" />
 
-            <LinearLayout
+
+            <Button
+                android:id="@+id/btn_american"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
-                <Button
-                    android:id="@+id/btn_vegetarian"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/txt_vegetarian"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:backgroundTint="#FFFFFF"
-                    android:textColor="#000000"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="@string/txt_american"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="NestedWeights" />
+
+
+            <Button
+                android:id="@+id/btn_halal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="@string/txt_halal"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="NestedWeights" />
+
+
+            <Button
+                android:id="@+id/btn_mexican"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="@string/txt_mexican"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="NestedWeights" />
+
+
+            <Button
+                android:id="@+id/btn_vegetarian"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="@string/txt_vegetarian"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="NestedWeights" />
+
 
         </LinearLayout>
+
     </LinearLayout>
 
     <!--Marge dret-->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.75"/>
+        android:layout_weight="1" />
 
 </LinearLayout>
