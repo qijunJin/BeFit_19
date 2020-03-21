@@ -112,13 +112,13 @@
                 android:layout_weight="1">
 
                 <ImageButton
-                    android:id="@+id/rbtn_male"
+                    android:id="@+id/btn_male"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:background="@drawable/round_button_male"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/male_round"></ImageButton>
+                    android:src="@drawable/male_round" />
 
             </FrameLayout>
 
@@ -128,13 +128,14 @@
                 android:layout_weight="1">
 
                 <ImageButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/btn_female"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:background="@drawable/round_button"
                     android:scaleType="centerCrop"
                     android:src="@drawable/female_round" />
+
             </FrameLayout>
 
             <!--
