@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BEFIT</string>
     <string name="btn_back">Back</string>
-    <string name="btn_next">NEXT</string>
+    <string name="btn_finish">FINISH</string>
     <string name="txt_welcome">Welcome to</string>
     <string name="txt_title">BEFIT</string>
     <string name="txt_is_your">is your</string>
@@ -22,4 +22,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_next">FINISH</string>
 </resources>
