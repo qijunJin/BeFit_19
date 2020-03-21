@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="20"
-    tools:context=".FragmentThree">
+    tools:context=".FragmentThree"
+    android:baselineAligned="false">
+
 
     <!-- Marge esquerre -->
     <LinearLayout

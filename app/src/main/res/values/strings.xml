@@ -31,4 +31,8 @@
     <string name="txt_mexican">Mexican</string>
     <string name="txt_preference">Preference on your</string>
     <string name="txt_gastronomy">gastronomy</string>
+    <string name="txt_welcome">Welcome to</string>
+    <string name="txt_title">BEFIT</string>
+    <string name="txt_SignUp">Sign Up</string>
+    <string name="txt_LogIn">Log In</string>
 </resources>
