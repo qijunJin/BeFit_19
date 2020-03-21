@@ -1,16 +1,13 @@
 package com.example.befit
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LogIn_Data : AppCompatActivity() {
     lateinit var viewPager : ViewPager
@@ -59,7 +56,5 @@ class LogIn_Data : AppCompatActivity() {
         fun addFragment(fragment : Fragment){  //Mètode per afegir fragments al viewPager
             fragmentList.add(fragment)
         }
-
-
     }
 }
