@@ -1,16 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="20"
         tools:context=".FragmentTwo">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
+    <!-- Marge esquerre -->
+    <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="35sp"
-            android:layout_marginTop="200dp"
-            android:text="hello fragment two" />
+            android:orientation="vertical"
+            android:layout_weight="0.75"/>
 
-</FrameLayout>
+    <!--Linear central-->
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="20"
+            android:layout_weight="18.5"
+            tools:ignore="ExtraText">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="1.75">
+            <TextView
+                    android:id="@+id/txt_track"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Track on your"
+                    android:textColor="#F6DE05"
+                    android:textStyle="bold"
+                    android:textSize="35sp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="2">
+            <TextView
+                    android:id="@+id/txt_exercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="exercise"
+                    android:textStyle="bold"
+                    android:textSize="35sp"
+                    android:textColor="#FFFFFFFF"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.75"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="frequency"
+
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"/>
+        </LinearLayout>
+
+        <!-- Linear amb tots els botons de la frequencia-->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:weightSum="7">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+            <RadioButton
+                    
+                    android:id="@+id/btn_Monday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="M"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+        </LinearLayout>
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <RadioButton
+                        android:id="@+id/btn_Tuesday"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="T"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <RadioButton
+                        android:id="@+id/btn_Wednesday"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="W"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <RadioButton
+                        android:id="@+id/btn_Thursday"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="T"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <RadioButton
+                        android:id="@+id/btn_Friday"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="F"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <RadioButton
+                        android:id="@+id/btn_Saturday"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="S"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <RadioButton
+                        android:id="@+id/btn_Sunday"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="S"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+            android:layout_weight="1.5">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="ubication"
+                    android:textStyle="bold"
+                    android:textSize="28sp"
+                    android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+            android:layout_weight="1.75">
+
+            <Button
+                    android:id="@+id/btn_ubication"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Allow"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="notification"
+                    android:textStyle="bold"
+                    android:textSize="28sp"
+                    android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.75">
+
+            <Button
+                    android:id="@+id/btn_notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Allow"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--Marge esquerre-->
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.75"/>
+
+</LinearLayout>
