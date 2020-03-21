@@ -20,38 +20,33 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="25dp"
-            android:layout_marginBottom="500dp">
+            android:layout_marginBottom="450dp">
 
 
         <View
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
                 android:alpha="0.5"
                 android:background="#000000" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="131dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="130dp"
-                android:src="@drawable/profile_picture"
-                app:civ_border_color="#ff8040"
-                app:civ_border_width="2dp"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="131dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="130dp"
+            android:src="@drawable/profile_picture"
+            app:civ_border_color="#ff8040"
+            app:civ_border_width="2dp"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="150dp"
-                android:text="Hi"
+                android:layout_marginTop="120dp"
+                android:text="@string/txt_hi"
                 android:textColor="#F6DE05"
                 android:textSize="35sp"
                 android:textStyle="bold"/>
@@ -61,8 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
-                android:layout_marginTop="150dp"
-                android:text="víctor"
+                android:layout_marginTop="120dp"
+                android:text="@string/txt_name"
                 android:textColor="#FFFFFF"
                 android:textSize="35sp"
                 android:textStyle="bold" />
@@ -82,12 +77,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.5"
-                android:background="#000000"></View>
+                android:background="#000000"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You have just        joined to"
+                android:text="@string/txt_joined"
                 android:textColor="#F6DE05"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -98,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="120dp"
-                android:text="BEFIT"
+                android:text="@string/txt_title"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp"
                 android:textStyle="bold" />
@@ -107,16 +102,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="200dp"
-                android:text="is your"
+                android:text="@string/txt_is_your"
                 android:textColor="#F6DE05"
-                android:textSize="35dp"
+                android:textSize="35sp"
                 android:layout_marginStart="15dp"
                 android:textStyle="bold" />
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="time"
+                android:text="@string/txt_time"
                 android:textSize="35sp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
@@ -127,7 +122,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="to"
+                android:text="@string/txt_to"
                 android:textStyle="bold"
                 android:textColor="#F6DE05"
                 android:textSize="35sp"
@@ -137,21 +132,29 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BE FIT!"
+                android:text="@string/txt_befit_"
                 android:textSize="35sp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:layout_marginTop="250dp"
                 android:layout_marginStart="60dp"/>
     </FrameLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="580dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginEnd="25dp"
+    android:orientation="horizontal">
     <Button
-        android:id="@+id/btn_welcome_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start routine"
-            android:textStyle="bold"
-            android:textColor="#FFFFF1"
-            android:layout_marginTop="600dp"
-            android:layout_gravity="center_horizontal"/>
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_startroutine"
+        android:textStyle="bold"
+        android:textColor="#FFFFF1"
+        android:textSize="25sp"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>
+
 </FrameLayout>

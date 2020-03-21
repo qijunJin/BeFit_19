@@ -29,9 +29,11 @@
                 android:background="#000000"/>
 
         <androidx.viewpager.widget.ViewPager
-                android:id="@+id/slidePager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></androidx.viewpager.widget.ViewPager>
+                android:id="@+id/viewPager"
+                android:layout_width="355dp"
+                android:layout_height="590dp">
+        </androidx.viewpager.widget.ViewPager>
+
     </FrameLayout>
 
     <LinearLayout
@@ -46,14 +48,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Back" />
+                android:text="@string/btn_back" />
 
         <Button
                 android:id="@+id/btn_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="NEXT" />
+                android:text="@string/btn_next" />
     </LinearLayout>
 
 </FrameLayout>
