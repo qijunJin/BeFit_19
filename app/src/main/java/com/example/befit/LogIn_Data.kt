@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LogIn_Data : AppCompatActivity() {
     lateinit var viewPager : ViewPager
-    lateinit var btn_next : Button
+    lateinit var btn_finish : Button
     lateinit var btn_back :Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +29,10 @@ class LogIn_Data : AppCompatActivity() {
         viewPager.adapter = adapter
 
         //Inicialització botons
-        btn_next=findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
+        btn_finish=findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
         btn_back=findViewById(R.id.btn_back)
 
-        btn_next.setOnClickListener {
+        btn_finish.setOnClickListener {
             val intent : Intent = Intent(this,Final_Welcome::class.java)
             startActivity(intent)
         }
