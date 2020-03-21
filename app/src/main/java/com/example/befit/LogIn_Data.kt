@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -13,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LogIn_Data : AppCompatActivity() {
     lateinit var viewPager : ViewPager
-    lateinit var mDotLayout : LinearLayout
     lateinit var btn_next : Button
     lateinit var btn_back :Button
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +28,8 @@ class LogIn_Data : AppCompatActivity() {
         adapter.addFragment(FragmentTwo())
         viewPager.adapter = adapter
 
-
         //Inicialització botons
-        btn_next=findViewById(R.id.btn_next)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
+        btn_next=findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
         btn_back=findViewById(R.id.btn_back)
 
         btn_next.setOnClickListener {
