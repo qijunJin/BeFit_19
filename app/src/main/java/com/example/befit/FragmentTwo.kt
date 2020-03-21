@@ -37,7 +37,7 @@ class FragmentTwo : Fragment() {
                 btn_ubication.setBackgroundColor(Color.parseColor("#F6DE05"))
             }else if(btn_ubication.text=="Allowed"){
                 btn_ubication.text="Allow"
-                btn_ubication.setBackgroundColor(Color.parseColor("#595656"))
+                btn_ubication.setBackgroundColor(Color.parseColor("#FFFFFF"))
             }
         }
 
@@ -47,7 +47,7 @@ class FragmentTwo : Fragment() {
                 btn_notif.setBackgroundColor(Color.parseColor("#F6DE05"))
             }else if(btn_notif.text=="Allowed"){
                 btn_notif.text="Allow"
-                btn_notif.setBackgroundColor(Color.parseColor("#595656"))
+                btn_notif.setBackgroundColor(Color.parseColor("#FFFFFF"))
             }
         }
 

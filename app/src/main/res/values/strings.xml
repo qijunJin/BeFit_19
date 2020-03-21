@@ -23,4 +23,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btn_next">FINISH</string>
+    <string name="txt_vegetarian">Vegetarian</string>
+    <string name="txt_mediterranean">Mediterranean</string>
+    <string name="txt_oriental">Oriental</string>
+    <string name="txt_american">Amercian</string>
+    <string name="txt_halal">Halal</string>
+    <string name="txt_mexican">Mexican</string>
+    <string name="txt_preference">Preference on your</string>
+    <string name="txt_gastronomy">gastronomy</string>
 </resources>
