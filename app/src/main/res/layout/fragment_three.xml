@@ -4,8 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="12"
-    tools:context=".FragmentThree">
+    android:weightSum="20"
+    tools:context=".FragmentThree"
+    android:baselineAligned="false">
+
 
     <!-- Marge esquerre -->
     <LinearLayout
