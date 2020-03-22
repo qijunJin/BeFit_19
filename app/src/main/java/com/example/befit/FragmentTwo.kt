@@ -30,7 +30,10 @@ class FragmentTwo : Fragment() {
         var btn_notif : Button = mLinearLayout.findViewById(R.id.btn_notification)
         var btn_monday : RadioButton = mLinearLayout.findViewById(R.id.btn_Monday)
 
-
+       //Indiquem el color per defecte dels botons
+        btn_ubication.setBackgroundColor(Color.parseColor("#FFFFFF"))
+        btn_notif.setBackgroundColor(Color.parseColor("#FFFFFF"))
+        
         btn_ubication.setOnClickListener {
             if(btn_ubication.text=="Allow"){
                 btn_ubication.text = "Allowed"

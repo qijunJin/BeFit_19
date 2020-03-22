@@ -3,11 +3,15 @@ package com.example.befit
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LogIn_Data : AppCompatActivity() {
     lateinit var viewPager : ViewPager
@@ -18,15 +22,16 @@ class LogIn_Data : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         viewPager = findViewById(R.id.viewPager)
-
         val adapter = MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
+
+
         //Afegim tots els fragments que creem
         adapter.addFragment(FragmentOne())
         adapter.addFragment(FragmentTwo())
-        adapter.addFragment(FragmentThree())
+        adapter.addFragment(fragmentThree())
         viewPager.adapter = adapter
 
-        //Inicialització botons
+
         btn_finish=findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
         btn_back=findViewById(R.id.btn_back)
 
