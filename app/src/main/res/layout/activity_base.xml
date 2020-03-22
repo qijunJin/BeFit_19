@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BaseActivity"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    android:layout_margin="10dp"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:layout_gravity="center"
+        android:text="@string/app_name"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="10dp"
+        />
+
+    <fragment
+        android:id="@+id/baseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:name="com.example.befit.StatisiticsFragment"/>
+
+    <Button
+        android:id="@+id/settButton"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="30dp"
+        android:onClick="to_settings"
+        android:text="GO TO SETTINGS"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/StatisticsButton"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="10dp"
+        android:text="GO TO STATISTICS"
+        android:textSize="10sp" />
+
+</LinearLayout>
