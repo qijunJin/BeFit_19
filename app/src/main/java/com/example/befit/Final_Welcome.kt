@@ -16,6 +16,10 @@ lateinit var welcome_name : TextView
         Toast.makeText(this, "User created", Toast.LENGTH_SHORT).show()
 
         var btn_welcome_start: Button = findViewById(R.id.btn_welcome_start)
+        var final_name : TextView = findViewById(R.id.final_name)
+
+        val message = intent.getStringExtra(EXTRA_MESSAGE) //Rebem el nom de l'usuari indicat a l'activity anterior
+        final_name.text=message //Assignem al textView del nom, el nom rebut
 
         btn_welcome_start.setOnClickListener {
             val intent = Intent(this, Main_Interface::class.java)

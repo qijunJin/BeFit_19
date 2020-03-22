@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LogIn_Data">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".LogIn_Data">
 
     <ImageView
         android:layout_width="match_parent"
@@ -49,16 +50,19 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
+                    android:layout_height="match_parent"/>
+
             </FrameLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"></LinearLayout>
+                    android:id="@+id/dotsLayout"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
             <LinearLayout
-                android:id="@+id/dotsLayout"
+                android:id="@+id/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
