@@ -1,7 +1,9 @@
 package com.example.befit
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Button
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -24,7 +26,8 @@ class Main_Interface : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        /*var btn_Gym: Button = findViewById(R.id.btn_Gym)
+
+         /*var btn_Gym: Button = findViewById(R.id.btn_Gym)
         btn_Gym.setOnClickListener {
             val intent = Intent(this, GoToGym::class.java)
             startActivity(intent)

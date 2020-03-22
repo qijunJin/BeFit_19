@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -43,11 +44,16 @@ class LogIn_Data : AppCompatActivity() {
 
         btn_finish.setOnClickListener {
             nameUser = edit_name.text.toString() //Agafem el valor del editText amb el nom
-            val intent : Intent = Intent(this,Final_Welcome::class.java).apply {
-                putExtra(EXTRA_MESSAGE,nameUser) //Enviem el nom del usuari a la seguent activity on el saludem
+            if(nameUser.isNullOrEmpty()){
+                Toast.makeText(this,"Introduce tu nombre",Toast.LENGTH_SHORT).show()
+            }else if(nameUser.isNotEmpty()) {
+                val intent : Intent = Intent(this,Final_Welcome::class.java).apply {
+                    putExtra(EXTRA_MESSAGE,nameUser) //Enviem el nom del usuari a la seguent activity on el saludem
+                }
+                startActivity(intent)
             }
-            startActivity(intent)
         }
+
 
         btn_back.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
