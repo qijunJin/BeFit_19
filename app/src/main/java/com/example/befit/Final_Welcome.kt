@@ -18,7 +18,7 @@ lateinit var welcome_name : TextView
         var btn_welcome_start: Button = findViewById(R.id.btn_welcome_start)
         var final_name : TextView = findViewById(R.id.final_name)
 
-        val message = intent.getStringExtra(EXTRA_MESSAGE) //Rebem el nom de l'usuari indicat a l'activity anterior
+       val message = intent.getStringExtra(EXTRA_MESSAGE) //Rebem el nom de l'usuari indicat a l'activity anterior
         if(message==""){
             final_name.text="unknown"
         }else {
