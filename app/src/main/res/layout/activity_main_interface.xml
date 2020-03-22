@@ -37,13 +37,16 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:background="#FFFFFF">
-                <ImageView
+
+                <ImageButton
+                    android:id="@+id/btn_Statistics"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:background="@drawable/round_button_male"
                     android:scaleType="centerCrop"
                     android:src="@drawable/male_round" />
+
             </FrameLayout>
 
             <LinearLayout
@@ -64,13 +67,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:background="#FFFF00">
+                    android:background="@drawable/sol"
+                    android:scaleType="centerCrop">
                 </ImageView>
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:background="#00FF00">
+                    android:background="@drawable/air"
+                    android:scaleType="centerCrop">
                 </ImageView>
             </LinearLayout>
         </LinearLayout>
