@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.example.befit.ui.home.HomeFragment
 
 class Main_Interface : AppCompatActivity() {
 
@@ -27,10 +28,15 @@ class Main_Interface : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
 
-         /*var btn_Gym: Button = findViewById(R.id.btn_Gym)
-        btn_Gym.setOnClickListener {
+         //var btn_Gym: Button = findViewById(R.id.btn_Gym)
+        /*btn_Gym.setOnClickListener {
             val intent = Intent(this, GoToGym::class.java)
             startActivity(intent)
+         }*/
+       /* var btn_gym : Button = findViewById(R.id.btn_Gym)
+         btn_gym.setOnClickListener {
+             val intent = Intent(this, GoToGym::class.java)
+             startActivity(intent)
          }*/
 
             /*val fab: FloatingActionButton = findViewById(R.id.fab)  //Boto abaix dreta, sortia una carta

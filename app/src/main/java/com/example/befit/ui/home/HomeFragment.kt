@@ -1,5 +1,6 @@
 package com.example.befit.ui.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,13 +28,17 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        var mLinearLayout = inflater.inflate(R.layout.fragment_one,container,false)
+        var mLinearLayout = inflater.inflate(R.layout.fragment_home,container,false)
         /*
         val textView: TextView = root.findViewById(R.id.text_home)
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })*/
-
+        /*var btn_gym : Button = mLinearLayout.findViewById(R.id.btn_Gym)
+        btn_gym.setOnClickListener {
+            val intent = Intent(activity, GoToGym::class.java)
+            activity?.startActivity(intent)
+        }*/
         return root
     }
 }
