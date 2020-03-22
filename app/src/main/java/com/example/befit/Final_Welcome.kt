@@ -19,8 +19,11 @@ lateinit var welcome_name : TextView
         var final_name : TextView = findViewById(R.id.final_name)
 
         val message = intent.getStringExtra(EXTRA_MESSAGE) //Rebem el nom de l'usuari indicat a l'activity anterior
-        final_name.text=message //Assignem al textView del nom, el nom rebut
-
+        if(message==""){
+            final_name.text="unknown"
+        }else {
+            final_name.text = message //Assignem al textView del nom, el nom rebut
+        }
         btn_welcome_start.setOnClickListener {
             val intent = Intent(this, Main_Interface::class.java)
             startActivity(intent)

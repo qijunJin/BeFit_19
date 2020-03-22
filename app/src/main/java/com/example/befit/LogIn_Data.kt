@@ -33,6 +33,8 @@ class LogIn_Data : AppCompatActivity() {
         adapter.addFragment(FragmentTwo())
         adapter.addFragment(fragmentThree())
         viewPager.adapter = adapter
+        var tabLayout = findViewById<TabLayout>(R.id.tab_layout)
+        tabLayout.setupWithViewPager(viewPager,true) //Connectem els dots amb el viewpager
 
         btn_finish=findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
         //btn_finish.isEnabled = false
