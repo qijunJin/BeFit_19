@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import kotlinx.android.synthetic.main.activity_login.*
 
 /**
  * A simple [Fragment] subclass.
@@ -17,9 +18,7 @@ class fragmentThree : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         var mLinearLayout = inflater.inflate(R.layout.fragment_three,container,false)
-
         var btn_med : Button = mLinearLayout.findViewById(R.id.btn_mediterranean)
         var btn_oriental : Button = mLinearLayout.findViewById(R.id.btn_oriental)
         var btn_american = mLinearLayout.findViewById<Button>(R.id.btn_american)
@@ -93,6 +92,8 @@ class fragmentThree : Fragment() {
                 btn_veg.alpha=1F
             }
         }
+
+
 
         // Inflate the layout for this fragment
         return mLinearLayout

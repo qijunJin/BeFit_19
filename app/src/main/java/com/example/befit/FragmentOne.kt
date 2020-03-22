@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageButton
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment
 class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
     lateinit var btn_male : ImageButton
     lateinit var btn_female : ImageButton
+    lateinit var txt_name : EditText
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,7 +25,9 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         //Inicialització botons
         btn_male = mLinearLayout.findViewById(R.id.btn_male)
         btn_female = mLinearLayout.findViewById(R.id.btn_female)
-
+        //Nom usuari
+        //txt_name=mLinearLayout.findViewById(R.id.txt_name)
+        //var name : String = txt_name.text.toString()
 
         btn_male.setOnClickListener {
             btn_female.alpha=0.5F
