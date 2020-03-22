@@ -3,8 +3,6 @@ package com.example.befit
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -12,7 +10,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_one.*
 
 const val EXTRA_MESSAGE = "com.example.BEFIT_F.MESSAGE"
@@ -62,7 +59,8 @@ class LogIn_Data : AppCompatActivity() {
         }
     }
 
-    class MyViewPagerAdapter(manager : FragmentManager) : FragmentPagerAdapter(manager){
+    class MyViewPagerAdapter(manager: FragmentManager) :
+        FragmentPagerAdapter(manager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         private val fragmentList : MutableList<Fragment> = ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
 
