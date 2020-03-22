@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="basic_preferences" />
+    <string name="title_basic_preference">Preference</string>
+    <string name="summary_basic_preference">Summary of basic preference</string>
+    <string name="summary_stylish_preference">Summary for stylish preference</string>
+    <string name="title_stylish_preference">Title for Stylish preference</string>
+    <string name="title_icon_preference">Title Icon Preference</string>
+    <string name="summary_icon_preference">Summary Icon Preference</string>
+    <string name="title_single_line_title_preference">Title single line title</string>
+    <string name="summary_single_line_title_preference">Summary Single Line Title</string>
+    <string name="widgets">Title Widget</string>
+    <string name="title_checkbox_preference">Title Checkbox</string>
+    <string name="summary_checkbox_preference">Summary Checkbox</string>
+    <string name="title_switch_preference" >Title Switch</string>
+    <string name="summary_switch_preference">Summary Switch</string>
+    <string name="title_dropdown_preference" >Summary Switch</string>
+    <string name="title_seekbar_preference">Summary Switch</string>
+    <string name="dialogs" />
+    <string name="title_edittext_preference">Summary Switch</string>
+    <string name="dialog_title_edittext_preference">Summary Switch</string>
+    <string name="title_list_preference">Title List</string>
+    <string name="dialog_title_list_preference" >Summary Switch</string>
+    <string name="title_multi_list_preference">Summary Switch</string>
+    <string name="summary_multi_list_preference">Summary Switch</string>
+    <string name="dialog_title_multi_list_preference">Summary Switch</string>
+    <string name="advanced_attributes">Summary Switch</string>
+    <string name="title_expandable_preference">Summary Switch</string>
+    <string name="summary_expandable_preference">Summary Switch</string>
+    <string name="title_intent_preference">Summary Switch</string>
+    <string name="summary_intent_preference">Summary Switch</string>
+    <string name="title_parent_preference">Summary Switch</string>
+    <string name="summary_parent_preference">Summary Switch</string>
+    <string name="title_child_preference">Summary Switch</string>
+    <string name="summary_child_preference">Summary Switch</string>
+    <string name="title_toggle_summary_preference" >Summary Switch</string>
+    <string name="summary_on_toggle_summary_preference" >Summary Switch</string>
+    <string name="summary_off_toggle_summary_preference" >Summary Switch</string>
+    <string name="title_copyable_preference" >Summary Switch</string>
+    <string name="summary_copyable_preference">Summary Switch</string>
+</resources>
