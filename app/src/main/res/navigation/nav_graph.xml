@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/placeholder">
+
+    <fragment android:id="@+id/placeholder" >
+        <action
+            android:id="@+id/action_placeholder_to_settingsMainFragmen"
+            app:destination="@id/settingsMainFragmen" />
+    </fragment>
+    <activity
+        android:id="@+id/baseActivity"
+        android:name="com.example.befit.BaseActivity"
+        android:label="BaseActivity" />
+    <fragment
+        android:id="@+id/settingsMainFragmen"
+        android:name="com.example.befit.SettingsMainFragment"
+        android:label="SettingsMainFragmen" >
+        <action
+            android:id="@+id/actionToAppConf"
+            app:destination="@id/appConfFragment"
+            app:popUpTo="@id/settingsMainFragmen"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/actionToAccountConf"
+            app:destination="@id/accountConfFragment"
+            app:popUpTo="@id/settingsMainFragmen"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/actionToTerms"
+            app:destination="@id/termsFragment"
+            app:popUpTo="@id/settingsMainFragmen" />
+    </fragment>
+    <fragment
+        android:id="@+id/appConfFragment"
+        android:name="com.example.befit.AppConfFragment"
+        android:label="AppConfFragment" />
+    <fragment
+        android:id="@+id/accountConfFragment"
+        android:name="com.example.befit.AccountConfFragment"
+        android:label="accountConfFragment" />
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="com.example.befit.TermsFragment"
+        android:label="fragment_terms"
+        tools:layout="@layout/fragment_terms" />
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.example.befit.StatisticsFragment"
+        android:label="fragment_statistics"
+        tools:layout="@layout/fragment_statistics" />
+</navigation>
