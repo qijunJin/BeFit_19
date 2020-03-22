@@ -11,17 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var btn_signUp : Button = findViewById(R.id.btn_signUp)
-        var btn_signIn : Button = findViewById(R.id.btn_SignIn)
+        var btn_LogIn: Button = findViewById(R.id.btn_LogIn)
 
-        btn_signUp.setOnClickListener {
-            val intent = Intent(this, LogIn_Data::class.java)
-            startActivity(intent)
-        }
-
-        btn_signIn.setOnClickListener {
-            val intent = Intent(this, LogIn_Data::class.java)
-            startActivity(intent)
+        btn_LogIn.setOnClickListener {
+            startActivity(Intent(this, LogIn_Data::class.java))
         }
 
     }

@@ -14,8 +14,13 @@ class Main_Interface : AppCompatActivity() {
         var btn_Gym: Button = findViewById(R.id.btn_Gym)
 
         btn_Gym.setOnClickListener {
-            val intent = Intent(this, GoToGym::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, GoToGym::class.java))
+        }
+
+        var btn_Outdoor: Button = findViewById(R.id.btn_Outdoor)
+
+        btn_Outdoor.setOnClickListener {
+            startActivity(Intent(this, GoToOutdoorRunning::class.java))
         }
     }
 }

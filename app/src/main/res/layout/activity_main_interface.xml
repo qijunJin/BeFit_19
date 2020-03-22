@@ -38,12 +38,12 @@
                 android:layout_weight="3"
                 android:background="#FFFFFF">
                 <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
+                    android:background="@drawable/round_button_male"
                     android:scaleType="centerCrop"
-                    android:background="@drawable/male">
-                </ImageView>
+                    android:src="@drawable/male_round" />
             </FrameLayout>
 
             <LinearLayout
@@ -121,6 +121,7 @@
                 android:layout_weight="1">
             </LinearLayout>
             <Button
+                android:id="@+id/btn_Outdoor"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"

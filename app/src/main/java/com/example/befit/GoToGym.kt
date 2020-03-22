@@ -14,8 +14,7 @@ class GoToGym : AppCompatActivity() {
         var gym_start: Button = findViewById(R.id.gym_start)
 
         gym_start.setOnClickListener {
-            val intent = Intent(this, gym_activities::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, GymActivities::class.java))
         }
     }
 }

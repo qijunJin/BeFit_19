@@ -78,7 +78,7 @@
             android:background="#B5AFAF"
             android:ems="10"
             android:hint="enter your name"
-                android:textStyle="bold"
+            android:textStyle="bold"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textSize="25sp" />
