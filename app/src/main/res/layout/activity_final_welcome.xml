@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -67,13 +66,18 @@
                         android:layout_weight="4.5"
                         android:gravity="bottom">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:src="@drawable/profile_picture"
-                            app:civ_border_color="#ff8040"
-                            app:civ_border_width="2dp" />
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/round_button_male"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/male_round" />
+                        </FrameLayout>
                     </LinearLayout>
 
                     <LinearLayout
