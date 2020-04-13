@@ -108,21 +108,52 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="4">
+                <!--
+                               <TextView
+                                   android:layout_width="120dp"
+                                   android:layout_height="120dp"
+                                   android:layout_gravity="center"
+                                   android:layout_weight="2"
+                                   android:background="@drawable/round_button_male"
+                                   android:gravity="center"
+                                   android:text="10'30"
+                                   android:textColor="#000000"
+                                   android:textSize="35dp"
+                                   android:textStyle="bold">
 
-                <TextView
+                               </TextView>
+                               -->
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:background="@drawable/round_button_male"
-                    android:gravity="center"
-                    android:text="10'30"
-                    android:textColor="#000000"
-                    android:textSize="35dp"
-                    android:textStyle="bold">
+                    android:background="@drawable/circle_crono_empty"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressDrawable="@drawable/circle_crono"
+                    android:rotation="-90"></ProgressBar>
 
-                </TextView>
+
+                <TextView
+                    android:id="@+id/txtViewTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="00:00:00"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20dp"></TextView>
+
             </FrameLayout>
+
+            <EditText
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="00:00"
+                android:textColor="@color/colorAccent"></EditText>
         </LinearLayout>
     </FrameLayout>
 
