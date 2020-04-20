@@ -44,4 +44,6 @@ dependencies {
 
     //Material Design
     implementation 'com.google.android.material:material:1.2.0-alpha05'
+
+    implementation 'com.xw.repo:bubbleseekbar:3.4-lite'
 }

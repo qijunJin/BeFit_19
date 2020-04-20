@@ -11,10 +11,13 @@ class GoToGym : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_go_to_gym)
 
-        var gym_start: Button = findViewById(R.id.gym_start)
+        var btn_gym_start: Button = findViewById(R.id.gym_start)
 
-        gym_start.setOnClickListener {
+        btn_gym_start.setOnClickListener {
             startActivity(Intent(this, GymActivities::class.java))
+
+            val timerDialog = TimerDialog()
+            timerDialog.show(supportFragmentManager, "")
         }
     }
 }
