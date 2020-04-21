@@ -47,4 +47,14 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
+    <string name="title_time_dialog">Ajustar tiempo y repeticiones</string>
+    <string name="start_time_dialog">Iniciar</string>
+    <string name="title_attention">Attention</string>
+    <string name="message_finish_break">Are you sure to leave your break?</string>
+    <string name="action_yes">YES</string>
+    <string name="action_no">NO</string>
+    <string name="action_ok">OK</string>
+    <string name="message_finish_time">You have finished your exercise</string>
+    <string name="title_finish_time">Congratulations</string>
+    <string name="message_finish_timer">Are you sure to leave your exercise?</string>
 </resources>
