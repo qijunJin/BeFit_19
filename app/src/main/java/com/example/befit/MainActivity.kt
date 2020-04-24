@@ -24,9 +24,15 @@ lateinit var mGoogleSignInClient : GoogleSignInClient
 private lateinit var auth: FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
+    companion object{
+        val user = FirebaseAuth.getInstance().currentUser
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
         var btn_LogIn: SignInButton = findViewById(R.id.btn_LogIn)
         var btn_LogOut : Button = findViewById(R.id.btn_LogOut)
@@ -34,13 +40,26 @@ class MainActivity : AppCompatActivity() {
 
         //Si hem deixat la sessio inciada, entrem directament al menu d'exercicis
         val acct = GoogleSignIn.getLastSignedInAccount(this)
-        if(acct != null){
-            startActivity(Intent(this, Main_Interface::class.java))
+        val sesio_activa = intent.getStringExtra(EXTRA_ENRERE)
+        if(acct != null && sesio_activa == "si"){
+
             //UpdateUI
             btn_LogIn.visibility = View.GONE
             btn_LogOut.visibility = View.VISIBLE
             btn_next.visibility = View.VISIBLE
 
+        }else if(acct!=null && sesio_activa!="si"){
+            startActivity(Intent(this, Main_Interface::class.java))
+
+        }else if(acct!=null){
+            btn_LogIn.visibility = View.GONE
+            btn_LogOut.visibility = View.VISIBLE
+            btn_next.visibility = View.VISIBLE
+        }else{
+            btn_LogIn.visibility = View.VISIBLE
+            //Aquests botons estan ocults fins iniciar sessió
+            btn_LogOut.visibility = View.GONE
+            btn_next.visibility = View.GONE
         }
 
 
@@ -52,10 +71,6 @@ class MainActivity : AppCompatActivity() {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         auth = FirebaseAuth.getInstance()
 
-        btn_LogIn.visibility = View.VISIBLE
-        //Aquests botons estan ocults fins iniciar sessió
-        btn_LogOut.visibility = View.GONE
-        btn_next.visibility = View.GONE
 
         btn_LogIn.setOnClickListener {
             val signInIntent = mGoogleSignInClient.signInIntent
@@ -68,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_next.setOnClickListener {
-            val user = FirebaseAuth.getInstance().currentUser
             var database = FirebaseDatabase.getInstance()
             var reference = database.reference.child(auth.currentUser?.displayName.toString()) //Afegim nou usuari, o actualitzem les dades de un ja registrat
             //Actualitzem caracteristiques principals que ens dona el correu

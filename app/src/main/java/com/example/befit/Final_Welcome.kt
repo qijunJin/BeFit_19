@@ -30,8 +30,7 @@ class Final_Welcome : AppCompatActivity() {
         val message =
             intent.getStringExtra(EXTRA_MESSAGE) //Rebem el nom de l'usuari indicat a l'activity anterior
 
-        final_name.text =
-            if (message == "") "unknown" else message //Assignem al textView del nom, el nom rebut
+        final_name.text = MainActivity.user?.displayName
 
         btn_welcome_start.setOnClickListener {
             startActivity(Intent(this, Main_Interface::class.java))
