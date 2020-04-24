@@ -1,165 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="10"
-    tools:context=".Main_Interface">
+    tools:context=".Main_Interface"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    >
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/secondaryColor"
+                app:titleTextColor="@color/secondaryTextColor"
+                app:title="@string/appbar_title"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:orientation="horizontal"
-            android:weightSum="5"
-            android:background="#FFFFFF">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10"
+            tools:context=".Main_Interface">
+
+
+            <!--TODO We shoud change this void layout-->
+            <!--TODO Everything should be constraint-->
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:weightSum="3"
-                android:background="#FFFFFF">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:background="#FFFFFF"
+                android:layout_marginTop="15dp">
 
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/setting">
+                    android:orientation="vertical"
+                    android:weightSum="3"
+                    android:background="#FFFFFF">
 
-                </ImageButton>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="#FFFFFF">
+
+                    <ImageButton
+                        android:id="@+id/btn_Statistics"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/round_button_male"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/male_round"
+                        android:contentDescription="@string/description_image_acces_profile"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:weightSum="6"
+                    android:background="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/sol"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/description_sun_radiation_state"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/air"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/imagedescription_air_pollution_status"/>
+                </LinearLayout>
             </LinearLayout>
 
             <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:background="#FFFFFF">
 
-                <ImageButton
-                    android:id="@+id/btn_Statistics"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/round_button_male"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/male_round" />
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/time_to_exercise"
+                    android:textSize="30dp"
+                    android:textColor="#000000"/>
             </FrameLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
                 android:orientation="vertical"
-                android:weightSum="6"
-                android:background="#FFFFFF">
+                android:weightSum="13"
+                android:background="@drawable/b1">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="#FFFFFF">
-                </LinearLayout>
+                    android:layout_weight="1"/>
 
-                <ImageView
+                <Button
+                    android:id="@+id/btn_Gym"
+                    android:layout_weight="3"
+                    android:text="Go to gym"
+                    style="@style/main_interface_button_style" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/sol"
-                    android:scaleType="centerCrop">
-                </ImageView>
-                <ImageView
+                    android:layout_weight="1"/>
+
+                <Button
+                    style="@style/main_interface_button_style"
+                    android:id="@+id/btn_Outdoor"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/air"
-                    android:scaleType="centerCrop">
-                </ImageView>
+                    android:layout_weight="3"
+                    android:text="Outdoor running" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <Button
+                    style="@style/main_interface_button_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:text="Go to swim"
+/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
             </LinearLayout>
+
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="#FFFFFF">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Time to exercise"
-                android:textSize="30dp"
-                android:textColor="#000000">
-            </TextView>
-        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:orientation="vertical"
-            android:weightSum="13"
-            android:background="@drawable/b1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            </LinearLayout>
-            <Button
-                android:id="@+id/btn_Gym"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:background="#000000"
-                android:alpha="0.8"
-                android:text="Go to gym"
-                android:textSize="30dp"
-                android:textColor="#FFFF00">
-            </Button>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            </LinearLayout>
-            <Button
-                android:id="@+id/btn_Outdoor"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:background="#000000"
-                android:alpha="0.8"
-                android:text="Outdoor running"
-                android:textSize="30dp"
-                android:textColor="#FFFF00">
-            </Button>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            </LinearLayout>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:background="#000000"
-                android:alpha="0.8"
-                android:text="Go to swim"
-                android:textSize="30dp"
-                android:textColor="#FFFF00">
-            </Button>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            </LinearLayout>
-        </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/drawer_menu"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header_layout_for_drawer"
+        />
 
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

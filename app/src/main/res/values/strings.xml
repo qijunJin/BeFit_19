@@ -34,4 +34,18 @@
     <string name="txt_gastronomy">gastronomy</string>
     <string name="txt_SignUp">Sign Up</string>
     <string name="txt_LogIn">Log In</string>
+
+
+    <string name="appbar_title" />
+    <string name="header_title">Title</string>
+    <string name="header_description">Description</string>
+    <string name="header_icon_description">Befit icon</string>
+    <string name="description_image_acces_profile">Profile access</string>
+    <string name="description_sun_radiation_state">Sun radiation state</string>
+    <string name="imagedescription_air_pollution_status">Air pollution status</string>
+    <string name="time_to_exercise">Time to exercise</string>
+    <string name="openNavDrawer">Navigation Drawer Open</string>
+    <string name="closeNavDrawer">Navigation Drawer Close</string>
+    <string name="first_preference_item_title">First Preference Item</string>
+    <string name="settings">Settings</string>
 </resources>
