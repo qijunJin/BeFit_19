@@ -15,14 +15,16 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            android:translationZ="0.1dp">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/main_toolbar"
+                style="@style/ToolbarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/secondaryColor"
-                app:titleTextColor="@color/secondaryTextColor"
-                app:title="@string/appbar_title"/>
+                app:title="@string/appbar_title" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -184,6 +186,7 @@
         app:menu="@menu/drawer_menu"
         android:layout_gravity="start"
         app:headerLayout="@layout/header_layout_for_drawer"
+        style="@style/DrawerStyle"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>

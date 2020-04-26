@@ -28,9 +28,14 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         // Trobem la toolbar u la apliquem a la activity
         toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(toolbar)
+        //Remove title from Appbar
+        supportActionBar!!.setTitle("")
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.nav_view)
+
+        //No title
+        toolbar.title=null
 
         var actionBarDrawerToggle : ActionBarDrawerToggle = ActionBarDrawerToggle(
             this,
@@ -44,6 +49,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         actionBarDrawerToggle.syncState()
         //Quan seleccionem un item del menú
         navigationView.setNavigationItemSelectedListener(this)
+
 
 
     // BUTTON LISTENERS
@@ -74,7 +80,6 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.id.storage_item-> null
             R.id.app_item-> null
             else-> {
-                Toast.makeText(this,"Click Worked",Toast.LENGTH_LONG).show()
                 goToPreferenceActivity()
             }
         }

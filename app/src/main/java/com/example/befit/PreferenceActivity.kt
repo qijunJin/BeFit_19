@@ -53,8 +53,12 @@ class PreferenceActivity : AppCompatActivity(),PreferenceFragmentCompat.OnPrefer
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        return super.onOptionsItemSelected(item)
+        if (item.itemId == android.R.id.home) {
+            finish()
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+            return true
+        }
+        return false
     }
 
     class MainPreference : PreferenceFragmentCompat(){
@@ -94,5 +98,6 @@ class PreferenceActivity : AppCompatActivity(),PreferenceFragmentCompat.OnPrefer
     companion object{
         private val TAG_TITLE = "PREFERENCE_ACTIVITY"
     }
+
 
 }
