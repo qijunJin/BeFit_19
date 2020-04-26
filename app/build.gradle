@@ -69,12 +69,9 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
     //Material Design
-    implementation 'com.google.android.material:material:1.2.0-alpha05'
-
     implementation 'com.google.android.material:material:1.2.0-alpha06'
     implementation 'com.google.firebase:firebase-database:19.2.1'
 
-    implementation 'com.google.android.material:material:1.2.0-alpha06'
 
     //Preference
     def preference_version = "1.1.1"
@@ -82,5 +79,6 @@ dependencies {
 
     //MPAndroidChart dependencies
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
     implementation 'com.xw.repo:bubbleseekbar:3.4-lite'
 }

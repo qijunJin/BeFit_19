@@ -15,7 +15,6 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -124,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)  //Obtenim el signedIn
-                handleSignInResult(task)  //Mètode per obtenir les dades del usuari de google
+            handleSignInResult(task)  //Mètode per obtenir les dades del usuari de google
         }
     }
 
@@ -133,7 +132,13 @@ class MainActivity : AppCompatActivity() {
             val account = completedTask.getResult(ApiException::class.java)
             firebaseAuthWithGoogle(account!!)
             //Signed in succesfully
-             user_actual = User(account.displayName.toString(), account.id.toString(),0.0,0.0,0) //Inicialitzem user, de moment nomes amb el que tenim
+            user_actual = User(
+                account.displayName.toString(),
+                account.id.toString(),
+                0.0,
+                0.0,
+                0
+            ) //Inicialitzem user, de moment nomes amb el que tenim
             //Guardem dades inicials a firebase si es el primer cop en entrar
             var database = FirebaseDatabase.getInstance()
             var reference = database.reference.child(account.displayName.toString())
@@ -155,7 +160,7 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                   // Log.d(TAG, "signInWithCredential:success")
+                    // Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
 
 

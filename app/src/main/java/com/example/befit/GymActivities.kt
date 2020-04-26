@@ -76,7 +76,6 @@ class GymActivities : AppCompatActivity() {
     fun getData() {
         timerLength = intent.getIntExtra("TIME", 1)
         totalRepetition = intent.getIntExtra("REPETITION", 0)
-
     }
 
     private fun setProgressBarValues() {
@@ -157,7 +156,6 @@ class GymActivities : AppCompatActivity() {
         if (requestCode == 0) {
             repetition++
             txt_repetition!!.setText(repetition.toString() + "/" + totalRepetition.toString())
-            //txt_repetition!!.text ==
             startTimer()
         }
     }
