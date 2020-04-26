@@ -6,11 +6,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class Final_Welcome : AppCompatActivity() {
 
     lateinit var welcome_name: TextView
-
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -20,11 +22,19 @@ class Final_Welcome : AppCompatActivity() {
         var btn_welcome_start: Button = findViewById(R.id.btn_welcome_start)
         var final_name: TextView = findViewById(R.id.final_name)
 
+
+
+
+        auth = FirebaseAuth.getInstance()
+        var currentUser = auth.currentUser
+
+        //Al finalitzar el registre, agafarem els valors introduits i els guardarem a firebase
+
+
         val message =
             intent.getStringExtra(EXTRA_MESSAGE) //Rebem el nom de l'usuari indicat a l'activity anterior
 
-        final_name.text =
-            if (message == "") "unknown" else message //Assignem al textView del nom, el nom rebut
+        final_name.text = MainActivity.user?.displayName
 
         btn_welcome_start.setOnClickListener {
             startActivity(Intent(this, Main_Interface::class.java))

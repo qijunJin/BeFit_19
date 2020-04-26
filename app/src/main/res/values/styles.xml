@@ -1,11 +1,43 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- No Action Bar Theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/secondaryColor</item>
+    </style>
+
+    <!-- ActionBar Theme -->
+    <style name="PreferencesTheme" parent="Theme.MaterialComponents.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/secondaryColor</item>
+    </style>
+
+    <!-- Toolbar style-->
+    <style name="ToolbarStyle">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:theme">@style/Theme.MaterialComponents.Light</item>
+    </style>
+
+    <!-- Drawer Style -->
+
+    <style name="DrawerStyle">
+        <item name="android:theme">@style/Theme.MaterialComponents.Light</item>
+    </style>
+
+    <!-- Main interface Style for Buttons -->
+    <style name="main_interface_button_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:background">#000000</item>
+        <item name="android:alpha">0.8</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">#FFFF00</item>
     </style>
 
     <style name="NoActionBar" parent="Theme.AppCompat.NoActionBar">

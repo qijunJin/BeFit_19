@@ -34,17 +34,7 @@
     <string name="txt_gastronomy">gastronomy</string>
     <string name="txt_SignUp">Sign Up</string>
     <string name="txt_LogIn">Log In</string>
-    <string name="title_activity_main__interface">Main_Interface</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
     <string name="title_time_dialog">Ajustar tiempo y repeticiones</string>
@@ -57,4 +47,17 @@
     <string name="message_finish_time">You have finished your exercise</string>
     <string name="title_finish_time">Congratulations</string>
     <string name="message_finish_timer">Are you sure to leave your exercise?</string>
+
+    <string name="appbar_title" />
+    <string name="header_title">Title</string>
+    <string name="header_description">Description</string>
+    <string name="header_icon_description">Befit icon</string>
+    <string name="description_image_acces_profile">Profile access</string>
+    <string name="description_sun_radiation_state">Sun radiation state</string>
+    <string name="imagedescription_air_pollution_status">Air pollution status</string>
+    <string name="time_to_exercise">Time to exercise</string>
+    <string name="openNavDrawer">Navigation Drawer Open</string>
+    <string name="closeNavDrawer">Navigation Drawer Close</string>
+    <string name="first_preference_item_title">First Preference Item</string>
+    <string name="settings">Settings</string>
 </resources>
