@@ -3,11 +3,13 @@ package com.example.befit
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.fragment_one.*
 
 class Final_Welcome : AppCompatActivity() {
 
@@ -22,10 +24,14 @@ class Final_Welcome : AppCompatActivity() {
         var btn_welcome_start: Button = findViewById(R.id.btn_welcome_start)
         var final_name: TextView = findViewById(R.id.final_name)
 
+
+
+
         auth = FirebaseAuth.getInstance()
         var currentUser = auth.currentUser
 
-        var user : User = User(currentUser?.displayName.toString(), currentUser!!.uid, 0.0)  //Aqui creem el usuari local de l'aplicació amb totes les dades. Al acabar el exerici aquets valors es tornaran apujar a firebase
+        //Al finalitzar el registre, agafarem els valors introduits i els guardarem a firebase
+
 
         val message =
             intent.getStringExtra(EXTRA_MESSAGE) //Rebem el nom de l'usuari indicat a l'activity anterior

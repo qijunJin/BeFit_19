@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         val user = FirebaseAuth.getInstance().currentUser
+        var user_actual = User("","",0.0, 0.0,0)  //Dades del usuari que esta a l¡aplicaio
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,13 +83,8 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        btn_next.setOnClickListener {
-            var database = FirebaseDatabase.getInstance()
-            var reference = database.reference.child(auth.currentUser?.displayName.toString()) //Afegim nou usuari, o actualitzem les dades de un ja registrat
-            //Actualitzem caracteristiques principals que ens dona el correu
-            reference.child("Nom").setValue(user?.displayName)
-            reference.child("ID").setValue(user?.uid)
 
+        btn_next.setOnClickListener {
             startActivity(Intent(this,LogIn_Data::class.java))
         }
 
@@ -137,6 +133,12 @@ class MainActivity : AppCompatActivity() {
             val account = completedTask.getResult(ApiException::class.java)
             firebaseAuthWithGoogle(account!!)
             //Signed in succesfully
+             user_actual = User(account.displayName.toString(), account.id.toString(),0.0,0.0,0) //Inicialitzem user, de moment nomes amb el que tenim
+            //Guardem dades inicials a firebase si es el primer cop en entrar
+            var database = FirebaseDatabase.getInstance()
+            var reference = database.reference.child(account.displayName.toString())
+            reference.setValue(user_actual)//Afegim nou usuari, o actualitzem les dades de un ja registrat si és necessari
+
             btn_LogIn.visibility = View.GONE
             Toast.makeText(this,"Sessió Iniciada", Toast.LENGTH_SHORT).show()
 

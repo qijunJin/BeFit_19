@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.fragment_one.*
 
 /**
  * A simple [Fragment] subclass.
@@ -17,6 +19,7 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
     lateinit var btn_male: ImageButton
     lateinit var btn_female: ImageButton
     lateinit var txt_name: TextView
+    lateinit var txt_age : EditText
 
     override fun onCreateView(
 
@@ -31,9 +34,7 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         btn_female = mLinearLayout.findViewById(R.id.btn_female)
         txt_name = mLinearLayout.findViewById(R.id.edit_name)
 
-        txt_name.text = MainActivity.user?.displayName.toString()
-       //txt_name.hint = MainActivity.user?.displayName.toString()
-
+        txt_name.text = MainActivity.user?.displayName
 
         btn_male.setOnClickListener {
             btn_female.alpha = 0.5F

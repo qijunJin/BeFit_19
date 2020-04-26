@@ -75,8 +75,8 @@
             android:layout_height="0dp"
             android:layout_weight="1.5"
             android:background="#B5AFAF"
-                android:text="name"
                 android:textColor="#FFFFFF"
+                android:ems="10"
             android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="25sp" />
