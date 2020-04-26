@@ -13,6 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_one.*
 
 const val EXTRA_MESSAGE = "com.example.BEFIT_F.MESSAGE"
+const val EXTRA_ENRERE = "com.exameple.BEFIT_F.ENRERE"
 
 class LogIn_Data : AppCompatActivity() {
     lateinit var viewPager : ViewPager
@@ -42,19 +43,23 @@ class LogIn_Data : AppCompatActivity() {
 
 
         btn_finish.setOnClickListener {
-            nameUser = edit_name.text.toString() //Agafem el valor del editText amb el nom
+            /*nameUser = edit_name.hint.toString() //Agafem el valor del editText amb el nom
             if(nameUser.isNullOrEmpty()){
                 Toast.makeText(this,"Introduce tu nombre",Toast.LENGTH_SHORT).show()
-            }else if(nameUser.isNotEmpty()) {
+            }else if(nameUser.isNotBlank()) {
                 val intent : Intent = Intent(this,Final_Welcome::class.java).apply {
                     putExtra(EXTRA_MESSAGE,nameUser) //Enviem el nom del usuari a la seguent activity on el saludem
-                }
-                startActivity(intent)
-            }
+
+                }*/
+            val intent : Intent = Intent(this,Final_Welcome::class.java)
+            startActivity(intent)
+           // }
         }
 
         btn_back.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,MainActivity::class.java).apply {
+                putExtra(EXTRA_ENRERE,"si")
+            }
             startActivity(intent)
         }
     }
