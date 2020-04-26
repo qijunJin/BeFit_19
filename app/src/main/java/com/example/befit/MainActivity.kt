@@ -2,6 +2,7 @@ package com.example.befit
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings.Global.getString
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -81,21 +82,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        var registrat = ""
-        var name = ""
+        var registrat = "" //Variable per controlar si ja està registrat el usuari a firebase
         val database = FirebaseDatabase.getInstance()
         val reference = database.reference
         btn_next.setOnClickListener {
             val acct = GoogleSignIn.getLastSignedInAccount(this)
-
             reference.child(acct?.displayName.toString()).addValueEventListener(object : ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {
                      //To change body of created functions use File | Settings | File Templates.
                 }
 
                 override fun onDataChange(p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
-                    if(p0.child("name").exists()){
-                         //name = p0.child("name").toString()
+                    if(p0.child("age").exists()){
                          registrat = "si"
                     }else{
                         registrat = "no"
@@ -119,8 +117,8 @@ class MainActivity : AppCompatActivity() {
                 0
             ) //Inicialitzem user, de moment nomes amb el que tenim
             //Guardem dades inicials a firebase si es el primer cop en entrar
-            var database = FirebaseDatabase.getInstance()
-            var reference = database.reference.child(acct?.displayName.toString())
+            val database = FirebaseDatabase.getInstance()
+            val reference = database.reference.child(acct?.displayName.toString())
             reference.setValue(user_actual)//Afegim nou usuari, o actualitzem les dades de un ja registrat si és necessari
         }
 
@@ -132,7 +130,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun signOut() {  //Tanquem sessio
+    fun signOut() {  //Tanquem sessio
         mGoogleSignInClient.signOut()
             .addOnCompleteListener(this) {
                 Toast.makeText(this,"Sessió tancada", Toast.LENGTH_SHORT).show()

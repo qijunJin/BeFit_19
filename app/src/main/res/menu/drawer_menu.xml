@@ -17,7 +17,8 @@
         android:id="@+id/app_item">
         <menu>
             <item android:title="Settings"/>
-            <item android:title="Sign out"/>
+            <item android:title="Sign out"
+                    android:id="@+id/set_signOut"/>
         </menu>
     </item>
 

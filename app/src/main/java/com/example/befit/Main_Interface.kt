@@ -9,7 +9,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
+import com.example.befit.MainActivity
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
 class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -21,7 +24,6 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_interface)
-
         // Trobem la toolbar u la apliquem a la activity
         toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(toolbar)
