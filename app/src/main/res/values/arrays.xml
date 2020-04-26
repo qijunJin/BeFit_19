@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="example_array">example_array>
+        <item>Array item 1</item>
+        <item>Array item 2</item>
+        <item>Array item 3</item>
+        <item>Array item 4</item>
+    </string-array>
+
+    <string-array name="entry_values">example_array>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="theme_entries">theme_entries>
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    <string-array name="theme_values">theme_values>
+        <item>Whatever</item>
+        <item>Whatever</item>
+    </string-array>
+</resources>

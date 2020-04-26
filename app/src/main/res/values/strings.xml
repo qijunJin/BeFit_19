@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">BEFIT</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_finish">FINISH</string>
+    <string name="txt_welcome">Welcome to</string>
+    <string name="txt_title">BEFIT</string>
+    <string name="txt_is_your">is your</string>
+    <string name="txt_coach">coach</string>
+    <string name="txt_nutrionist">nutrionist</string>
+    <string name="txt_reminder">reminder</string>
+    <string name="txt_perform_your">Perform your</string>
+    <string name="txt_best">best</string>
+    <string name="btn_SignUp">Sign Up</string>
+    <string name="btn_SignIn">Sign In</string>
+    <string name="txt_hi">Hi</string>
+    <string name="txt_name">víctor</string>
+    <string name="txt_joined">You have just</string>
+    <string name="txt_joined_to">join to</string>
+    <string name="txt_time">time</string>
+    <string name="txt_to">to</string>
+    <string name="txt_befit_">BE FIT!</string>
+    <string name="txt_startroutine">Start routine</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_next">FINISH</string>
+    <string name="txt_vegetarian">Vegetarian</string>
+    <string name="txt_mediterranean">Mediterranean</string>
+    <string name="txt_oriental">Oriental</string>
+    <string name="txt_american">Amercian</string>
+    <string name="txt_halal">Halal</string>
+    <string name="txt_mexican">Mexican</string>
+    <string name="txt_preference">Preference on</string>
+    <string name="txt_gastronomy">gastronomy</string>
+    <string name="txt_SignUp">Sign Up</string>
+    <string name="txt_LogIn">Log In</string>
+
+
+
+    <string name="appbar_title" />
+    <string name="header_title">Title</string>
+    <string name="header_description">Description</string>
+    <string name="header_icon_description">Befit icon</string>
+    <string name="description_image_acces_profile">Profile access</string>
+    <string name="description_sun_radiation_state">Sun radiation state</string>
+    <string name="imagedescription_air_pollution_status">Air pollution status</string>
+    <string name="time_to_exercise">Time to exercise</string>
+    <string name="openNavDrawer">Navigation Drawer Open</string>
+    <string name="closeNavDrawer">Navigation Drawer Close</string>
+    <string name="first_preference_item_title">First Preference Item</string>
+    <string name="settings">Settings</string>
+</resources>

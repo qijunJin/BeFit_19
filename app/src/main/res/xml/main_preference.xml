@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="FirstPreferenceCategory">
+        <Preference
+            android:key="text"
+            android:title="Notifications"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="SecongPreferenceCategory"
+        >
+        <SwitchPreferenceCompat
+            android:key="switch_preference"
+            android:title="Dark Theme"
+            android:summary="Battery Saver"/>
+
+        <MultiSelectListPreference
+            android:key="MultiSelect"
+            android:title="auto_play"
+            android:summary="SUmmary for Multi select"
+            android:entries="@array/example_array"
+            android:entryValues="@array/entry_values"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="expandable"
+        android:title="Expandable Preferences"
+        app:initialExpandedChildrenCount="1">
+
+        <SeekBarPreference
+            android:key="seekbar_preference"
+            android:title="brightness_level"
+            android:summary="value_precentatge"/>
+
+        <Preference
+            android:key="intent_preference"
+            android:title="wallpaper"
+            android:summary="change wallpaper"/>
+
+        <DropDownPreference
+            android:key="drop_down_pref"
+            android:title="device_theme"
+            android:summary="theme_change"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_values"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
