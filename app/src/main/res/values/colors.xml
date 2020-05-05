@@ -11,9 +11,10 @@
     <color name="secondaryDarkColor">#1b1b1b</color>
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#ffffff</color>
-    <color name="colorPrimary">#F6DE05</color>
+    <color name="colorPrimary">#f3b42d</color>
     <color name="colorPrimaryDark">#C3C3C3</color>
     <color name="colorAccent">#FF5252</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
+    <color name="Orange">#FF8000</color>
 </resources>

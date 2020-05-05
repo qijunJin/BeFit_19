@@ -60,4 +60,6 @@
     <string name="closeNavDrawer">Navigation Drawer Close</string>
     <string name="first_preference_item_title">First Preference Item</string>
     <string name="settings">Settings</string>
+    <string name="title_register_weight_dialog">Register weight</string>
+    <string name="register_weight_dialog">Done</string>
 </resources>

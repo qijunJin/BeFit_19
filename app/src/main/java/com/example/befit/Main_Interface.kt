@@ -1,17 +1,22 @@
 package com.example.befit
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main_interface.*
 
-class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    RegisterWeightDialog.DialogListener {
 
     lateinit var toolbar :Toolbar;
 
@@ -22,6 +27,20 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_interface)
 
+
+        var txtkcal: TextView
+        txtkcal = findViewById(R.id.kcal)
+        txtkcal.typeface = Typeface.createFromAsset(assets, "font/Futura Heavy font.ttf")
+
+
+        var btnRegisterWeight: Button = findViewById(R.id.btnRegisterWeight)
+        btnRegisterWeight.typeface = Typeface.createFromAsset(assets, "font/Futura Heavy font.ttf")
+
+        btnRegisterWeight.setOnClickListener {
+            val registerWeightDialog = RegisterWeightDialog()
+            registerWeightDialog.show(supportFragmentManager, "")
+        }
+
         // Trobem la toolbar u la apliquem a la activity
         toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(toolbar)
@@ -30,6 +49,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.nav_view)
+
 
         //No title
         toolbar.title=null
@@ -109,5 +129,11 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     fun goToPreferenceActivity(){
         startActivity(Intent(this,PreferenceActivity::class.java))
     }
+
+    override fun applyTexts(weight: String?) {
+        if (!weight.isNullOrEmpty()) btnRegisterWeight.setText(weight + "kg")
+        else btnRegisterWeight.setText("REGISTER WEIGHT")
+    }
+
 
 }

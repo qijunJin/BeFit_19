@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.befit">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Break"></activity>
+        <activity android:name=".RegisterWeightDialog"></activity>
+        <activity android:name=".Break" />
         <activity android:name=".Statistics" />
-        <activity android:name=".PreferenceActivity"
-            android:theme="@style/PreferencesTheme"
-            android:parentActivityName=".Main_Interface">
-        </activity>
+        <activity
+            android:name=".PreferenceActivity"
+            android:parentActivityName=".Main_Interface"
+            android:theme="@style/PreferencesTheme"></activity>
         <activity android:name=".GoToOutdoorRunning" />
         <activity android:name=".OutdoorRunning" />
         <activity android:name=".GymActivities" />

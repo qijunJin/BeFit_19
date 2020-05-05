@@ -5,13 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".Main_Interface"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
-    >
+    android:id="@+id/drawer_layout">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -28,42 +26,82 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10"
+        tools:context=".Main_Interface">
+
+
+        <!--TODO We shoud change this void layout-->
+        <!--TODO Everything should be constraint-->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="10"
-            tools:context=".Main_Interface">
-
-
-            <!--TODO We shoud change this void layout-->
-            <!--TODO Everything should be constraint-->
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="3"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:orientation="horizontal"
-                android:weightSum="5"
-                android:background="#FFFFFF"
-                android:layout_marginTop="15dp">
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFFFFFFF"
+                android:orientation="vertical"
+                android:weightSum="4">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="3"
-                    android:background="#FFFFFF">
-
-                </LinearLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="3"
                     android:background="#FFFFFF">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFFFF"
+                    android:orientation="horizontal"
+                    android:weightSum="6">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"></LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnRegisterWeight"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:background="@drawable/round_rectangle"
+                        android:gravity="center"
+                        android:text="Register weight"
+                        android:textColor="#000000"
+                        android:textSize="20sp">
+
+                    </Button>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFFFFF">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <ImageButton
                         android:id="@+id/btn_Statistics"
@@ -71,114 +109,110 @@
                         android:layout_height="80dp"
                         android:layout_gravity="center"
                         android:background="@drawable/round_button_male"
+                        android:contentDescription="@string/description_image_acces_profile"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/male_round"
-                        android:contentDescription="@string/description_image_acces_profile"/>
-
+                        android:src="@drawable/male_round" />
                 </FrameLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="6"
-                    android:background="#FFFFFF">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"/>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:background="@drawable/sol"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="@string/description_sun_radiation_state"/>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:background="@drawable/air"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="@string/imagedescription_air_pollution_status"/>
-                </LinearLayout>
             </LinearLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFFFFF">
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:weightSum="4">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:background="#FFFFFF"></LinearLayout>
 
                 <TextView
+                    android:id="@+id/kcal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/time_to_exercise"
-                    android:textSize="30dp"
-                    android:textColor="#000000"/>
-            </FrameLayout>
+                    android:text="--kcal"
+                    android:textColor="#000000"
+                    android:textSize="25sp">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/time_to_exercise"
+                android:textColor="#000000"
+                android:textSize="30dp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:background="@drawable/b1"
+            android:orientation="vertical"
+            android:weightSum="13">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="6"
-                android:orientation="vertical"
-                android:weightSum="13"
-                android:background="@drawable/b1">
+                android:layout_weight="1" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
+            <Button
+                android:id="@+id/btn_Gym"
+                style="@style/main_interface_button_style"
+                android:layout_weight="3"
+                android:text="Go to gym" />
 
-                <Button
-                    android:id="@+id/btn_Gym"
-                    android:layout_weight="3"
-                    android:text="Go to gym"
-                    style="@style/main_interface_button_style" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
+            <Button
+                android:id="@+id/btn_Outdoor"
+                style="@style/main_interface_button_style"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:text="Outdoor running" />
 
-                <Button
-                    style="@style/main_interface_button_style"
-                    android:id="@+id/btn_Outdoor"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:text="Outdoor running" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
+            <Button
+                style="@style/main_interface_button_style"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:text="Go to swim" />
 
-                <Button
-                    style="@style/main_interface_button_style"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:text="Go to swim"
-/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
         </LinearLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+    </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
