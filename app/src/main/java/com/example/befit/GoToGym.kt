@@ -2,6 +2,8 @@ package com.example.befit
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class GoToGym : AppCompatActivity() {
@@ -16,5 +18,13 @@ class GoToGym : AppCompatActivity() {
             val timerDialog = TimerDialog()
             timerDialog.show(supportFragmentManager, "")
         }
+
+        var exercise = intent.getSerializableExtra("EXERCISE") as Exercise
+
+        var imgId: ImageView = findViewById(R.id.imgId)
+        var exerciseName: TextView = findViewById(R.id.exerciseName)
+
+        imgId.setImageResource(exercise.imgId)
+        exerciseName.text = exercise.exerciseName
     }
 }

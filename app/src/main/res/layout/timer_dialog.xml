@@ -29,7 +29,7 @@
             android:layout_height="0dp"
             android:layout_weight="2.5"
             android:text="Ajustar duración para una repetición:"
-            android:textSize="30sp"></TextView>
+            android:textSize="25sp"></TextView>
 
         <com.xw.repo.BubbleSeekBar
             android:id="@+id/seekbar_timer"
@@ -64,7 +64,7 @@
             android:layout_height="0dp"
             android:layout_weight="2.5"
             android:text="Ajustar repeticiones para un ejercicio:"
-            android:textSize="30sp"></TextView>
+            android:textSize="25sp"></TextView>
 
         <com.xw.repo.BubbleSeekBar
             android:id="@+id/seekbar_repetition"

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,37 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_interface)
+        /*
+        var listExercise : ListView = findViewById(R.id.listExercise)
+
+        val arrayExercise = arrayOf<String>("Push up", "Lateral raise")
+        var arrayAdapterExercise = ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayExercise)
+
+        listExercise.adapter = arrayAdapterExercise
+
+        val imgId = arrayOf <Int>(R.drawable.pushup, R.drawable.lateralraise)
+
+
+
+
+
+
+*/
+
+
+        var exerciseListView: ListView = findViewById(R.id.listExercise)
+        var exerciseList = GetArrayItems()
+        var exerciseAdapter = ExerciseAdapter(this, exerciseList)
+        exerciseListView.adapter = exerciseAdapter
+/*
+        exerciseListView.setOnItemClickListener(AdapterView.OnItemClickListener(){
+                adapterView: AdapterView<*>, view1: View, i: Int , l: Long ->
+            var intent = Intent(this, GoToGym::class.java)
+            intent.putExtra("EXERCISE", exerciseList.get(i))
+
+            startActivity(intent)
+        })
+*/
 
 
         var txtkcal: TextView
@@ -69,7 +101,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 
         // BUTTON LISTENERS
-
+/*
         var btn_Gym: Button = findViewById(R.id.btn_Gym)
 
         btn_Gym.setOnClickListener {
@@ -81,7 +113,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         btn_Outdoor.setOnClickListener {
             startActivity(Intent(this, GoToOutdoorRunning::class.java))
         }
-
+*/
         var btn_statistics: ImageButton = findViewById(R.id.btn_Statistics)
 
         btn_statistics.setOnClickListener {
@@ -135,5 +167,18 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         else btnRegisterWeight.setText("REGISTER WEIGHT")
     }
 
+
+    private fun GetArrayItems(): ArrayList<Exercise> {
+        var listItems = ArrayList<Exercise>()
+        listItems.add(Exercise(R.drawable.pushup, "push up"))
+        listItems.add(Exercise(R.drawable.lateralraise, "lateral raise"))
+        listItems.add(Exercise(R.drawable.pushup, "push up"))
+        listItems.add(Exercise(R.drawable.lateralraise, "lateral raise"))
+        listItems.add(Exercise(R.drawable.pushup, "push up"))
+        listItems.add(Exercise(R.drawable.lateralraise, "lateral raise"))
+        listItems.add(Exercise(R.drawable.pushup, "push up"))
+        listItems.add(Exercise(R.drawable.lateralraise, "lateral raise"))
+        return listItems
+    }
 
 }

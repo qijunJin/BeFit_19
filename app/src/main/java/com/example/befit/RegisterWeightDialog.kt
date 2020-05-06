@@ -74,6 +74,7 @@ class RegisterWeightDialog : AppCompatDialogFragment() {
     }
 
     interface DialogListener {
+
         fun applyTexts(weight: String?)
     }
 

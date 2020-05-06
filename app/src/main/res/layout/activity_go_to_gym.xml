@@ -66,6 +66,7 @@
         android:background="#FFFFFF">
 
         <TextView
+            android:id="@+id/exerciseName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -75,6 +76,7 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/imgId"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"

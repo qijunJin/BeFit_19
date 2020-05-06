@@ -129,7 +129,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
-                    android:background="#FFFFFF"></LinearLayout>
+                    android:background="#FFFFFF">
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/kcal"
@@ -166,50 +168,60 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6"
-            android:background="@drawable/b1"
+            android:background="#FFFFFF"
             android:orientation="vertical"
             android:weightSum="13">
 
-            <LinearLayout
+            <ListView
+                android:id="@+id/listExercise"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_weight="13">
 
-            <Button
-                android:id="@+id/btn_Gym"
-                style="@style/main_interface_button_style"
-                android:layout_weight="3"
-                android:text="Go to gym" />
+            </ListView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+            <!--
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/btn_Outdoor"
-                style="@style/main_interface_button_style"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:text="Outdoor running" />
+                        <Button
+                            android:id="@+id/btn_Gym"
+                            style="@style/main_interface_button_style"
+                            android:layout_weight="3"
+                            android:text="Go to gym" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
 
-            <Button
-                style="@style/main_interface_button_style"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:text="Go to swim" />
+                        <Button
+                            android:id="@+id/btn_Outdoor"
+                            style="@style/main_interface_button_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="3"
+                            android:text="Outdoor running" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <Button
+                            style="@style/main_interface_button_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="3"
+                            android:text="Go to swim" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                            -->
         </LinearLayout>
 
     </LinearLayout>
