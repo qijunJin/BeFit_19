@@ -51,5 +51,4 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         //return inflater.inflate(R.layout.fragment_one, container, false)
     }
 
-
 }

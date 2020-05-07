@@ -152,7 +152,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.85"
             android:background="#FFFFFF">
 
             <TextView
@@ -165,20 +165,40 @@
         </FrameLayout>
 
         <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background = "#FFFFFF"
+            android:layout_weight="0.15">
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_Main"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6"
             android:background="#FFFFFF"
             android:orientation="vertical"
             android:weightSum="13">
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="13">
 
-            <ListView
-                android:id="@+id/listExercise"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="13">
+                <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/viewPager_Main"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
-            </ListView>
+
+            </FrameLayout>
 
             <!--
                         <LinearLayout

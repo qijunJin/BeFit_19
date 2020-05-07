@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_one.*
 
 const val EXTRA_MESSAGE = "com.example.BEFIT_F.MESSAGE"
@@ -23,6 +25,18 @@ class LogIn_Data : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val acct = GoogleSignIn.getLastSignedInAccount(this)
+        MainActivity.user_actual = User(
+            acct?.displayName.toString(),
+            acct?.id.toString(),
+            0.0,
+            0.0,
+            0
+        )
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.reference.child(acct?.displayName.toString())
+        reference.setValue(MainActivity.user_actual)//Afegim nou usuari, o actualitzem les dades de un ja registrat si és necessari
 
         viewPager = findViewById(R.id.viewPager)
         val adapter = MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
@@ -43,7 +57,7 @@ class LogIn_Data : AppCompatActivity() {
 
 
         btn_finish.setOnClickListener {
-            /*nameUser = edit_name.hint.toString() //Agafem el valor del editText amb el nom
+            /*nameUser = edit_name.text.toString() //Agafem el valor del editText amb el nom
             if(nameUser.isNullOrEmpty()){
                 Toast.makeText(this,"Introduce tu nombre",Toast.LENGTH_SHORT).show()
             }else if(nameUser.isNotBlank()) {

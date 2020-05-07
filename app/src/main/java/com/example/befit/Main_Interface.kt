@@ -12,7 +12,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main_interface.*
 
 
@@ -20,7 +25,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     RegisterWeightDialog.DialogListener {
 
     lateinit var toolbar :Toolbar;
-
+    lateinit var viewPager : ViewPager
     lateinit var drawerLayout : DrawerLayout
     lateinit var navigationView : NavigationView
 
@@ -37,18 +42,16 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         val imgId = arrayOf <Int>(R.drawable.pushup, R.drawable.lateralraise)
 
+*/      viewPager = findViewById(R.id.viewPager_Main)
+        val adapter = MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
 
+        adapter.addFragment(fragmentEjercicio())
+        adapter.addFragment(fragment_comida())
+        adapter.addFragment(fragmentAmbiente())
+        viewPager.adapter = adapter
 
-
-
-
-*/
-
-
-        var exerciseListView: ListView = findViewById(R.id.listExercise)
-        var exerciseList = GetArrayItems()
-        var exerciseAdapter = ExerciseAdapter(this, exerciseList)
-        exerciseListView.adapter = exerciseAdapter
+        var tabLayout = findViewById<TabLayout>(R.id.tab_layout_Main)
+        tabLayout.setupWithViewPager(viewPager_Main,true) //Connectem els dots amb el viewpager
 /*
         exerciseListView.setOnItemClickListener(AdapterView.OnItemClickListener(){
                 adapterView: AdapterView<*>, view1: View, i: Int , l: Long ->
@@ -167,18 +170,22 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         else btnRegisterWeight.setText("REGISTER WEIGHT")
     }
 
+    class MyViewPagerAdapter(manager: FragmentManager) :
+        FragmentPagerAdapter(manager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private fun GetArrayItems(): ArrayList<Exercise> {
-        var listItems = ArrayList<Exercise>()
-        listItems.add(Exercise(R.drawable.pushup, "push up"))
-        listItems.add(Exercise(R.drawable.lateralraise, "lateral raise"))
-        listItems.add(Exercise(R.drawable.pushup, "push up"))
-        listItems.add(Exercise(R.drawable.lateralraise, "lateral raise"))
-        listItems.add(Exercise(R.drawable.pushup, "push up"))
-        listItems.add(Exercise(R.drawable.lateralraise, "lateral raise"))
-        listItems.add(Exercise(R.drawable.pushup, "push up"))
-        listItems.add(Exercise(R.drawable.lateralraise, "lateral raise"))
-        return listItems
+        private val fragmentList : MutableList<Fragment> = ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
+
+        override fun getItem(position: Int): Fragment {
+            return fragmentList[position]
+        }
+
+        override fun getCount(): Int {
+            return fragmentList.size  //Retorna el nombre de fragments que hi han
+        }
+
+        fun addFragment(fragment : Fragment){  //Mètode per afegir fragments al viewPager
+            fragmentList.add(fragment)
+        }
     }
 
 }
