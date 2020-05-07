@@ -2,8 +2,10 @@ package com.example.befit
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
-import android.widget.Toast
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -14,6 +16,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_one.*
 
+
 const val EXTRA_MESSAGE = "com.example.BEFIT_F.MESSAGE"
 const val EXTRA_ENRERE = "com.exameple.BEFIT_F.ENRERE"
 
@@ -21,10 +24,10 @@ class LogIn_Data : AppCompatActivity() {
     lateinit var viewPager : ViewPager
     lateinit var btn_finish : Button
     lateinit var btn_back :Button
-    lateinit var nameUser : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
 
         val acct = GoogleSignIn.getLastSignedInAccount(this)
         MainActivity.user_actual = User(
@@ -49,25 +52,17 @@ class LogIn_Data : AppCompatActivity() {
         var tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         tabLayout.setupWithViewPager(viewPager,true) //Connectem els dots amb el viewpager
 
+
         btn_finish=findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
         //btn_finish.isEnabled = false
         //btn_finish.alpha = 0F
 
         btn_back=findViewById(R.id.btn_back)
 
-
         btn_finish.setOnClickListener {
-            /*nameUser = edit_name.text.toString() //Agafem el valor del editText amb el nom
-            if(nameUser.isNullOrEmpty()){
-                Toast.makeText(this,"Introduce tu nombre",Toast.LENGTH_SHORT).show()
-            }else if(nameUser.isNotBlank()) {
-                val intent : Intent = Intent(this,Final_Welcome::class.java).apply {
-                    putExtra(EXTRA_MESSAGE,nameUser) //Enviem el nom del usuari a la seguent activity on el saludem
-
-                }*/
+            //Actualitzem valors de l'usuari a la base de dades
             val intent : Intent = Intent(this,Final_Welcome::class.java)
             startActivity(intent)
-           // }
         }
 
         btn_back.setOnClickListener {
@@ -95,4 +90,5 @@ class LogIn_Data : AppCompatActivity() {
             fragmentList.add(fragment)
         }
     }
+
 }

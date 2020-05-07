@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     companion object{
         val user = FirebaseAuth.getInstance().currentUser
         var user_actual = User("","",0.0, 0.0,0)  //Dades del usuari que esta a l¡aplicaio
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.reference
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,8 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         var registrat = 0 //Variable per controlar si ja està registrat el usuari a firebase
-        val database = FirebaseDatabase.getInstance()
-        val reference = database.reference
+
         btn_next.setOnClickListener {
             val acct = GoogleSignIn.getLastSignedInAccount(this)
             reference.child(acct?.displayName.toString()).addValueEventListener(object : ValueEventListener{
