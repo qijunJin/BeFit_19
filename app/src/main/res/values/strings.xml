@@ -55,7 +55,7 @@
     <string name="description_image_acces_profile">Profile access</string>
     <string name="description_sun_radiation_state">Sun radiation state</string>
     <string name="imagedescription_air_pollution_status">Air pollution status</string>
-    <string name="time_to_exercise">Time to exercise</string>
+    <string name="exercise">Exercises</string>
     <string name="openNavDrawer">Navigation Drawer Open</string>
     <string name="closeNavDrawer">Navigation Drawer Close</string>
     <string name="first_preference_item_title">First Preference Item</string>

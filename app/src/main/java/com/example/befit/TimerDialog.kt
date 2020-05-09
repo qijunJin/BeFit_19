@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import com.xw.repo.BubbleSeekBar
 
 
-class TimerDialog : DialogFragment() {
+class TimerDialog(private val exercise: Exercise) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(activity).inflate(R.layout.timer_dialog, null)
@@ -20,14 +20,16 @@ class TimerDialog : DialogFragment() {
         val seekBarTime: BubbleSeekBar = view.findViewById(R.id.seekbar_timer)
         val seekBarRepetition: BubbleSeekBar = view.findViewById(R.id.seekbar_repetition)
 
-        var time: Int = 1
+        var time = 0.1f
         var repetition: Int = 3
+
+        var e = exercise
 
         seekBarTime.setOnProgressChangedListener(
             object : BubbleSeekBar.OnProgressChangedListener {
                 override fun onProgressChanged(progress: Int, progressFloat: Float) {
 
-                    time = progress
+                    time = progressFloat
                 }
 
                 override fun getProgressOnActionUp(progress: Int, progressFloat: Float) {
@@ -61,7 +63,8 @@ class TimerDialog : DialogFragment() {
             setPositiveButton(getString(R.string.start_time_dialog)) { _, _ ->
                 onPositiveClick(
                     time,
-                    repetition
+                    repetition,
+                    e
                 )
             }
         }
@@ -69,10 +72,11 @@ class TimerDialog : DialogFragment() {
     }
 
 
-    private fun onPositiveClick(time: Int, repetition: Int) {
+    private fun onPositiveClick(time: Float, repetition: Int, exercise: Exercise) {
         val i = Intent(requireActivity().baseContext, GymActivities::class.java)
         i.putExtra("TIME", time)
         i.putExtra("REPETITION", repetition)
+        i.putExtra("EXERCISESELECTED", exercise)
         startActivity(i)
     }
 }

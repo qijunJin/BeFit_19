@@ -15,7 +15,7 @@ public class ExerciseList extends ArrayAdapter<String> {
 
     private Activity context;
 
-    public ExerciseList(Activity context, String[] arrayExercise, Integer[] imgId) {
+    public ExerciseList(Activity context, Integer[] imgId, String[] arrayExercise, Integer[] calories) {
         super(context, R.layout.activity_main_interface, arrayExercise);
         this.context = context;
         this.arrayExercise = arrayExercise;

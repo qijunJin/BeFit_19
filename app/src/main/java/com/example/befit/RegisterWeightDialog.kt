@@ -3,6 +3,7 @@ package com.example.befit
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.EditText
@@ -13,8 +14,7 @@ class RegisterWeightDialog : AppCompatDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(activity).inflate(R.layout.register_weight_dialog, null)
         val alert = AlertDialog.Builder(activity)
-        var etxtWeight: EditText = view.findViewById(R.id.etxtWeight);
-        var weight: String = "REGISTER WEIGHT"
+        var etxtWeight: EditText = view.findViewById(R.id.etxtWeight)
 /*
         etxtWeight.addTextChangedListener(object:TextWatcher{
             override fun afterTextChanged(s: Editable?) {
@@ -56,21 +56,21 @@ class RegisterWeightDialog : AppCompatDialogFragment() {
             context as DialogListener
         } catch (e: ClassCastException) {
             throw ClassCastException(
-                context.toString().toString() +
+                context.toString() +
                         "must implement ExampleDialogListener"
             )
         }
     }
 
     private fun onPositiveClick(weight: String) {
-        listener?.applyTexts(weight)
+        //listener?.applyTexts(weight)
 
         //etxtWeight.getText().toString()
         //requireActivity().findViewById<EditText>(R.id.btnRegisterWeight).setText(weight);
-        /*
+
         val i = Intent(requireActivity().baseContext, Main_Interface::class.java)
         i.putExtra("WEIGHT", weight)
-        startActivity(i)*/
+        startActivity(i)
     }
 
     interface DialogListener {

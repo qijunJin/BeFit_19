@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -17,7 +18,7 @@ class GymActivities : AppCompatActivity() {
     var play: ImageButton? = null
 
     var progress: ProgressBar? = null
-    var timerLength: Int? = null
+    var timerLength: Float? = null
 
     var repetition: Int = 1
     var totalRepetition: Int? = null
@@ -28,6 +29,10 @@ class GymActivities : AppCompatActivity() {
 
     var timeLeftInMillis: Long = 0
 
+    var exercise: Exercise? = null
+
+    private var imgId: ImageView? = null
+
     lateinit var countDownTimer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +41,8 @@ class GymActivities : AppCompatActivity() {
 
         init()
         getData()
+        exercise = intent.getSerializableExtra("EXERCISESELECTED") as Exercise
+        imgId?.setBackgroundResource(exercise!!.imgId)
         initTimer()
 
     }
@@ -67,20 +74,23 @@ class GymActivities : AppCompatActivity() {
     }
 
 
-    fun init() {
+    private fun init() {
         txt_repetition = findViewById(R.id.txt_repetition)
         progress = findViewById(R.id.chronoProgressBar)
         play = findViewById(R.id.play)
+        imgId = findViewById(R.id.imgId)
     }
 
-    fun getData() {
-        timerLength = intent.getIntExtra("TIME", 1)
+    private fun getData() {
+        timerLength = intent.getFloatExtra("TIME", 0.1F)
         totalRepetition = intent.getIntExtra("REPETITION", 0)
+
+
     }
 
     private fun setProgressBarValues() {
-        progress!!.setMax(timeLeftInMillis.toInt() / 1000)
-        progress!!.setProgress(timeLeftInMillis.toInt() / 1000)
+        progress!!.max = timeLeftInMillis.toInt() / 1000
+        progress!!.progress = timeLeftInMillis.toInt() / 1000
     }
 
     fun statusBreak() {
@@ -88,7 +98,14 @@ class GymActivities : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle(getString(R.string.title_finish_time))
             builder.setMessage(getString(R.string.message_finish_time))
-            builder.setPositiveButton(getString(R.string.action_ok)) { _, _ -> finish() }
+            //builder.setPositiveButton(getString(R.string.action_ok)) { _, _ -> finish() }
+            builder.setPositiveButton("OK") { _, _ ->
+                exercise?.let {
+                    onPositiveClick(
+                        it
+                    )
+                }
+            }
             val dialog = builder.create()
             dialog.show()
         } else {
@@ -97,6 +114,11 @@ class GymActivities : AppCompatActivity() {
         }
     }
 
+    private fun onPositiveClick(e: Exercise) {
+        val i = Intent(this.baseContext, Main_Interface::class.java)
+        i.putExtra("EXERCISEFINISH", e)
+        startActivity(i)
+    }
 
     private fun startTimer() {
         countDownTimer = object : CountDownTimer(timeLeftInMillis, 1000) {
@@ -105,7 +127,7 @@ class GymActivities : AppCompatActivity() {
                 timeLeftInMillis = millisUntilFinished
                 play!!.setImageResource(R.drawable.pause)
                 formatText!!.updateCountDownText(timeLeftInMillis)
-                progress!!.setProgress((millisUntilFinished / 1000).toInt())
+                progress!!.progress = (millisUntilFinished / 1000).toInt()
             }
 
             override fun onFinish() {
@@ -155,7 +177,7 @@ class GymActivities : AppCompatActivity() {
 
         if (requestCode == 0) {
             repetition++
-            txt_repetition!!.setText(repetition.toString() + "/" + totalRepetition.toString())
+            txt_repetition!!.text = repetition.toString() + "/" + totalRepetition.toString()
             startTimer()
         }
     }
