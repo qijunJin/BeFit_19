@@ -14,7 +14,7 @@
     </ImageView>
 
     <TextView
-        android:id="@+id/exerciseName"
+        android:id="@+id/item_name"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_weight="7"

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,20 +22,31 @@ class fragment_comida : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comida, container, false)
+        var mLinearLayout = inflater.inflate(R.layout.fragment_comida, container, false)
+        var comidaListView: ListView = mLinearLayout.findViewById(R.id.listComida)
+        var comidaList = GetArrayItems()
+        var comidaAdapter = ComidaAdapter(this.context, comidaList)
+        comidaListView.adapter = comidaAdapter
+
+        return mLinearLayout
+    }
+
+    private fun GetArrayItems(): ArrayList<Comida> {
+        var listItems = ArrayList<Comida>()
+        listItems.add(Comida(R.drawable.pushup, "Espaguetis"))
+        listItems.add(Comida(R.drawable.lateralraise, "Ensalada"))
+        listItems.add(Comida(R.drawable.pushup, "Platano"))
+        listItems.add(Comida(R.drawable.lateralraise, "lateral raise"))
+        listItems.add(Comida(R.drawable.pushup, "push up"))
+        listItems.add(Comida(R.drawable.lateralraise, "lateral raise"))
+        listItems.add(Comida(R.drawable.pushup, "push up"))
+        listItems.add(Comida(R.drawable.lateralraise, "lateral raise"))
+        return listItems
     }
 
     companion object {

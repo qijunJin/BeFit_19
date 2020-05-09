@@ -22,7 +22,7 @@ class GoToGym : AppCompatActivity() {
         var exercise = intent.getSerializableExtra("EXERCISE") as Exercise
 
         var imgId: ImageView = findViewById(R.id.imgId)
-        var exerciseName: TextView = findViewById(R.id.exerciseName)
+        var exerciseName: TextView = findViewById(R.id.item_name)
 
         imgId.setImageResource(exercise.imgId)
         exerciseName.text = exercise.exerciseName

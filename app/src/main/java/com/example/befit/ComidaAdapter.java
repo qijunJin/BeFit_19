@@ -10,24 +10,24 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ExerciseAdapter extends BaseAdapter {
+public class ComidaAdapter extends BaseAdapter {
 
-    private ArrayList<Exercise> exerciseList;
+    private ArrayList<Comida> comidaList;
     private Context context;
 
-    public ExerciseAdapter(Context context, ArrayList<Exercise> exerciseList) {
-        this.exerciseList = exerciseList;
+    public ComidaAdapter(Context context, ArrayList<Comida> comidaList) {
+        this.comidaList = comidaList;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return exerciseList.size();
+        return comidaList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return exerciseList.get(position);
+        return comidaList.get(position);
     }
 
     @Override
@@ -37,14 +37,14 @@ public class ExerciseAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Exercise exercise = (Exercise) getItem(position);
+        Comida comida = (Comida) getItem(position);
 
         convertView = LayoutInflater.from(context).inflate(R.layout.item, null);
         ImageView imgId = convertView.findViewById(R.id.imgId);
-        TextView txtExercise = convertView.findViewById(R.id.item_name);
+        TextView txtComida = convertView.findViewById(R.id.item_name);
 
-        imgId.setImageResource(exercise.getImgId());
-        txtExercise.setText(exercise.getExerciseName());
+        imgId.setImageResource(comida.getImgId());
+        txtComida.setText(comida.getComidaName());
 
         return convertView;
     }
