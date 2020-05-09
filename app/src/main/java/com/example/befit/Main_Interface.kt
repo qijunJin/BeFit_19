@@ -1,12 +1,11 @@
 package com.example.befit
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -20,15 +19,15 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main_interface.*
 
-
 class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     RegisterWeightDialog.DialogListener {
 
-    lateinit var toolbar :Toolbar;
-    lateinit var viewPager : ViewPager
-    lateinit var drawerLayout : DrawerLayout
-    lateinit var navigationView : NavigationView
+    lateinit var toolbar: Toolbar
+    lateinit var viewPager: ViewPager
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navigationView: NavigationView
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_interface)
@@ -42,34 +41,95 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         val imgId = arrayOf <Int>(R.drawable.pushup, R.drawable.lateralraise)
 
-*/      viewPager = findViewById(R.id.viewPager_Main)
-        val adapter = MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
+*/
+
+
+        var txtkcal: TextView = findViewById(R.id.kcal)
+        txtkcal.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
+
+        var title: TextView = findViewById(R.id.title)
+        title.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
+
+        viewPager = findViewById(R.id.viewPager_Main)
+        val adapter =
+            MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
 
         adapter.addFragment(fragmentEjercicio())
         adapter.addFragment(fragment_comida())
         adapter.addFragment(fragmentAmbiente())
         viewPager.adapter = adapter
 
+
         var tabLayout = findViewById<TabLayout>(R.id.tab_layout_Main)
-        tabLayout.setupWithViewPager(viewPager_Main,true) //Connectem els dots amb el viewpager
-/*
-        exerciseListView.setOnItemClickListener(AdapterView.OnItemClickListener(){
-                adapterView: AdapterView<*>, view1: View, i: Int , l: Long ->
-            var intent = Intent(this, GoToGym::class.java)
-            intent.putExtra("EXERCISE", exerciseList.get(i))
+        tabLayout.setupWithViewPager(viewPager_Main, true) //Connectem els dots amb el viewpager
 
-            startActivity(intent)
+
+        tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                when (tab.position) {
+                    0 -> title.text = "Exercise"
+                    1 -> title.text = "Gastronomy"
+                    2 -> title.text = "Environment"
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab) {
+
+            }
         })
-*/
 
 
-        var txtkcal: TextView
-        txtkcal = findViewById(R.id.kcal)
-        txtkcal.typeface = Typeface.createFromAsset(assets, "font/Futura Heavy font.ttf")
+/*
+        var exerciseListView: ListView = findViewById(R.id.listExercise)
+        var exerciseList = GetArrayItems()
+        var exerciseAdapter = ExerciseAdapter(this, exerciseList)
+        exerciseListView.adapter = exerciseAdapter
+
+        exerciseListView.onItemClickListener =
+            OnItemClickListener { _: AdapterView<*>, _: View, i: Int, _: Long ->
+                var intent = Intent(this, GoToGym::class.java)
+                intent.putExtra("EXERCISE", exerciseList[i])
+                startActivity(intent)
+            }
 
 
-        var btnRegisterWeight: Button = findViewById(R.id.btnRegisterWeight)
-        btnRegisterWeight.typeface = Typeface.createFromAsset(assets, "font/Futura Heavy font.ttf")
+
+        exerciseListView.onItemClickListener =
+            AdapterView.OnItemClickListener() { adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
+                var intent = Intent(this, GoToGym::class.java)
+                intent.putExtra("EXERCISE", exerciseList.get(i))
+
+                startActivity(intent)
+            }
+
+            */
+
+
+        var btnRegisterWeight: ImageButton = findViewById(R.id.btnRegisterWeight)
+        var txtScale: TextView = findViewById(R.id.scale)
+
+        var w = intent.getStringExtra("WEIGHT")
+
+        txtScale.text = if (w.isNullOrEmpty()) "Scale" else "$w kg"
+        txtScale.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
+
+        var exerciseFinish = Exercise(0, "", 0)
+
+
+        var ex = intent.getSerializableExtra("EXERCISEFINISH")
+        var exercise: Exercise? = null
+        var calories = 0
+
+        if (ex != null) {
+            exercise = ex as Exercise
+            calories = exercise.calories
+            txtkcal.text = "$calories kcal"
+        }
+
 
         btnRegisterWeight.setOnClickListener {
             val registerWeightDialog = RegisterWeightDialog()
@@ -87,9 +147,9 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 
         //No title
-        toolbar.title=null
+        toolbar.title = null
 
-        var actionBarDrawerToggle : ActionBarDrawerToggle = ActionBarDrawerToggle(
+        var actionBarDrawerToggle: ActionBarDrawerToggle = ActionBarDrawerToggle(
             this,
             drawerLayout,
             toolbar,
@@ -127,10 +187,10 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     //  Toolbar and prefereneces needed methods
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.storage_item-> null
-            R.id.app_item-> null
-            else-> {
+        when (item.itemId) {
+            R.id.storage_item -> null
+            R.id.app_item -> null
+            else -> {
                 goToPreferenceActivity()
             }
         }
@@ -161,19 +221,23 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         return super.onOptionsItemSelected(item)
     }*/
 
-    fun goToPreferenceActivity(){
-        startActivity(Intent(this,PreferenceActivity::class.java))
+    fun goToPreferenceActivity() {
+        startActivity(Intent(this, PreferenceActivity::class.java))
     }
 
     override fun applyTexts(weight: String?) {
-        if (!weight.isNullOrEmpty()) btnRegisterWeight.setText(weight + "kg")
-        else btnRegisterWeight.setText("REGISTER WEIGHT")
+        if (!weight.isNullOrEmpty()) {
+            var w = weight.toString()
+            //txtScale = w
+        }
+        //else txtScale.text = "Scale"
     }
 
     class MyViewPagerAdapter(manager: FragmentManager) :
         FragmentPagerAdapter(manager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-        private val fragmentList : MutableList<Fragment> = ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
+        private val fragmentList: MutableList<Fragment> =
+            ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
 
         override fun getItem(position: Int): Fragment {
             return fragmentList[position]
@@ -183,9 +247,30 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             return fragmentList.size  //Retorna el nombre de fragments que hi han
         }
 
-        fun addFragment(fragment : Fragment){  //Mètode per afegir fragments al viewPager
+        fun addFragment(fragment: Fragment) {  //Mètode per afegir fragments al viewPager
             fragmentList.add(fragment)
         }
     }
 
+    private fun GetArrayItems(): ArrayList<Exercise> {
+        var listItems = ArrayList<Exercise>()
+        listItems.add(Exercise(R.drawable.pushup, "Push up", 20))
+        listItems.add(Exercise(R.drawable.lateralraise, "Lateral raise", 12))
+        listItems.add(Exercise(R.drawable.concurl, "Concentration curl", 14))
+        listItems.add(Exercise(R.drawable.shoulder, "Shoulder press", 12))
+        listItems.add(Exercise(R.drawable.barbellcurl, "Barbell curl", 14))
+        listItems.add(Exercise(R.drawable.benchpress, "Bench press", 12))
+        listItems.add(Exercise(R.drawable.curl, "Preacher curl", 14))
+        listItems.add(Exercise(R.drawable.declinepress, "Decline bench press", 12))
+        listItems.add(Exercise(R.drawable.dumbbellcurl, "Dumbbell curl", 14))
+        listItems.add(Exercise(R.drawable.frontraise, "Front raise", 12))
+        listItems.add(Exercise(R.drawable.hammercurl, "Hammer curl", 14))
+        listItems.add(Exercise(R.drawable.inclinepress, "Incline bench press", 12))
+        return listItems
+
+    }
+
+
 }
+
+
