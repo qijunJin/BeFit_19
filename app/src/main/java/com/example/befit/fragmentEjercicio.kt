@@ -31,7 +31,7 @@ class fragmentEjercicio : Fragment() {
         exerciseListView.adapter = exerciseAdapter
 
         return mLinearLayout
-    }S
+    }
 
     private fun GetArrayItems(): ArrayList<Exercise> {
         var listItems = ArrayList<Exercise>()
