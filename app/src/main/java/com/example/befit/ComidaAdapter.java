@@ -42,9 +42,12 @@ public class ComidaAdapter extends BaseAdapter {
         convertView = LayoutInflater.from(context).inflate(R.layout.item, null);
         ImageView imgId = convertView.findViewById(R.id.imgId);
         TextView txtComida = convertView.findViewById(R.id.item_name);
+        TextView txtCal = convertView.findViewById(R.id.item_cal);
 
         imgId.setImageResource(comida.getImgId());
         txtComida.setText(comida.getComidaName());
+        txtCal.setText(Integer.toString(comida.getCalPerServing()) + " kcal / serving");
+        txtCal.setVisibility(View.VISIBLE);
 
         return convertView;
     }

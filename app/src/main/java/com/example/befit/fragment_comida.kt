@@ -38,14 +38,18 @@ class fragment_comida : Fragment() {
 
     private fun GetArrayItems(): ArrayList<Comida> {
         var listItems = ArrayList<Comida>()
-        listItems.add(Comida(R.drawable.pushup, "Espaguetis"))
-        listItems.add(Comida(R.drawable.lateralraise, "Ensalada"))
-        listItems.add(Comida(R.drawable.pushup, "Platano"))
-        listItems.add(Comida(R.drawable.lateralraise, "lateral raise"))
-        listItems.add(Comida(R.drawable.pushup, "push up"))
-        listItems.add(Comida(R.drawable.lateralraise, "lateral raise"))
-        listItems.add(Comida(R.drawable.pushup, "push up"))
-        listItems.add(Comida(R.drawable.lateralraise, "lateral raise"))
+        //TODO poner imagenes correctas
+        listItems.add(Comida(R.drawable.lateralraise, "Seafood Paella", 379))
+        listItems.add(Comida(R.drawable.lateralraise, "Backed Chicken", 340))
+        listItems.add(Comida(R.drawable.lateralraise, "Spring Rolls", 154))
+        listItems.add(Comida(R.drawable.lateralraise, "Ramen", 200))
+        listItems.add(Comida(R.drawable.lateralraise, "Cobb Salad", 400))
+        listItems.add(Comida(R.drawable.lateralraise, "Fried Chicken", 190))
+        listItems.add(Comida(R.drawable.lateralraise, "Kibbeh", 365))
+        listItems.add(Comida(R.drawable.lateralraise, "Nachos", 346))
+        listItems.add(Comida(R.drawable.lateralraise, "Chicken Tamales", 141))
+        listItems.add(Comida(R.drawable.lateralraise, "Pasta Salad", 356))
+        listItems.add(Comida(R.drawable.lateralraise, "Mushroom Burger", 850))
         return listItems
     }
 
