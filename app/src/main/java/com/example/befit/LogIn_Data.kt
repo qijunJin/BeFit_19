@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignIn.getLastSignedInAccount
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.database.FirebaseDatabase
 
@@ -20,12 +20,12 @@ class LogIn_Data : AppCompatActivity() {
     lateinit var viewPager : ViewPager
     lateinit var btn_finish : Button
     lateinit var btn_back :Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
-        val acct = GoogleSignIn.getLastSignedInAccount(this)
+        val acct = getLastSignedInAccount(this)
         MainActivity.user_actual = User(
             acct?.displayName.toString(),
             acct?.id.toString(),
@@ -59,7 +59,7 @@ class LogIn_Data : AppCompatActivity() {
 
         btn_finish.setOnClickListener {
             //Actualitzem valors de l'usuari a la base de dades
-            val intent : Intent = Intent(this,Final_Welcome::class.java)
+            val intent = Intent(this, Final_Welcome::class.java)
             startActivity(intent)
         }
 
@@ -72,7 +72,7 @@ class LogIn_Data : AppCompatActivity() {
     }
 
     class MyViewPagerAdapter(manager: FragmentManager) :
-        FragmentPagerAdapter(manager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+        FragmentPagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         private val fragmentList : MutableList<Fragment> = ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
 
