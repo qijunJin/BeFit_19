@@ -159,7 +159,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
 
         actionBarDrawerToggle.syncState()
-        //Quan seleccionem un item del menú
+        //Quan seleccionem un comida del menú
         navigationView.setNavigationItemSelectedListener(this)
 
 
@@ -210,15 +210,15 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }*/
 
     //Quan es selecciona una opcio del manu
-/*    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.groupId
+/*    override fun onOptionsItemSelected(comida: MenuItem): Boolean {
+        val id = comida.groupId
 
         when(id){
             //Not finished
             else-> goToPreferenceActivity()
         }
 
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(comida)
     }*/
 
     fun goToPreferenceActivity() {

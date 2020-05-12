@@ -1,10 +1,10 @@
 package com.example.befit
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,20 +21,35 @@ class fragment_comida : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comida, container, false)
+        var mLinearLayout = inflater.inflate(R.layout.fragment_comida, container, false)
+        var comidaListView: ListView = mLinearLayout.findViewById(R.id.listComida)
+        var comidaList = GetArrayItems()
+        var comidaAdapter = ComidaAdapter(this.context, comidaList)
+        comidaListView.adapter = comidaAdapter
+
+        return mLinearLayout
+    }
+
+    private fun GetArrayItems(): ArrayList<Comida> {
+        var listItems = ArrayList<Comida>()
+        //TODO poner imagenes correctas
+        listItems.add(Comida(R.drawable.seafood_paella, "Seafood Paella", 379))
+        listItems.add(Comida(R.drawable.baked_italian_chicken, "Baked Chicken", 340))
+        listItems.add(Comida(R.drawable.spring_rolls, "Spring Rolls", 154))
+        listItems.add(Comida(R.drawable.ramen_adobe_m, "Ramen", 200))
+        listItems.add(Comida(R.drawable.cobb_salad, "Cobb Salad", 400))
+        listItems.add(Comida(R.drawable.fried_chicken, "Fried Chicken", 190))
+        listItems.add(Comida(R.drawable.kibbeh, "Kibbeh", 365))
+        listItems.add(Comida(R.drawable.nachos, "Nachos", 346))
+        listItems.add(Comida(R.drawable.tamales, "Chicken Tamales", 141))
+        listItems.add(Comida(R.drawable.pasta_salad, "Pasta Salad", 356))
+        listItems.add(Comida(R.drawable.mushroom_burger, "Mushroom Burger", 850))
+        return listItems
     }
 
     companion object {
