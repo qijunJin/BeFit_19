@@ -2,7 +2,6 @@ package com.example.befit
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings.Global.getString
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -16,7 +15,10 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -172,8 +174,19 @@ class MainActivity : AppCompatActivity() {
             val account = completedTask.getResult(ApiException::class.java)
             firebaseAuthWithGoogle(account!!)
             //Signed in succesfully
-
-
+/*
+            user_actual = User(
+                account.displayName.toString(),
+                account.id.toString(),
+                0.0,
+                0.0,
+                0
+            ) //Inicialitzem user, de moment nomes amb el que tenim
+            //Guardem dades inicials a firebase si es el primer cop en entrar
+            var database = FirebaseDatabase.getInstance()
+            var reference = database.reference.child(account.displayName.toString())
+            reference.setValue(user_actual)//Afegim nou usuari, o actualitzem les dades de un ja registrat si és necessari
+*/
             btn_LogIn.visibility = View.GONE
             Toast.makeText(this,"Sessió Iniciada", Toast.LENGTH_SHORT).show()
 
@@ -190,7 +203,7 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    // Log.d(TAG, "signInWithCredential:success")
+                    //Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
 
 
