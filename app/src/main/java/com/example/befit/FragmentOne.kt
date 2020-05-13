@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_one.*
 
 /**
@@ -81,7 +78,9 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
-            MainActivity.reference.child(MainActivity.user_actual.name).child("height").setValue(edit_height.text.toString())
+            MainActivity.reference.child(MainActivity.user_actual.name).child("height").setValue(
+                edit_height.text.toString()
+            )
         }
     }
 
@@ -102,6 +101,7 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
+
             MainActivity.reference.child(MainActivity.user_actual.name).child("name").setValue(edit_name.text.toString())
         }
     }

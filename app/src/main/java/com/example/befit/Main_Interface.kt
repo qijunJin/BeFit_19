@@ -19,10 +19,11 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main_interface.*
 
+
 class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     RegisterWeightDialog.DialogListener {
 
-    lateinit var toolbar: Toolbar
+    lateinit var toolbar: Toolbar;
     lateinit var viewPager: ViewPager
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
@@ -42,8 +43,6 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         val imgId = arrayOf <Int>(R.drawable.pushup, R.drawable.lateralraise)
 
 */
-
-
         var txtkcal: TextView = findViewById(R.id.kcal)
         txtkcal.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
 
@@ -82,33 +81,6 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             }
         })
 
-
-/*
-        var exerciseListView: ListView = findViewById(R.id.listExercise)
-        var exerciseList = GetArrayItems()
-        var exerciseAdapter = ExerciseAdapter(this, exerciseList)
-        exerciseListView.adapter = exerciseAdapter
-
-        exerciseListView.onItemClickListener =
-            OnItemClickListener { _: AdapterView<*>, _: View, i: Int, _: Long ->
-                var intent = Intent(this, GoToGym::class.java)
-                intent.putExtra("EXERCISE", exerciseList[i])
-                startActivity(intent)
-            }
-
-
-
-        exerciseListView.onItemClickListener =
-            AdapterView.OnItemClickListener() { adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
-                var intent = Intent(this, GoToGym::class.java)
-                intent.putExtra("EXERCISE", exerciseList.get(i))
-
-                startActivity(intent)
-            }
-
-            */
-
-
         var btnRegisterWeight: ImageButton = findViewById(R.id.btnRegisterWeight)
         var txtScale: TextView = findViewById(R.id.scale)
 
@@ -126,8 +98,10 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         if (ex != null) {
             exercise = ex as Exercise
-            calories = exercise.calories
-            txtkcal.text = "$calories kcal"
+            var userCal = MainActivity.user_actual.cal + exercise.calories
+            MainActivity.reference.child(MainActivity.user_actual.name).child("cal")
+                .setValue(userCal)
+            txtkcal.text = "$userCal kcal"
         }
 
 
@@ -135,6 +109,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             val registerWeightDialog = RegisterWeightDialog()
             registerWeightDialog.show(supportFragmentManager, "")
         }
+
 
         // Trobem la toolbar u la apliquem a la activity
         toolbar = findViewById(R.id.main_toolbar)
@@ -252,25 +227,4 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
     }
 
-    private fun GetArrayItems(): ArrayList<Exercise> {
-        var listItems = ArrayList<Exercise>()
-        listItems.add(Exercise(R.drawable.pushup, "Push up", 20))
-        listItems.add(Exercise(R.drawable.lateralraise, "Lateral raise", 12))
-        listItems.add(Exercise(R.drawable.concurl, "Concentration curl", 14))
-        listItems.add(Exercise(R.drawable.shoulder, "Shoulder press", 12))
-        listItems.add(Exercise(R.drawable.barbellcurl, "Barbell curl", 14))
-        listItems.add(Exercise(R.drawable.benchpress, "Bench press", 12))
-        listItems.add(Exercise(R.drawable.curl, "Preacher curl", 14))
-        listItems.add(Exercise(R.drawable.declinepress, "Decline bench press", 12))
-        listItems.add(Exercise(R.drawable.dumbbellcurl, "Dumbbell curl", 14))
-        listItems.add(Exercise(R.drawable.frontraise, "Front raise", 12))
-        listItems.add(Exercise(R.drawable.hammercurl, "Hammer curl", 14))
-        listItems.add(Exercise(R.drawable.inclinepress, "Incline bench press", 12))
-        return listItems
-
-    }
-
-
 }
-
-
