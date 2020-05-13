@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        var registrat = 0 //Variable per controlar si ja està registrat el usuari a firebase
+        var registrat = 2 //Variable per controlar si ja està registrat el usuari a firebase
 
         reference.child(acct?.displayName.toString())
             .addValueEventListener(object : ValueEventListener {
