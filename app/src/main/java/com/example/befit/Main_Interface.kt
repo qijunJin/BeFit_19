@@ -18,6 +18,9 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main_interface.*
 
 
@@ -98,8 +101,28 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         var calories = 0
 
         val acct = GoogleSignIn.getLastSignedInAccount(this)
-        MainActivity.reference.child(acct?.displayName.toString()).child("name").setValue(acct?.displayName.toString())
-        txtkcal.text =  MainActivity.user_actual.cal.toString() + " kcal"
+
+        MainActivity.reference.child(MainActivity.user_actual.name)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {}
+                override fun onDataChange(p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
+
+                    MainActivity.user_actual.name = p0.child("name").value.toString()
+                    MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
+                    MainActivity.user_actual.height = p0.child("height").value.toString().toDouble()
+                    MainActivity.user_actual.weight = p0.child("weight").value.toString().toDouble()
+                    MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
+
+                }
+            })
+
+        MainActivity.reference.child(acct?.displayName.toString()).child("cal")
+            .setValue(MainActivity.user_actual.cal)
+
+
+        var u = MainActivity.user_actual.cal
+        txtkcal.text = "$u kcal"
+
         if (ex != null) {
             exercise = ex as Exercise
             var userCal = MainActivity.user_actual.cal + exercise.calories
@@ -140,7 +163,6 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         actionBarDrawerToggle.syncState()
         //Quan seleccionem un item del menú
         navigationView.setNavigationItemSelectedListener(this)
-
 
 
         // BUTTON LISTENERS
