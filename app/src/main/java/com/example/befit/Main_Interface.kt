@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main_interface.*
@@ -96,6 +97,9 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         var exercise: Exercise? = null
         var calories = 0
 
+        val acct = GoogleSignIn.getLastSignedInAccount(this)
+        MainActivity.reference.child(acct?.displayName.toString()).child("name").setValue(acct?.displayName.toString())
+        txtkcal.text =  MainActivity.user_actual.cal.toString() + " kcal"
         if (ex != null) {
             exercise = ex as Exercise
             var userCal = MainActivity.user_actual.cal + exercise.calories

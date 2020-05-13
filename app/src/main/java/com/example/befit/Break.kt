@@ -38,14 +38,16 @@ class Break : AppCompatActivity(), View.OnClickListener {
             R.id.leave_break -> {
                 if (timerStatus == TimerStatus.STARTED) {
                     pauseBreak()
-                    val builder = AlertDialog.Builder(this)
+                    finish()
+                    //No mostrar dialogo break
+                    /*val builder = AlertDialog.Builder(this)
                     builder.setTitle(getString(R.string.title_attention))
                     builder.setMessage(getString(R.string.message_finish_break))
                     builder.setPositiveButton(getText(R.string.action_yes)) { _, _ -> finish() }
                     builder.setNegativeButton(getText(R.string.action_no)) { _, _ -> finish() }
 
                     val dialog = builder.create()
-                    dialog.show()
+                    dialog.show()*/
                 } else {
                     finish()
                 }
