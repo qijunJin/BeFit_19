@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 
         var registrat = 2 //Variable per controlar si ja està registrat el usuari a firebase
 
-       reference.child(acct?.displayName.toString())
+      /* reference.child(acct?.displayName.toString())
             .addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                     //To change body of created functions use File | Settings | File Templates.
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
                     user_actual.cal = p0.child("cal").value.toString().toInt()
                 }
             })
-
+*/
 
 
         btn_next.setOnClickListener {
