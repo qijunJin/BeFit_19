@@ -1,4 +1,5 @@
 <resources>
+    <string name="acces_token">pk.eyJ1IjoicnVzdGlkb3IiLCJhIjoiY2thNWdmZWlsMDVoajNmcXRxd3F2ZmF1cCJ9.Qe7oQ5IUDwc8P-Dn9VcfVw</string>
     <string name="app_name">BEFIT</string>
     <string name="btn_back">Back</string>
     <string name="btn_finish">FINISH</string>
