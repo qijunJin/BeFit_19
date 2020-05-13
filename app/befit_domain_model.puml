@@ -1,0 +1,176 @@
+@startuml
+title BEFIT Domain Model
+
+
+object BEFIT{
+}
+
+object WeatherAPI{
+"Gives information about the local weather"
+}
+
+object LogIn{
+" Connects with Google "
+}
+
+BEFIT --right-- LogIn:uses
+LogIn --- User: creates
+
+
+object DataBaseManager{
+" Connects with Firebase"
+}
+
+BEFIT -- DataBaseManager: uses
+DataBaseManager -right-"*" User: has access to 
+
+object Planner{
+" Creates Planes "
+}
+
+BEFIT -- Planner: has
+
+Planner *--right- DataBaseManager: speaks with
+
+Planner *--down- Plan: designes
+
+
+object User{
+
+email
+SignUpDate
+LastLogIn
+Profile profile
+
+}
+
+User "*" o-up- "1" BEFIT: used by
+
+
+object Profile{
+name
+gender
+age
+height
+weight
+FoodPref gastronomyPreference
+SchedulePref frequencyPreference
+}
+
+User o-down- Profile: Defined by 
+
+enum FoodPref{
+Mediterranian
+Oriental
+American
+Aalal
+Mexican
+Vegetarian
+}
+
+object SchedulePref{
+Exercise time
+Exercise objective
+Working time
+Resting time
+}
+
+Profile o-down- FoodPref: has
+Profile o-down- SchedulePref:has
+
+object Situation{
+LocalTime
+Ubication
+Weather
+}
+
+object Ubication{
+Gps coordinates
+Name of Location
+Country
+State
+...
+}
+
+Situation o-down- Time: uses
+Situation o-down- Ubication: uses
+Situation -up-o WeatherAPI: has access to
+
+User o-right- Situation
+
+
+Object Plan{
+Exercises
+Food recommendations
+}
+
+Plan  -down-  Exercise: defined by
+Plan  -down-  Food: defined by
+
+
+Object Food{
+calories
+}
+
+Object HomeFood{
+}
+
+Object OutdoorFood{
+}
+
+Object Restaurant{
+ubication
+}
+
+Object Exercise{
+totalMinutes
+}
+
+Object IndoorActivity{
+numberActivity
+}
+
+Object Activity{
+minutes
+typeActivity
+}
+
+Object OutdoorActivity{
+minutes
+distance
+}
+
+Object WaterActivity{
+minutes
+}
+
+Object Statistic{
+BMI
+calories
+Generated Data
+}
+
+Object Time{
+Date
+Local time clock 
+}
+
+
+Object Cardio
+Object Force
+Object Dish
+
+Exercise <|-down- IndoorActivity
+Exercise <|-down- OutdoorActivity
+Exercise <|-down- WaterActivity
+Food  <|-down-  OutdoorFood
+Food  <|-down-  HomeFood
+Activity  <|-down-  Cardio
+Activity  <|-down-  Force
+
+User "1" -- "1" Plan: realize
+IndoorActivity "1" *-- "1..n" Activity: formBy
+OutdoorFood "1" *-- "1..n" Restaurant: formBy
+Profile "1" -- "1" Statistic: has
+HomeFood "1" *-- "1..3" Dish: formBy
+@enduml

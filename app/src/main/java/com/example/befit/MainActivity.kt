@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         val user = FirebaseAuth.getInstance().currentUser
-        var user_actual = User("","",0.0, 0.0,0)  //Dades del usuari que esta a l¡aplicaio
+        var user_actual = User("", "", 0.0, 0.0, 0, 0)  //Dades del usuari que esta a l¡aplicaio
         val database = FirebaseDatabase.getInstance()
         val reference = database.reference
     }
@@ -88,6 +88,21 @@ class MainActivity : AppCompatActivity() {
 
         var registrat = 0 //Variable per controlar si ja està registrat el usuari a firebase
 
+        reference.child(acct?.displayName.toString())
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                    //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
+                    user_actual.name = p0.child("name").value.toString()
+                    user_actual.age = p0.child("age").value.toString().toInt()
+                    user_actual.height = p0.child("height").value.toString().toDouble()
+                    user_actual.weight = p0.child("weight").value.toString().toDouble()
+                    user_actual.cal = p0.child("cal").value.toString().toInt()
+                }
+            })
+
         btn_next.setOnClickListener {
             val acct = GoogleSignIn.getLastSignedInAccount(this)
             reference.child(acct?.displayName.toString()).addValueEventListener(object : ValueEventListener{
@@ -117,6 +132,7 @@ class MainActivity : AppCompatActivity() {
                 acct?.id.toString(),
                 0.0,
                 0.0,
+                0,
                 0
             ) //Inicialitzem user, de moment nomes amb el que tenim
             //Guardem dades inicials a firebase si es el primer cop en entrar

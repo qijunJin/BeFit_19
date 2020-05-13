@@ -31,6 +31,7 @@ class LogIn_Data : AppCompatActivity() {
             acct?.id.toString(),
             0.0,
             0.0,
+            0,
             0
         )
         val database = FirebaseDatabase.getInstance()
