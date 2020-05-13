@@ -1,5 +1,4 @@
 package com.example.befit
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,17 +38,17 @@ class fragment_comida : Fragment() {
     private fun GetArrayItems(): ArrayList<Comida> {
         var listItems = ArrayList<Comida>()
         //TODO poner imagenes correctas
-        listItems.add(Comida(R.drawable.lateralraise, "Seafood Paella", 379))
-        listItems.add(Comida(R.drawable.lateralraise, "Backed Chicken", 340))
-        listItems.add(Comida(R.drawable.lateralraise, "Spring Rolls", 154))
-        listItems.add(Comida(R.drawable.lateralraise, "Ramen", 200))
-        listItems.add(Comida(R.drawable.lateralraise, "Cobb Salad", 400))
-        listItems.add(Comida(R.drawable.lateralraise, "Fried Chicken", 190))
-        listItems.add(Comida(R.drawable.lateralraise, "Kibbeh", 365))
-        listItems.add(Comida(R.drawable.lateralraise, "Nachos", 346))
-        listItems.add(Comida(R.drawable.lateralraise, "Chicken Tamales", 141))
-        listItems.add(Comida(R.drawable.lateralraise, "Pasta Salad", 356))
-        listItems.add(Comida(R.drawable.lateralraise, "Mushroom Burger", 850))
+        listItems.add(Comida(R.drawable.seafood_paella, "Seafood Paella", 379))
+        listItems.add(Comida(R.drawable.baked_italian_chicken, "Baked Chicken", 340))
+        listItems.add(Comida(R.drawable.spring_rolls, "Spring Rolls", 154))
+        listItems.add(Comida(R.drawable.ramen_adobe_m, "Ramen", 200))
+        listItems.add(Comida(R.drawable.cobb_salad, "Cobb Salad", 400))
+        listItems.add(Comida(R.drawable.fried_chicken, "Fried Chicken", 190))
+        listItems.add(Comida(R.drawable.kibbeh, "Kibbeh", 365))
+        listItems.add(Comida(R.drawable.nachos, "Nachos", 346))
+        listItems.add(Comida(R.drawable.tamales, "Chicken Tamales", 141))
+        listItems.add(Comida(R.drawable.pasta_salad, "Pasta Salad", 356))
+        listItems.add(Comida(R.drawable.mushroom_burger, "Mushroom Burger", 850))
         return listItems
     }
 

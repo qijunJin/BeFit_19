@@ -32,3 +32,4 @@ class GoToGym : AppCompatActivity() {
         exerciseName.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
     }
 }
+
