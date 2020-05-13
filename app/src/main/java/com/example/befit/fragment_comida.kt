@@ -37,7 +37,6 @@ class fragment_comida : Fragment() {
 
     private fun GetArrayItems(): ArrayList<Comida> {
         var listItems = ArrayList<Comida>()
-        //TODO poner imagenes correctas
         listItems.add(Comida(R.drawable.seafood_paella, "Seafood Paella", 379))
         listItems.add(Comida(R.drawable.baked_italian_chicken, "Baked Chicken", 340))
         listItems.add(Comida(R.drawable.spring_rolls, "Spring Rolls", 154))
