@@ -160,7 +160,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         var btn_statistics: ImageButton = findViewById(R.id.btn_Statistics)
 
         btn_statistics.setOnClickListener {
-            startActivity(Intent(this, Statistics::class.java))
+            //startActivity(Intent(this, Statistics::class.java))
         }
     }
 
