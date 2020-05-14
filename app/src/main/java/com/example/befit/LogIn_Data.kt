@@ -65,7 +65,7 @@ class LogIn_Data : AppCompatActivity() {
         }
 
         btn_back.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java).apply {
+            val intent = Intent(this, MainActivity::class.java).apply {
                 putExtra(EXTRA_ENRERE,"si")
             }
             startActivity(intent)

@@ -60,10 +60,10 @@
                         android:textSize="30sp">
 
                     </TextView>
+
                 </FrameLayout>
 
             </LinearLayout>
-
 
             <TextView
                 android:id="@+id/caloriesUnit_food"
