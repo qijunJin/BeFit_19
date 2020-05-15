@@ -37,6 +37,10 @@ android {
 
 }
 
+repositories{
+    mavenCentral()
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -85,7 +89,7 @@ dependencies {
     implementation 'com.xw.repo:bubbleseekbar:3.4-lite'
 
     //MapBox
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:6.0.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.5.0'
 }
 apply plugin: 'com.google.gms.google-services'
