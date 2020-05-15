@@ -1,45 +1,39 @@
 package com.example.befit
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.location.Location
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Chronometer
+import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
-import com.mapbox.android.core.location.LocationEngine
-import com.mapbox.android.core.location.LocationEngineProvider
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.mapboxsdk.Mapbox
-import com.mapbox.mapboxsdk.camera.CameraUpdate
-import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
-import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
 import com.mapbox.mapboxsdk.location.LocationComponentOptions
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.plugins.locationlayer.LocationLayerPlugin
-import com.mapbox.mapboxsdk.plugins.locationlayer.modes.CameraMode
-import com.mapbox.mapboxsdk.plugins.locationlayer.modes.RenderMode
-import kotlinx.android.synthetic.main.activity_statistics.*
 
 
 class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
 
     private lateinit var mapView: MapView
-    private lateinit var map: MapboxMap
-    private lateinit var originLocation : Location
-
-    private var locationEngine : LocationEngine? = null
-    private var locationLayerPlugin: LocationLayerPlugin? = null
+    lateinit var btn_start : Button
+    lateinit var btn_stop : Button
+    lateinit var btn_reset : Button
+    lateinit var chrono : Chronometer
     private var permissionsManager: PermissionsManager = PermissionsManager(this)
     private lateinit var mapboxMap: MapboxMap
+
+     var correr : Boolean = false
+    var detener : Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,14 +42,48 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
         Mapbox.getInstance(requireContext(), getString(R.string.acces_token))
         var mLinearLayout = inflater.inflate(R.layout.fragment_ambiente, container, false)
 
+        btn_start = mLinearLayout.findViewById(R.id.btn_start)
+        btn_stop = mLinearLayout.findViewById(R.id.btn_stop)
+        chrono = mLinearLayout.findViewById(R.id.chronometer)
+
         mapView = mLinearLayout.findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
 
+        btn_start.setOnClickListener {
+            btn_start.visibility = View.GONE
+            btn_stop.visibility = View.VISIBLE
+            Toast.makeText(requireContext(), "Temps en marcha", Toast.LENGTH_SHORT).show()
+            startChronometer()
+        }
+
+
+
+       btn_stop.setOnClickListener {
+            Toast.makeText(requireContext(), "Good job!", Toast.LENGTH_SHORT).show()
+            btn_stop.visibility = View.GONE
+            btn_start.visibility = View.VISIBLE
+           stopChronometer()
+        }
                 // Inflate the layout for this fragment
         return mLinearLayout
     }
 
+    private fun stopChronometer() {
+        if(correr){
+            chrono.stop()
+            detener = SystemClock.elapsedRealtime() - chrono.base  //Para detener el chrono con los numeros que tiene
+            correr = false
+        }
+    }
+
+    private fun startChronometer() {
+        if(!correr){
+            chrono.base = SystemClock.elapsedRealtime() - detener
+            chrono.start()
+            correr=true
+        }
+    }
 
 
 // Mapbox access token is configured here. This needs to be called either in your application

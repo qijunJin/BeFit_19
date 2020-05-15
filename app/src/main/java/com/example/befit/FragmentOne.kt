@@ -78,9 +78,7 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
-            MainActivity.reference.child(MainActivity.user_actual.name).child("height").setValue(
-                edit_height.text.toString()
-            )
+            MainActivity.reference.child(MainActivity.user_actual.name).child("height").setValue(edit_height.text.toString())
         }
     }
 

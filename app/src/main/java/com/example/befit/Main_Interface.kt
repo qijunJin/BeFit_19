@@ -102,7 +102,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         val acct = GoogleSignIn.getLastSignedInAccount(this)
 
-        MainActivity.reference.child(MainActivity.user_actual.name)
+        MainActivity.reference.child(acct?.displayName.toString())
             .addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {}
                 override fun onDataChange(p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
