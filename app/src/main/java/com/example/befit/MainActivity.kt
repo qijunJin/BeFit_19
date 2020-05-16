@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         val user = FirebaseAuth.getInstance().currentUser
-        var user_actual = User("", "", 0.0, 0.0, 0, 0)  //Dades del usuari que esta a l¡aplicaio
+        var user_actual = User("", "","", 0.0, 0.0, 0, 0)  //Dades del usuari que esta a l¡aplicaio
         val database = FirebaseDatabase.getInstance()
         val reference = database.reference
     }
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             btn_next.visibility = View.VISIBLE
 
         } else if (acct != null && sesio_activa != "si") {
-            startActivity(Intent(this, Main_Interface::class.java))
+            //startActivity(Intent(this, Main_Interface::class.java))
 
         } else if (acct != null) {
             btn_LogIn.visibility = View.GONE
@@ -128,16 +128,17 @@ class MainActivity : AppCompatActivity() {
                 val reff =
                     FirebaseDatabase.getInstance().reference.child(acct?.displayName.toString())
 
-             /*   reff.addValueEventListener(object : ValueEventListener {
+               reff.addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError) {}
                     override fun onDataChange(@NonNull p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
+                        user_actual.complete_name = acct?.displayName.toString()
                         user_actual.name = p0.child("name").value.toString()
                         user_actual.age = p0.child("age").value.toString().toInt()
                         user_actual.height = p0.child("height").value.toString().toDouble()
                         user_actual.weight = p0.child("weight").value.toString().toDouble()
                         user_actual.cal = p0.child("cal").value.toString().toInt()
                     }
-                })*/
+                })
                 val i = Intent(this, Main_Interface::class.java)
                 Toast.makeText(applicationContext, "Loading data", Toast.LENGTH_LONG).show()
                 startActivity(i)

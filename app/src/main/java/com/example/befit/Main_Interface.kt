@@ -103,7 +103,6 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         var w = intent.getStringExtra("WEIGHT")
 
-        txtScale.text = if (w.isNullOrEmpty()) "Scale" else "$w kg"
         txtScale.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
 
         var exerciseFinish = Exercise(0, "", 0)
@@ -130,9 +129,15 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         MainActivity.reference.child(acct?.displayName.toString()).child("cal")
             .setValue(MainActivity.user_actual.cal)
 
+        MainActivity.reference.child(acct?.displayName.toString()).child("weight")
+            .setValue(MainActivity.user_actual.weight)
+
 
         var u = MainActivity.user_actual.cal
+        var w1 : Double = MainActivity.user_actual.weight
+
         txtkcal.text = "$u kcal"
+        txtScale.text = "$w1 kg"
 
         if (ex != null) {
             exercise = ex as Exercise

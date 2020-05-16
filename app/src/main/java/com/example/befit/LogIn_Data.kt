@@ -28,6 +28,7 @@ class LogIn_Data : AppCompatActivity() {
         val acct = getLastSignedInAccount(this)
         MainActivity.user_actual = User(
             acct?.displayName.toString(),
+            acct?.displayName.toString(),
             acct?.id.toString(),
             0.0,
             0.0,

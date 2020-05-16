@@ -87,7 +87,7 @@ class RegisterWeightDialog : AppCompatDialogFragment() {
         //requireActivity().findViewById<EditText>(R.id.btnRegisterWeight).setText(weight);
 
         val i = Intent(requireActivity().baseContext, Main_Interface::class.java)
-        MainActivity.reference.child(MainActivity.user_actual.name).child("weight").setValue(weight)
+        MainActivity.reference.child(MainActivity.user_actual.complete_name).child("weight").setValue(weight)
         i.putExtra("WEIGHT", weight)
         startActivity(i)
     }

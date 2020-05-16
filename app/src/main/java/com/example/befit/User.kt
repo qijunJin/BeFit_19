@@ -1,6 +1,6 @@
 package com.example.befit
 
-open class User(
+open class User(var complete_name : String,
     var name: String,
     var id: String,
     var height: Double,
