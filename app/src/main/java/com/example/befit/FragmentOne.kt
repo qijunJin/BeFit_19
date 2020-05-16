@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import kotlinx.android.synthetic.main.fragment_one.*
 
 /**
@@ -62,12 +63,13 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
 
     //Watcher que observa si hi han canvis al edit text dels anys i actualitza el valor a firebase
     private val textWatcher1 = object : TextWatcher {
+        val acct = GoogleSignIn.getLastSignedInAccount(requireContext())
         override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
-            MainActivity.reference.child(MainActivity.user_actual.name).child("age").setValue(edit_age.text.toString())
+            MainActivity.reference.child(acct?.displayName.toString()).child("age").setValue(edit_age.text.toString())
         }
     }
 
@@ -99,7 +101,6 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
-
             MainActivity.reference.child(MainActivity.user_actual.name).child("name").setValue(edit_name.text.toString())
         }
     }

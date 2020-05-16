@@ -5,16 +5,23 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatDialogFragment
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import kotlinx.android.synthetic.main.register_weight_dialog.*
 
 class RegisterWeightDialog : AppCompatDialogFragment() {
     private var listener: DialogListener? = null
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(activity).inflate(R.layout.register_weight_dialog, null)
         val alert = AlertDialog.Builder(activity)
-        var etxtWeight: EditText = view.findViewById(R.id.etxtWeight)
+        var etxtWeight : EditText = view.findViewById(R.id.etxtWeight)
+
+        //etxtWeight.addTextChangedListener(textWatcher1)
+        val acct = GoogleSignIn.getLastSignedInAccount(requireActivity().applicationContext)
 /*
         etxtWeight.addTextChangedListener(object:TextWatcher{
             override fun afterTextChanged(s: Editable?) {
@@ -50,6 +57,17 @@ class RegisterWeightDialog : AppCompatDialogFragment() {
 
     }
 
+  /* private val textWatcher1 = object : TextWatcher {
+
+        override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+
+        override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+
+        override fun afterTextChanged(editable: Editable) {
+            MainActivity.reference.child(MainActivity.user_actual.name).child("weight").setValue(etxtWeight.text.toString().toDouble())
+        }
+    }*/
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         listener = try {
@@ -69,6 +87,7 @@ class RegisterWeightDialog : AppCompatDialogFragment() {
         //requireActivity().findViewById<EditText>(R.id.btnRegisterWeight).setText(weight);
 
         val i = Intent(requireActivity().baseContext, Main_Interface::class.java)
+        MainActivity.reference.child(MainActivity.user_actual.name).child("weight").setValue(weight)
         i.putExtra("WEIGHT", weight)
         startActivity(i)
     }

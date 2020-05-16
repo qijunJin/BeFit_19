@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 private val RC_SIGN_IN = 123
 lateinit var mGoogleSignInClient: GoogleSignInClient
+
 private lateinit var auth: FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             btn_next.visibility = View.VISIBLE
 
         } else if (acct != null && sesio_activa != "si") {
-            //startActivity(Intent(this, Main_Interface::class.java))
+            startActivity(Intent(this, Main_Interface::class.java))
 
         } else if (acct != null) {
             btn_LogIn.visibility = View.GONE
@@ -122,11 +123,12 @@ class MainActivity : AppCompatActivity() {
 
                     })
             }
+
             if (registrat == 1) {
                 val reff =
                     FirebaseDatabase.getInstance().reference.child(acct?.displayName.toString())
 
-                reff.addValueEventListener(object : ValueEventListener {
+             /*   reff.addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError) {}
                     override fun onDataChange(@NonNull p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
                         user_actual.name = p0.child("name").value.toString()
@@ -135,13 +137,14 @@ class MainActivity : AppCompatActivity() {
                         user_actual.weight = p0.child("weight").value.toString().toDouble()
                         user_actual.cal = p0.child("cal").value.toString().toInt()
                     }
-                })
+                })*/
                 val i = Intent(this, Main_Interface::class.java)
+                Toast.makeText(applicationContext, "Loading data", Toast.LENGTH_LONG).show()
                 startActivity(i)
             } else if (registrat == 0) {
+                Toast.makeText(applicationContext, "Loading data", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, LogIn_Data::class.java))
             }
-
         }
 
 //Actualitzem les dades a firebase, si el usuari es nou l'afegeix, sino és manté tot igual
@@ -190,8 +193,12 @@ user_actual = User(
             btn_LogIn.visibility = View.GONE
             btn_LogOut.visibility = View.VISIBLE
             btn_next.visibility = View.VISIBLE
+        }else{
+            btn_LogOut.visibility = View.GONE
+            btn_next.visibility = View.GONE
+            btn_LogIn.visibility = View.VISIBLE
         }
-        var currentUser = auth.currentUser
+
 //updateUI(currentUser)
     }
 

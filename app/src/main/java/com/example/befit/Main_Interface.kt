@@ -4,9 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -22,6 +26,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main_interface.*
+import kotlinx.android.synthetic.main.header_layout_for_drawer.*
+import kotlinx.android.synthetic.main.register_weight_dialog.*
 
 
 class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
@@ -31,6 +37,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var viewPager: ViewPager
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
+    lateinit var txt_weight : EditText
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +54,9 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         val imgId = arrayOf <Int>(R.drawable.pushup, R.drawable.lateralraise)
 
 */
+        val acct = GoogleSignIn.getLastSignedInAccount(this)
+
+
         var txtkcal: TextView = findViewById(R.id.kcal)
         txtkcal.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
 
@@ -56,6 +66,9 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         viewPager = findViewById(R.id.viewPager_Main)
         val adapter =
             MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
+
+        //txt_weight = findViewById(R.id.etxtWeight)
+        //etxtWeight.addTextChangedListener(textWatcher1)
 
         adapter.addFragment(fragmentEjercicio())
         adapter.addFragment(fragment_comida())
@@ -100,8 +113,6 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         var exercise: Exercise? = null
         var calories = 0
 
-        val acct = GoogleSignIn.getLastSignedInAccount(this)
-
         MainActivity.reference.child(acct?.displayName.toString())
             .addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {}
@@ -126,7 +137,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         if (ex != null) {
             exercise = ex as Exercise
             var userCal = MainActivity.user_actual.cal + exercise.calories
-            MainActivity.reference.child(MainActivity.user_actual.name).child("cal")
+            MainActivity.reference.child(acct?.displayName.toString()).child("cal")
                 .setValue(userCal)
             txtkcal.text = "$userCal kcal"
         }
@@ -149,7 +160,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 
         //No title
-        toolbar.title = null
+        toolbar.title = "hola"
 
         var actionBarDrawerToggle: ActionBarDrawerToggle = ActionBarDrawerToggle(
             this,
@@ -159,6 +170,8 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.string.closeNavDrawer
         )
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        drawerLayout.setOnCreateContextMenuListener { menu, v, menuInfo -> title1.text ="hola" }
+
 
         actionBarDrawerToggle.syncState()
         //Quan seleccionem un item del menú
@@ -186,17 +199,40 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
     }
 
+    private val textWatcher1 = object : TextWatcher {
+        override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+
+        override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+
+        override fun afterTextChanged(editable: Editable) {
+            val acct = GoogleSignIn.getLastSignedInAccount(applicationContext)
+            MainActivity.reference.child(acct?.displayName.toString()).child("weight")
+                .setValue(etxtWeight.text.toString())
+        }
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+
+    }
 
     //  Toolbar and prefereneces needed methods
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.storage_item -> null
             R.id.app_item -> null
+            R.id.drawer_signOut -> signOut()
             else -> {
                 goToPreferenceActivity()
             }
         }
         return true
+    }
+
+
+    private fun signOut() {
+        startActivity(Intent(this,MainActivity::class.java))
+        Toast.makeText(this, "Sessió tancada", Toast.LENGTH_LONG).show()
+        mGoogleSignInClient.signOut()
     }
 
     override fun onPointerCaptureChanged(hasCapture: Boolean) {
@@ -222,6 +258,8 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         return super.onOptionsItemSelected(item)
     }*/
+
+
 
     fun goToPreferenceActivity() {
         startActivity(Intent(this, PreferenceActivity::class.java))

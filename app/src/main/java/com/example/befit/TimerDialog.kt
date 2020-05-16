@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.DialogFragment
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.xw.repo.BubbleSeekBar
 
 
@@ -13,7 +14,6 @@ class TimerDialog(private val exercise: Exercise) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(activity).inflate(R.layout.timer_dialog, null)
-
 
         val alert = AlertDialog.Builder(activity)
 

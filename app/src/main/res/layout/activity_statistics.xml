@@ -40,34 +40,6 @@
                 android:src="@drawable/male_round" />
         </FrameLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:orientation="vertical"
-            android:weightSum="6">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"/>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:background="@drawable/sol"
-                android:scaleType="centerCrop"/>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:background="@drawable/air"
-                android:scaleType="centerCrop"/>
-        </LinearLayout>
     </LinearLayout>
 
     <FrameLayout
@@ -105,10 +77,10 @@
             android:layout_weight="11"
             >
 
-            <com.github.mikephil.charting.charts.PieChart
+            <com.github.mikephil.charting.charts.LineChart
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/pieChart_test"/>
+                android:id="@+id/LineChart"/>
         </FrameLayout>
 
         <LinearLayout

@@ -1,18 +1,14 @@
 package com.example.befit
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+
 
 
 class Statistics : AppCompatActivity(), OnChartValueSelectedListener {
@@ -20,10 +16,8 @@ class Statistics : AppCompatActivity(), OnChartValueSelectedListener {
     private val TAG : String = "StatisticsActivity"
 
     // PieChart example
-    lateinit var chart : PieChart
+    lateinit var chart : LineChart
     //Chart values:
-    private var yData : MutableList<Float> = mutableListOf<Float>(25.3f, 23.4f, 16.3f, 14.15f)
-    private var xData : MutableList<String> = mutableListOf<String>("Albert","Quijun","Oscar","Marta")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,63 +26,33 @@ class Statistics : AppCompatActivity(), OnChartValueSelectedListener {
         //Creating chart
         Log.d(TAG,"onCreate: starting to create chart")
 
-        chart = findViewById(R.id.pieChart_test)
+        chart = findViewById(R.id.LineChart)
+        var lineDataSet1 : LineDataSet = LineDataSet(dataValues(), "User Progress (kcal)")
+        var dataSets :ArrayList<ILineDataSet> = arrayListOf()
+        dataSets.add(lineDataSet1)
 
-        //Should use chart.description
-        chart.contentDescription = "ContentDescription Test"
-        chart.isRotationEnabled = true
-
-        //chart.setUsePercentValues(true)
-        //chart.setHoleColor(Color.)
-        //chart.setCenterTextColor(Color.)
-        chart.holeRadius = 25f
-        chart.setTransparentCircleAlpha(0);
-        chart.centerText = "Chart Text Test"
-        chart.setCenterTextSize(10f)
-        chart.setDrawEntryLabels(true)
-        //chart.setEntryLabelTextSize(20f)
-        // etc...
-
-        addDataSet()
-
+        var data : LineData = LineData(dataSets)
+        data.setValueTextSize(12f)
+        chart.data = data
+        chart.description.isEnabled = false
+        chart.invalidate()
 
         //Listeners
-        chart.setOnChartValueSelectedListener(this)
+        //chart.setOnChartValueSelectedListener(this)
 
     }
 
-    private fun addDataSet() {
-        Log.d(TAG,"setDataSet: Started")
-        var yEntrys : MutableList<PieEntry> = mutableListOf()
-        var xEntrys : MutableList<String> = xData
+    private fun dataValues() : ArrayList<Entry>{
+         var dataVals : ArrayList<Entry> = arrayListOf()
+        dataVals.add(Entry(1f, 20f))
+        dataVals.add(Entry(2f, 32f))
+        dataVals.add(Entry(3f, 52f))
+        dataVals.add(Entry(4f, 100f))
+        dataVals.add(Entry(5f, 50f))
+        dataVals.add(Entry(6f, 80f))
+        dataVals.add(Entry(7f, 120f))
 
-        //Init yEntrys
-        for(entry in yData){
-            yEntrys.add(PieEntry(entry))
-        }
-
-        var pieDataSet : PieDataSet = PieDataSet(yEntrys,"Chart Test")
-        pieDataSet.sliceSpace = 2f
-        pieDataSet.valueTextSize = 20f
-
-        //Colors of the DataSet
-        var colorList = mutableListOf<Int>()
-        colorList.add(Color.RED)
-        colorList.add(Color.YELLOW)
-        colorList.add(Color.BLUE)
-        colorList.add(Color.GREEN)
-
-        pieDataSet.setColors(colorList)
-
-        //Add legend to chart
-        var legend : Legend = chart.legend
-        legend.form = Legend.LegendForm.CIRCLE
-        // legend.setPosition() dosn't exist anymore
-
-        //Create PieDataObject
-        var pieData : PieData = PieData(pieDataSet)
-        chart.data = pieData
-        chart.invalidate()
+        return dataVals
     }
 
     //Chart Listeners
@@ -97,17 +61,6 @@ class Statistics : AppCompatActivity(), OnChartValueSelectedListener {
     }
 
     override fun onValueSelected(e: Entry?, h: Highlight?) {
-        Log.d(TAG, "onValueSelectedFromChart")
-
-        Log.d(TAG, "onValueSelected" + e.toString())
-        Log.d(TAG, "onValueSelected" + h.toString())
-
-        val pos1: Int = e.toString().indexOf("y: ")
-        val numberExtracted : String = e.toString().substring(pos1+3)
-
-        val stringRelated : String = xData.get( yData.indexOf(numberExtracted.toFloat()) )
-
-        Toast.makeText(this, "Selected: $stringRelated: $numberExtracted",Toast.LENGTH_LONG ).show()
 
     }
 }

@@ -20,6 +20,7 @@ import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
+import kotlinx.android.synthetic.main.activity_main_interface.*
 
 
 class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
@@ -44,6 +45,7 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
 
         btn_start = mLinearLayout.findViewById(R.id.btn_start)
         btn_stop = mLinearLayout.findViewById(R.id.btn_stop)
+        btn_reset = mLinearLayout.findViewById(R.id.btn_finishrun)
         chrono = mLinearLayout.findViewById(R.id.chronometer)
 
         mapView = mLinearLayout.findViewById(R.id.mapView)
@@ -53,20 +55,31 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
         btn_start.setOnClickListener {
             btn_start.visibility = View.GONE
             btn_stop.visibility = View.VISIBLE
-            Toast.makeText(requireContext(), "Temps en marcha", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Let's run", Toast.LENGTH_SHORT).show()
             startChronometer()
         }
 
-
+        btn_reset.setOnClickListener {
+            btn_start.visibility = View.VISIBLE
+            btn_stop.visibility = View.GONE
+            stopChronometer()  //El temps quedi parat a 0. SIno reinicia i seguiex contant
+            resetChronometer()
+            Toast.makeText(requireContext(), "Good job!", Toast.LENGTH_SHORT).show()
+        }
 
        btn_stop.setOnClickListener {
-            Toast.makeText(requireContext(), "Good job!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Time paused", Toast.LENGTH_SHORT).show()
             btn_stop.visibility = View.GONE
             btn_start.visibility = View.VISIBLE
            stopChronometer()
         }
                 // Inflate the layout for this fragment
         return mLinearLayout
+    }
+
+    private fun resetChronometer() {
+        chrono.base = SystemClock.elapsedRealtime()
+        detener = 0 //Volvemos a poner a 0
     }
 
     private fun stopChronometer() {
@@ -145,15 +158,15 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
     }
 
     override fun onExplanationNeeded(permissionsToExplain: List<String>) {
-        /*   Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG).show()
+      /*  Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG).show()
        }
 
        override fun onPermissionResult(granted: Boolean) {
            if (granted) {
                enableLocationComponent(mapboxMap.style!!)
            } else {
-               Toast.makeText(this, R.string.user_location_permission_not_granted, Toast.LENGTH_LONG).show()
-               finish()
+               Toast.makeText(requireContext(),"Permission denegated", Toast.LENGTH_LONG).show()
+               //finish()
            }*/
     }
 
@@ -161,7 +174,7 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
         if (granted) {
             enableLocationComponent(mapboxMap.style!!)
         } else {
-            //Toast.makeText(this, R.string.user_location_permission_not_granted, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Permission denegated", Toast.LENGTH_LONG).show()
            // finish()
         }
     }
