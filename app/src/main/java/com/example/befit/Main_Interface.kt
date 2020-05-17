@@ -72,9 +72,9 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         //txt_weight = findViewById(R.id.etxtWeight)
         //etxtWeight.addTextChangedListener(textWatcher1)
 
-        adapter.addFragment(fragmentAmbiente())
         adapter.addFragment(fragmentEjercicio())
         adapter.addFragment(fragment_comida())
+        adapter.addFragment(fragmentAmbiente())
 
         viewPager.adapter = adapter
 
@@ -86,9 +86,9 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
-                    0 -> title.text = "Exercise"
+                    0 -> title.text = "Exercises"
                     1 -> title.text = "Gastronomy"
-                    2 -> title.text = "Environment"
+                    2 -> title.text = "Outdoor Running"
                 }
             }
 
@@ -246,11 +246,10 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     private fun deleteAccount() {
-        mGoogleSignInClient.signOut()
-
         FirebaseDatabase.getInstance().reference.child(MainActivity.user_actual.complete_name)  //Borramos ususario de firebase
             .removeValue()
 
+        mGoogleSignInClient.signOut()
         startActivity(Intent(this, MainActivity::class.java))
     }
 

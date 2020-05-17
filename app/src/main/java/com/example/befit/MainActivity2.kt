@@ -45,15 +45,17 @@ class MainActivity2 : AppCompatActivity() {
 
                 reff.addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError) {}
-                    override fun onDataChange(@NonNull p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
-                        MainActivity.user_actual.complete_name = acct?.displayName.toString()
-                        MainActivity.user_actual.name = p0.child("name").value.toString()
-                        MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
-                        MainActivity.user_actual.height =
-                            p0.child("height").value.toString().toDouble()
-                        MainActivity.user_actual.weight =
-                            p0.child("weight").value.toString().toDouble()
-                        MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
+                    override fun onDataChange(@NonNull p0: DataSnapshot) {
+                        if (p0.child("age").exists()) {//Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
+                            MainActivity.user_actual.complete_name = acct?.displayName.toString()
+                            MainActivity.user_actual.name = p0.child("name").value.toString()
+                            MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
+                            MainActivity.user_actual.height =
+                                p0.child("height").value.toString().toDouble()
+                            MainActivity.user_actual.weight =
+                                p0.child("weight").value.toString().toDouble()
+                            MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
+                        }
                     }
                 })
                 startActivity(Intent(this, Main_Interface::class.java))
