@@ -244,6 +244,8 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         super.onPointerCaptureChanged(hasCapture)
     }
 
+    override fun onBackPressed() {}  //Fa que no puguem tirar enrere desde main INterface
+
 
     //!!! If we wanted an options icon (threepoints in top-left corner) to acces the configuration
 

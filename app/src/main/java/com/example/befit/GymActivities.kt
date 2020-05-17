@@ -165,7 +165,8 @@ class GymActivities : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.title_attention))
         builder.setMessage(getString(R.string.message_finish_timer))
-        builder.setPositiveButton(getString(R.string.action_yes)) { _, _ -> finish() }
+        builder.setPositiveButton(getString(R.string.action_yes)) { _, _ -> finish()
+        startActivity(Intent(this,Main_Interface::class.java))}
         builder.setNegativeButton(getString(R.string.action_no)) { _, _ -> startTimer() }
 
         val dialog = builder.create()

@@ -1,5 +1,6 @@
 package com.example.befit
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.Button
@@ -31,5 +32,9 @@ class GoToGym : AppCompatActivity() {
         exerciseName.text = exercise.exerciseName
         exerciseName.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this,Main_Interface::class.java))
+    }  //Fa que no puguem tirar enrere desde main INterface
 }
 

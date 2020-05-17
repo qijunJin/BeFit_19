@@ -70,6 +70,8 @@ class Break : AppCompatActivity(), View.OnClickListener {
         timerStatus = TimerStatus.STARTED
     }
 
+    override fun onBackPressed() {}  //Fa que no puguem tirar enrere desde el break
+
     fun pauseBreak() {
         countDownTimer.cancel()
         timerStatus = TimerStatus.STOPPED
