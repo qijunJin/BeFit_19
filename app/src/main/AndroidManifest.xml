@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".RegisterWeightDialog"></activity>
+        <activity android:name=".GoToEat"></activity>
+        <activity android:name=".RegisterWeightDialog" />
         <activity android:name=".Break" />
         <activity android:name=".Statistics" />
         <activity
