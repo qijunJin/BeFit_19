@@ -1,4 +1,5 @@
 <resources>
+    <string name="acces_token">pk.eyJ1IjoicnVzdGlkb3IiLCJhIjoiY2thNWdmZWlsMDVoajNmcXRxd3F2ZmF1cCJ9.Qe7oQ5IUDwc8P-Dn9VcfVw</string>
     <string name="app_name">BEFIT</string>
     <string name="btn_back">Back</string>
     <string name="btn_finish">FINISH</string>
@@ -34,4 +35,32 @@
     <string name="txt_gastronomy">gastronomy</string>
     <string name="txt_SignUp">Sign Up</string>
     <string name="txt_LogIn">Log In</string>
+
+
+    <string name="home_second">Home Second</string>
+    <string name="title_time_dialog">Ajustar tiempo y repeticiones</string>
+    <string name="start_time_dialog">Iniciar</string>
+    <string name="title_attention">Attention</string>
+    <string name="message_finish_break">Are you sure to leave your break?</string>
+    <string name="action_yes">YES</string>
+    <string name="action_no">NO</string>
+    <string name="action_ok">OK</string>
+    <string name="message_finish_time">You have finished your exercise</string>
+    <string name="title_finish_time">Congratulations</string>
+    <string name="message_finish_timer">Are you sure to leave your exercise?</string>
+
+    <string name="appbar_title" />
+    <string name="header_title">BEFIT</string>
+    <string name="header_description">Improve your health!</string>
+    <string name="header_icon_description">Befit icon</string>
+    <string name="description_image_acces_profile">Profile access</string>
+    <string name="description_sun_radiation_state">Sun radiation state</string>
+    <string name="imagedescription_air_pollution_status">Air pollution status</string>
+    <string name="exercise">Exercises</string>
+    <string name="openNavDrawer">Navigation Drawer Open</string>
+    <string name="closeNavDrawer">Navigation Drawer Close</string>
+    <string name="first_preference_item_title">First Preference Item</string>
+    <string name="settings">Settings</string>
+    <string name="title_register_weight_dialog">Register weight</string>
+    <string name="register_weight_dialog">Done</string>
 </resources>

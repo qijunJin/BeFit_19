@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class GoToOutdoorRunning : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_go_to_outdoor_running)

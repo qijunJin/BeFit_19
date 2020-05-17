@@ -105,6 +105,7 @@
                             android:gravity="center_vertical"
                             android:textColor="#F6DE05"
                             android:textSize="35sp"
+                                android:ems="10"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -254,7 +255,7 @@
                 android:layout_weight="2"
                 android:background="#8F000000"
                 android:text="@string/txt_startroutine"
-                android:textColor="#FFFFF1"
+                android:textColor="#FFFFFF"
                 android:textSize="25dp"
                 android:textStyle="bold" />
 

@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+
+
+    <!-- Primary Colors -->
+    <color name="primaryColor">#ffff00</color>
+    <color name="primaryLightColor">#ffff5a</color>
+    <color name="primaryDarkColor">#c7cc00</color>
+    <color name="secondaryColor">#424242</color>
+    <color name="secondaryLightColor">#6d6d6d</color>
+    <color name="secondaryDarkColor">#1b1b1b</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#ffffff</color>
+    <color name="colorPrimary">#f6b72d</color>
+    <color name="colorPrimaryDark">#C3C3C3</color>
     <color name="colorAccent">#FF5252</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
+    <color name="Orange">#FF8000</color>
+    <color name="mapboxWhite">#ffffff</color>
+    <color name="mapboxBlue">#4264fb</color>
+    <color name="mapboxGrayLight">#c6d2e1</color>
 </resources>
