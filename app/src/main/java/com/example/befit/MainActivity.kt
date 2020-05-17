@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         auth = FirebaseAuth.getInstance()
 
-
         val acct = GoogleSignIn.getLastSignedInAccount(this)
 
         if (acct != null) startActivity(Intent(this, MainActivity2::class.java))

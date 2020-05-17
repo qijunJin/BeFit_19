@@ -22,7 +22,6 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -119,13 +118,15 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             .addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {}
                 override fun onDataChange(p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
-
-                    MainActivity.user_actual.name = p0.child("name").value.toString()
-                    MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
-                    MainActivity.user_actual.height = p0.child("height").value.toString().toDouble()
-                    MainActivity.user_actual.weight = p0.child("weight").value.toString().toDouble()
-                    MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
-
+                    if (p0.child("age").exists()) {
+                        MainActivity.user_actual.name = p0.child("name").value.toString()
+                        MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
+                        MainActivity.user_actual.height =
+                            p0.child("height").value.toString().toDouble()
+                        MainActivity.user_actual.weight =
+                            p0.child("weight").value.toString().toDouble()
+                        MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
+                    }
                 }
             })
 
@@ -245,15 +246,18 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     private fun deleteAccount() {
+        mGoogleSignInClient.signOut()
+
         FirebaseDatabase.getInstance().reference.child(MainActivity.user_actual.complete_name)  //Borramos ususario de firebase
             .removeValue()
+
         startActivity(Intent(this, MainActivity::class.java))
     }
 
 
     private fun signOut() {
         mGoogleSignInClient.signOut()
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         Toast.makeText(this, "Sessió tancada", Toast.LENGTH_LONG).show()
     }
 
