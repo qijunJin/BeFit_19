@@ -22,7 +22,6 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -303,12 +302,14 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     class MyViewPagerAdapter(manager: FragmentManager) :
         FragmentPagerAdapter(manager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
+
         private val fragmentList: MutableList<Fragment> =
             ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
 
         override fun getItem(position: Int): Fragment {
             return fragmentList[position]
         }
+
 
         override fun getCount(): Int {
             return fragmentList.size  //Retorna el nombre de fragments que hi han

@@ -3,7 +3,6 @@ package com.example.befit
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.SystemClock
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import android.widget.Button
 import android.widget.Chronometer
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.mapboxsdk.Mapbox
@@ -20,27 +20,28 @@ import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
-import kotlinx.android.synthetic.main.activity_main_interface.*
 
 
 class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
 
     private lateinit var mapView: MapView
-    lateinit var btn_start : Button
-    lateinit var btn_stop : Button
-    lateinit var btn_reset : Button
-    lateinit var chrono : Chronometer
+    lateinit var btn_start: Button
+    lateinit var btn_stop: Button
+    lateinit var btn_reset: Button
+    lateinit var chrono: Chronometer
     private var permissionsManager: PermissionsManager = PermissionsManager(this)
     private lateinit var mapboxMap: MapboxMap
 
-     var correr : Boolean = false
-    var detener : Long = 0
+    var correr: Boolean = false
+    var detener: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         Mapbox.getInstance(requireContext(), getString(R.string.acces_token))
+
+
         var mLinearLayout = inflater.inflate(R.layout.fragment_ambiente, container, false)
 
         btn_start = mLinearLayout.findViewById(R.id.btn_start)
@@ -51,6 +52,7 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
         mapView = mLinearLayout.findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
+
 
         btn_start.setOnClickListener {
             btn_start.visibility = View.GONE
@@ -67,13 +69,13 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
             Toast.makeText(requireContext(), "Good job!", Toast.LENGTH_SHORT).show()
         }
 
-       btn_stop.setOnClickListener {
+        btn_stop.setOnClickListener {
             Toast.makeText(requireContext(), "Time paused", Toast.LENGTH_SHORT).show()
             btn_stop.visibility = View.GONE
             btn_start.visibility = View.VISIBLE
-           stopChronometer()
+            stopChronometer()
         }
-                // Inflate the layout for this fragment
+        // Inflate the layout for this fragment
         return mLinearLayout
     }
 
@@ -83,18 +85,19 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
     }
 
     private fun stopChronometer() {
-        if(correr){
+        if (correr) {
             chrono.stop()
-            detener = SystemClock.elapsedRealtime() - chrono.base  //Para detener el chrono con los numeros que tiene
+            detener =
+                SystemClock.elapsedRealtime() - chrono.base  //Para detener el chrono con los numeros que tiene
             correr = false
         }
     }
 
     private fun startChronometer() {
-        if(!correr){
+        if (!correr) {
             chrono.base = SystemClock.elapsedRealtime() - detener
             chrono.start()
-            correr=true
+            correr = true
         }
     }
 
@@ -110,11 +113,15 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
         this.mapboxMap = mapboxMap
         mapboxMap.setStyle(
             Style.Builder().fromUri(
-                "mapbox://styles/mapbox/cjerxnqt3cgvp2rmyuxbeqme7")) {
+                "mapbox://styles/mapbox/cjerxnqt3cgvp2rmyuxbeqme7"
+            )
+        ) {
 
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
-            enableLocationComponent(it)
+
+
         }
+
     }
 
     @SuppressLint("MissingPermission")
@@ -128,9 +135,11 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
                 .accuracyColor(ContextCompat.getColor(requireContext(), R.color.Orange))
                 .build()
 
-            val locationComponentActivationOptions = LocationComponentActivationOptions.builder(requireContext(), loadedMapStyle)
-                .locationComponentOptions(customLocationComponentOptions)
-                .build()
+            val locationComponentActivationOptions =
+                LocationComponentActivationOptions.builder(requireContext(), loadedMapStyle)
+                    .locationComponentOptions(customLocationComponentOptions)
+                    .build()
+
 
 // Get an instance of the LocationComponent and then adjust its settings
             mapboxMap.locationComponent.apply {
@@ -146,6 +155,7 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
 
 // Set the LocationComponent's render mode
                 renderMode = com.mapbox.mapboxsdk.location.modes.RenderMode.COMPASS
+
             }
         } else {
             permissionsManager = PermissionsManager(this)
@@ -153,29 +163,34 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onExplanationNeeded(permissionsToExplain: List<String>) {
-      /*  Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG).show()
-       }
+        /*  Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG).show()
+         }
 
-       override fun onPermissionResult(granted: Boolean) {
-           if (granted) {
-               enableLocationComponent(mapboxMap.style!!)
-           } else {
-               Toast.makeText(requireContext(),"Permission denegated", Toast.LENGTH_LONG).show()
-               //finish()
-           }*/
+         override fun onPermissionResult(granted: Boolean) {
+             if (granted) {
+                 enableLocationComponent(mapboxMap.style!!)
+             } else {
+                 Toast.makeText(requireContext(),"Permission denegated", Toast.LENGTH_LONG).show()
+                 //finish()
+             }*/
     }
 
     override fun onPermissionResult(granted: Boolean) {
         if (granted) {
             enableLocationComponent(mapboxMap.style!!)
+
         } else {
             Toast.makeText(requireContext(), "Permission denegated", Toast.LENGTH_LONG).show()
-           // finish()
+            // finish()
         }
     }
 

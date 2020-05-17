@@ -2,9 +2,9 @@ package com.example.befit
 
 import android.graphics.Typeface
 import android.os.Bundle
-import android.widget.*
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_go_to_eat.view.*
 
 class GoToEat : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class GoToEat : AppCompatActivity() {
         var comidaName: TextView = findViewById(R.id.comidaName)
         var ingList: TextView = findViewById(R.id.ing_list)
 
-        imgcomidaId.setBackgroundResource(comida.imgId)
+        imgcomidaId.setImageResource(comida.imgId)
         comidaName.text = comida.comidaName
         ingList.text = toListString(comida.ingredients!!)
         comidaName.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
