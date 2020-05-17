@@ -65,7 +65,7 @@
                     android:gravity="bottom|center_horizontal"
                     android:text="Scale"
                     android:textColor="#000000"
-                    android:textSize="20sp"></TextView>
+                    android:textSize="20sp"/>
 
                 <ImageButton
                     android:id="@+id/btnRegisterWeight"
@@ -76,7 +76,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/scale"
                     android:textColor="#000000"
-                    android:textSize="15sp"></ImageButton>
+                    android:textSize="15sp"/>
 
             </LinearLayout>
 
@@ -198,51 +198,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
-
             </FrameLayout>
 
-            <!--
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1" />
-
-                        <Button
-                            android:id="@+id/btn_Gym"
-                            style="@style/main_interface_button_style"
-                            android:layout_weight="3"
-                            android:text="Go to gym" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1" />
-
-                        <Button
-                            android:id="@+id/btn_Outdoor"
-                            style="@style/main_interface_button_style"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="3"
-                            android:text="Outdoor running" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1" />
-
-                        <Button
-                            style="@style/main_interface_button_style"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="3"
-                            android:text="Go to swim" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1" />
-                            -->
         </LinearLayout>
 
     </LinearLayout>

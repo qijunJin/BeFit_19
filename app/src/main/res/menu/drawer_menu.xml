@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title=""
+        android:enabled="false"/>
+    <item android:title=""
+        android:enabled="false"/>
+    <item android:title=""
+        android:enabled="false"/>
+    <item android:title=""
+        android:enabled="false"/>
+    <item android:title=""
+        android:enabled="false"/>
+    <item android:title=""
+        android:enabled="false"/>
 
-    <item android:title="APP"
+
+    <item android:title="Account"
         android:id="@+id/app_item">
         <menu>
-            <item
-                android:title="Settings"/>
+           <!-- <item
+                android:title="Settings" />-->
             <item
                 android:id="@+id/drawer_signOut"
                 android:title="Sign out"/>

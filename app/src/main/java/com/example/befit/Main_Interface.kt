@@ -72,9 +72,10 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         //txt_weight = findViewById(R.id.etxtWeight)
         //etxtWeight.addTextChangedListener(textWatcher1)
 
+        adapter.addFragment(fragmentAmbiente())
         adapter.addFragment(fragmentEjercicio())
         adapter.addFragment(fragment_comida())
-        adapter.addFragment(fragmentAmbiente())
+
         viewPager.adapter = adapter
 
 
@@ -237,17 +238,15 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.id.app_item -> null
             R.id.drawer_signOut -> signOut()
             R.id.drawer_deleteAccount -> deleteAccount()
-            else -> {
-                goToPreferenceActivity()
-            }
+
         }
         return true
     }
 
     private fun deleteAccount() {
-        FirebaseDatabase.getInstance().reference.child(MainActivity.user_actual.complete_name)  //Borramos ususario de firebase
+        /*FirebaseDatabase.getInstance().reference.child(MainActivity.user_actual.complete_name)  //Borramos ususario de firebase
             .removeValue()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))*/
     }
 
 
