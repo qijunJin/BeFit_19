@@ -22,8 +22,10 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main_interface.*
 import kotlinx.android.synthetic.main.header_layout_for_drawer.*
@@ -102,6 +104,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         var txtScale: TextView = findViewById(R.id.scale)
 
         var w = intent.getStringExtra("WEIGHT")
+        txtScale.text = "Scale"
 
         txtScale.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
 
@@ -129,15 +132,22 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         MainActivity.reference.child(acct?.displayName.toString()).child("cal")
             .setValue(MainActivity.user_actual.cal)
 
-        MainActivity.reference.child(acct?.displayName.toString()).child("weight")
-            .setValue(MainActivity.user_actual.weight)
 
 
         var u = MainActivity.user_actual.cal
-        var w1 : Double = MainActivity.user_actual.weight
+
 
         txtkcal.text = "$u kcal"
-        txtScale.text = "$w1 kg"
+        //txtScale.text = "$w1 kg"
+
+
+        var w1 = intent.getStringExtra("WEIGHT")
+
+        txtScale.text = if (w1.isNullOrEmpty()) "Scale" else "$w1 kg"
+
+
+        MainActivity.reference.child(acct?.displayName.toString()).child("weight")
+            .setValue(MainActivity.user_actual.weight)
 
         if (ex != null) {
             exercise = ex as Exercise
@@ -226,6 +236,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         when (item.itemId) {
             R.id.app_item -> null
             R.id.drawer_signOut -> signOut()
+            R.id.drawer_deleteAccount -> deleteAccount()
             else -> {
                 goToPreferenceActivity()
             }
@@ -233,11 +244,17 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         return true
     }
 
+    private fun deleteAccount() {
+        FirebaseDatabase.getInstance().reference.child(MainActivity.user_actual.complete_name)  //Borramos ususario de firebase
+            .removeValue()
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
 
     private fun signOut() {
+        mGoogleSignInClient.signOut()
         startActivity(Intent(this,MainActivity::class.java))
         Toast.makeText(this, "Sessió tancada", Toast.LENGTH_LONG).show()
-        mGoogleSignInClient.signOut()
     }
 
     override fun onPointerCaptureChanged(hasCapture: Boolean) {

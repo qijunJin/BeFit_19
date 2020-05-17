@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         auth = FirebaseAuth.getInstance()
 
+
         val acct = GoogleSignIn.getLastSignedInAccount(this)
 
         if (acct != null) startActivity(Intent(this, MainActivity2::class.java))
@@ -57,6 +58,8 @@ class MainActivity : AppCompatActivity() {
     public override fun onStart() {
         super.onStart()
     }
+
+    override fun onBackPressed() {}
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
