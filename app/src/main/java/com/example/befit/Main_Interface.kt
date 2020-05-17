@@ -250,6 +250,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         mGoogleSignInClient.signOut()
         startActivity(Intent(this, MainActivity::class.java))
+        Toast.makeText(this, "Compte borrat", Toast.LENGTH_LONG).show()
     }
 
 

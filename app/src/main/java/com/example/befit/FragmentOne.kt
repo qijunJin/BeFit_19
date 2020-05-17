@@ -1,19 +1,14 @@
 package com.example.befit
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import kotlinx.android.synthetic.main.fragment_one.*
 
 /**
  * A simple [Fragment] subclass.
@@ -73,7 +68,10 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
-            MainActivity.reference.child(MainActivity.user_actual.complete_name).child("age").setValue(edit_age.text.toString())
+            if (txt_age.text.toString()
+                    .isNotEmpty()
+            ) MainActivity.reference.child(MainActivity.user_actual.complete_name).child("age")
+                .setValue(txt_age.text.toString())
         }
     }
 
@@ -84,7 +82,10 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
-            MainActivity.reference.child(MainActivity.user_actual.complete_name).child("height").setValue(edit_height.text.toString())
+            if (txt_height.text.toString()
+                    .isNotEmpty()
+            ) MainActivity.reference.child(MainActivity.user_actual.complete_name).child("height")
+                .setValue(txt_height.text.toString())
         }
     }
 
@@ -95,7 +96,10 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
-            MainActivity.reference.child(MainActivity.user_actual.complete_name).child("weight").setValue(edit_weight.text.toString())
+            if (txt_weight.text.toString()
+                    .isNotEmpty()
+            ) MainActivity.reference.child(MainActivity.user_actual.complete_name).child("weight")
+                .setValue(txt_weight.text.toString())
         }
     }
 
@@ -105,7 +109,10 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
         override fun afterTextChanged(editable: Editable) {
-            MainActivity.reference.child(MainActivity.user_actual.complete_name).child("name").setValue(edit_name.text.toString())
+            if (txt_name.text.toString()
+                    .isNotEmpty()
+            ) MainActivity.reference.child(MainActivity.user_actual.complete_name).child("name")
+                .setValue(txt_name.text.toString())
         }
     }
 
