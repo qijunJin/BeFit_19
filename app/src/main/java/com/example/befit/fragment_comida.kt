@@ -1,9 +1,11 @@
 package com.example.befit
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ListView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,7 +19,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class fragment_comida : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -32,12 +33,20 @@ class fragment_comida : Fragment() {
         var comidaAdapter = ComidaAdapter(this.context, comidaList)
         comidaListView.adapter = comidaAdapter
 
+        comidaListView.onItemClickListener =
+            AdapterView.OnItemClickListener { _: AdapterView<*>, _: View, i: Int, _: Long ->
+                var intent = Intent(this.context, GoToEat::class.java)
+                intent.putExtra("comida", GetArrayItems().get(i))
+                startActivity(intent)
+            }
+
         return mLinearLayout
     }
 
     private fun GetArrayItems(): ArrayList<Comida> {
         var listItems = ArrayList<Comida>()
-        listItems.add(Comida(R.drawable.seafood_paella, "Seafood Paella", 379))
+        listItems.add(Comida(R.drawable.seafood_paella, "Seafood Paella", 379,
+            ingredients = mutableListOf("Rice","Caldo","Cosas"), description = "This is the description"))
         listItems.add(Comida(R.drawable.baked_italian_chicken, "Baked Chicken", 340))
         listItems.add(Comida(R.drawable.spring_rolls, "Spring Rolls", 154))
         listItems.add(Comida(R.drawable.ramen_adobe_m, "Ramen", 200))

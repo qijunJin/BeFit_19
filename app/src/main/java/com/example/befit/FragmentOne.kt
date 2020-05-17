@@ -1,13 +1,16 @@
 package com.example.befit
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import kotlinx.android.synthetic.main.fragment_one.*
@@ -45,6 +48,8 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         txt_height.addTextChangedListener(textWatcher2)  //Listener per height
         txt_weight.addTextChangedListener(textWatcher3)
         txt_name.addTextChangedListener(textWatcher4)
+
+
 
         btn_male.setOnClickListener {
             btn_female.alpha = 0.5F
@@ -103,4 +108,5 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
             MainActivity.reference.child(MainActivity.user_actual.complete_name).child("name").setValue(edit_name.text.toString())
         }
     }
+
 }
