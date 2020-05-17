@@ -2,28 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.befit">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:screenOrientation="portrait"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="false"
-        android:largeHeap="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".RegisterWeightDialog"></activity>
+        <activity android:name=".MainActivity2"></activity>
+        <activity android:name=".RegisterWeightDialog" />
         <activity android:name=".Break" />
         <activity android:name=".Statistics" />
         <activity
             android:name=".PreferenceActivity"
             android:parentActivityName=".Main_Interface"
-            android:theme="@style/PreferencesTheme"></activity>
+            android:theme="@style/PreferencesTheme" />
         <activity android:name=".GoToOutdoorRunning" />
         <activity android:name=".OutdoorRunning" />
         <activity android:name=".GymActivities" />
