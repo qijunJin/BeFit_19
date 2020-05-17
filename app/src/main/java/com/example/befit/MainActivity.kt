@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         val user = FirebaseAuth.getInstance().currentUser
-        var user_actual = User("", "","", 0.0, 0.0, 0, 0)  //Dades del usuari que esta a l¡aplicaio
+        var user_actual = User("", "", "", 0.0, 0.0, 0, 0)  //Dades del usuari que esta a l¡aplicaio
         val database = FirebaseDatabase.getInstance()
         val reference = database.reference
     }
@@ -44,29 +44,33 @@ class MainActivity : AppCompatActivity() {
         val btn_LogIn: SignInButton = findViewById(R.id.btn_LogIn)
         val btn_LogOut: Button = findViewById(R.id.btn_LogOut)
         val btn_next: Button = findViewById(R.id.btn_next)
+        val btn_next_in: Button = findViewById(R.id.btn_next_in)
 
         //Si hem deixat la sessio inciada, entrem directament al menu d'exercicis
         val acct = GoogleSignIn.getLastSignedInAccount(this)
         val sesio_activa = intent.getStringExtra(EXTRA_ENRERE)
 
+        var registrat = 2
+
         if (acct != null && sesio_activa == "si") {
             btn_LogIn.visibility = View.GONE
             btn_LogOut.visibility = View.VISIBLE
             btn_next.visibility = View.VISIBLE
+            btn_next_in.visibility = View.GONE
 
         } else if (acct != null && sesio_activa != "si") {
-            //startActivity(Intent(this, Main_Interface::class.java))
-
-        } else if (acct != null) {
             btn_LogIn.visibility = View.GONE
             btn_LogOut.visibility = View.VISIBLE
-            btn_next.visibility = View.VISIBLE
+            btn_next.visibility = View.GONE
+            btn_next_in.visibility = View.VISIBLE
+            //startActivity(Intent(this, Main_Interface::class.java))
+
 
         } else {
             btn_LogIn.visibility = View.VISIBLE
-            //Aquests botons estan ocults fins iniciar sessió
             btn_LogOut.visibility = View.GONE
             btn_next.visibility = View.GONE
+            btn_next_in.visibility = View.GONE
         }
 
 
@@ -82,9 +86,34 @@ class MainActivity : AppCompatActivity() {
             val signInIntent = mGoogleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
             //Actualitzem UI, ficar-ho dins un mètode updateUI()
-            btn_LogIn.visibility = View.INVISIBLE
-            btn_LogOut.visibility = View.VISIBLE
-            btn_next.visibility = View.VISIBLE
+            val acct = GoogleSignIn.getLastSignedInAccount(this)
+            val reff =
+                FirebaseDatabase.getInstance().reference.child(acct?.displayName.toString())
+
+            reff.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {}
+                override fun onDataChange(@NonNull p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
+                    if (p0.child("age").exists()) {
+                        registrat = 1
+                    } else {
+                        registrat = 0
+                    }
+                }
+            })
+            if (registrat == 1) {
+                btn_LogIn.visibility = View.GONE
+                btn_LogOut.visibility = View.VISIBLE
+                btn_next.visibility = View.GONE
+                btn_next_in.visibility = View.VISIBLE
+
+            } else if(registrat == 0){
+                btn_LogIn.visibility = View.GONE
+                btn_LogOut.visibility = View.VISIBLE
+
+                btn_next.visibility = View.VISIBLE
+                btn_next_in.visibility = View.GONE
+
+            }
         }
 
         /* reference.child(acct?.displayName.toString())
@@ -103,49 +132,15 @@ class MainActivity : AppCompatActivity() {
               })
     */
 
-        var registrat = 2 //Variable per controlar si ja està registrat el usuari a firebase
+        //var registrat = 2 //Variable per controlar si ja està registrat el usuari a firebase
 
+        btn_next_in.setOnClickListener {
+            // Toast.makeText(applicationContext, "Loading data", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, Main_Interface::class.java))
+        }
         btn_next.setOnClickListener {
-            val acct = GoogleSignIn.getLastSignedInAccount(this)
-
-            if (acct != null) {
-                reference.child(acct.displayName.toString())
-                    .addValueEventListener(object : ValueEventListener {
-                        override fun onCancelled(p0: DatabaseError) {}
-                        override fun onDataChange(@NonNull p0: DataSnapshot) {
-                            if (p0.child("age").exists()) {
-                                registrat = 1
-                            } else {
-                                registrat = 0
-                            }
-
-                        }
-
-                    })
-            }
-
-            if (registrat == 1) {
-                val reff =
-                    FirebaseDatabase.getInstance().reference.child(acct?.displayName.toString())
-
-               reff.addValueEventListener(object : ValueEventListener {
-                    override fun onCancelled(p0: DatabaseError) {}
-                    override fun onDataChange(@NonNull p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
-                        user_actual.complete_name = acct?.displayName.toString()
-                        user_actual.name = p0.child("name").value.toString()
-                        user_actual.age = p0.child("age").value.toString().toInt()
-                        user_actual.height = p0.child("height").value.toString().toDouble()
-                        user_actual.weight = p0.child("weight").value.toString().toDouble()
-                        user_actual.cal = p0.child("cal").value.toString().toInt()
-                    }
-                })
-                val i = Intent(this, Main_Interface::class.java)
-                Toast.makeText(applicationContext, "Loading data", Toast.LENGTH_LONG).show()
-                startActivity(i)
-            } else if (registrat == 0) {
-                Toast.makeText(applicationContext, "Loading data", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, LogIn_Data::class.java))
-            }
+            // Toast.makeText(applicationContext, "Loading data", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, LogIn_Data::class.java))
         }
 
 //Actualitzem les dades a firebase, si el usuari es nou l'afegeix, sino és manté tot igual
@@ -184,21 +179,12 @@ user_actual = User(
         btn_LogIn.visibility = View.VISIBLE
         btn_LogOut.visibility = View.GONE
         btn_next.visibility = View.GONE
+        btn_next_in.visibility = View.GONE
     }
 
     public override fun onStart() {
         super.onStart()
 // Check if user is signed in (non-null) and update UI accordingly.
-        val acct = GoogleSignIn.getLastSignedInAccount(this)
-        if (acct != null) {
-            btn_LogIn.visibility = View.GONE
-            btn_LogOut.visibility = View.VISIBLE
-            btn_next.visibility = View.VISIBLE
-        }else{
-            btn_LogOut.visibility = View.GONE
-            btn_next.visibility = View.GONE
-            btn_LogIn.visibility = View.VISIBLE
-        }
 
 //updateUI(currentUser)
     }
@@ -215,6 +201,39 @@ user_actual = User(
         try {
             val account = completedTask.getResult(ApiException::class.java)
             firebaseAuthWithGoogle(account!!)
+            val acct = GoogleSignIn.getLastSignedInAccount(this)
+            var reg = false
+            val reff =
+                FirebaseDatabase.getInstance().reference.child(acct?.displayName.toString())
+
+            reff.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {}
+                override fun onDataChange(@NonNull p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
+                    if (p0.child("age").exists()) {
+                        user_actual.complete_name = acct?.displayName.toString()
+                        user_actual.name = p0.child("name").value.toString()
+                        user_actual.age = p0.child("age").value.toString().toInt()
+                        user_actual.height = p0.child("height").value.toString().toDouble()
+                        user_actual.weight = p0.child("weight").value.toString().toDouble()
+                        user_actual.cal = p0.child("cal").value.toString().toInt()
+                        reg = false
+                    }
+                }
+            })
+            if (reg) {
+                btn_LogIn.visibility = View.GONE
+                btn_LogOut.visibility = View.VISIBLE
+                btn_next.visibility = View.GONE
+                btn_next_in.visibility = View.VISIBLE
+
+            } else {
+                btn_LogIn.visibility = View.GONE
+                btn_LogOut.visibility = View.VISIBLE
+
+                btn_next.visibility = View.VISIBLE
+                btn_next_in.visibility = View.GONE
+
+            }
 //Signed in succesfully
 /*
     user_actual = User(
