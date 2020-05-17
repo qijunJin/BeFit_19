@@ -46,17 +46,27 @@ class fragment_comida : Fragment() {
     private fun GetArrayItems(): ArrayList<Comida> {
         var listItems = ArrayList<Comida>()
         listItems.add(Comida(R.drawable.seafood_paella, "Seafood Paella", 379,
-            ingredients = mutableListOf("Rice","Caldo","Cosas"), description = "This is the description"))
-        listItems.add(Comida(R.drawable.baked_italian_chicken, "Baked Chicken", 340))
-        listItems.add(Comida(R.drawable.spring_rolls, "Spring Rolls", 154))
-        listItems.add(Comida(R.drawable.ramen_adobe_m, "Ramen", 200))
-        listItems.add(Comida(R.drawable.cobb_salad, "Cobb Salad", 400))
-        listItems.add(Comida(R.drawable.fried_chicken, "Fried Chicken", 190))
-        listItems.add(Comida(R.drawable.kibbeh, "Kibbeh", 365))
-        listItems.add(Comida(R.drawable.nachos, "Nachos", 346))
-        listItems.add(Comida(R.drawable.tamales, "Chicken Tamales", 141))
-        listItems.add(Comida(R.drawable.pasta_salad, "Pasta Salad", 356))
-        listItems.add(Comida(R.drawable.mushroom_burger, "Mushroom Burger", 850))
+            ingredients = mutableListOf("Rice","Fish Stock","Musseles", "Shrimp"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.baked_italian_chicken, "Baked Chicken", 340,
+            ingredients = mutableListOf("Chicken","Potatoes","Cherry Tomatoes", "Olive oil"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.spring_rolls, "Spring Rolls", 154,
+            ingredients = mutableListOf("Grated Vegetables","Flour","Salt and pepper", "Soy Sauce"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.ramen_adobe_m, "Ramen", 200,
+            ingredients = mutableListOf("Sliced Cooked Pork","Garlic Coves","Ramen noodles", "Sesame Oil"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.cobb_salad, "Cobb Salad", 400,
+            ingredients = mutableListOf("Avocado","Tomato", "Hard Boiled Egg","Dressing"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.fried_chicken, "Fried Chicken", 190,
+            ingredients = mutableListOf("Chicken","Flour","Oil"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.kibbeh, "Kibbeh", 365,
+            ingredients = mutableListOf("Fine Bulgur Wheat","Cinnamon","Beef", "Salt and Pepper"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.nachos, "Nachos", 346,
+            ingredients = mutableListOf("Refried Beans","Cheese","Guacamole", "Jalapeño"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.tamales, "Chicken Tamales", 141,
+            ingredients = mutableListOf("Pork Loin","Flour Dough","Dried Corn Husks", "Sour Cream"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.pasta_salad, "Pasta Salad", 356,
+            ingredients = mutableListOf("Cooked Pasta","Cherry Tomatoes","Summer Sausage", "Red Onion"), description = "This is the description"))
+        listItems.add(Comida(R.drawable.mushroom_burger, "Mushroom Burger", 850,
+            ingredients = mutableListOf("Diced Mushrooms","Onion","Egg Replacer", "Pinto Beans"), description = "This is the description"))
         return listItems
     }
 
