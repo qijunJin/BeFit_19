@@ -17,15 +17,16 @@ const val EXTRA_MESSAGE = "com.example.BEFIT_F.MESSAGE"
 const val EXTRA_ENRERE = "com.exameple.BEFIT_F.ENRERE"
 
 class LogIn_Data : AppCompatActivity() {
-    lateinit var viewPager : ViewPager
-    lateinit var btn_finish : Button
-    lateinit var btn_back :Button
+    lateinit var viewPager: ViewPager
+    lateinit var btn_finish: Button
+    lateinit var btn_back: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         val acct = getLastSignedInAccount(this)
+
         MainActivity.user_actual = User(
             acct?.displayName.toString(),
             acct?.displayName.toString(),
@@ -35,12 +36,14 @@ class LogIn_Data : AppCompatActivity() {
             0,
             0
         )
+
         val database = FirebaseDatabase.getInstance()
         val reference = database.reference.child(acct?.displayName.toString())
         reference.setValue(MainActivity.user_actual)//Afegim nou usuari, o actualitzem les dades de un ja registrat si és necessari
 
         viewPager = findViewById(R.id.viewPager)
-        val adapter = MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
+        val adapter =
+            MyViewPagerAdapter(supportFragmentManager) //Adapter que ens permetrà afegir els fragment al viewPager
 
         //Afegim tots els fragments que creem
         adapter.addFragment(FragmentOne())
@@ -50,14 +53,15 @@ class LogIn_Data : AppCompatActivity() {
 
         var tabLayout = findViewById<TabLayout>(R.id.tab_layout)
 
-        tabLayout.setupWithViewPager(viewPager,true) //Connectem els dots amb el viewpager
+        tabLayout.setupWithViewPager(viewPager, true) //Connectem els dots amb el viewpager
 
 
-        btn_finish=findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
+        btn_finish =
+            findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
         //btn_finish.isEnabled = false
         //btn_finish.alpha = 0F
 
-        btn_back=findViewById(R.id.btn_back)
+        btn_back = findViewById(R.id.btn_back)
 
         btn_finish.setOnClickListener {
             //Actualitzem valors de l'usuari a la base de dades
@@ -66,17 +70,20 @@ class LogIn_Data : AppCompatActivity() {
         }
 
         btn_back.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra(EXTRA_ENRERE,"si")
-            }
-            startActivity(intent)
+
+            FirebaseDatabase.getInstance().reference.child(acct?.displayName.toString())
+                .removeValue()
+
+            val i = Intent(this, MainActivity2::class.java)
+            startActivity(i)
         }
     }
 
     class MyViewPagerAdapter(manager: FragmentManager) :
         FragmentPagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-        private val fragmentList : MutableList<Fragment> = ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
+        private val fragmentList: MutableList<Fragment> =
+            ArrayList()   //Creem una llista amb tots els fragments a utilitzar en el ViewPager
 
         override fun getItem(position: Int): Fragment {
             return fragmentList[position]
@@ -86,7 +93,7 @@ class LogIn_Data : AppCompatActivity() {
             return fragmentList.size  //Retorna el nombre de fragments que hi han
         }
 
-        fun addFragment(fragment : Fragment){  //Mètode per afegir fragments al viewPager
+        fun addFragment(fragment: Fragment) {  //Mètode per afegir fragments al viewPager
             fragmentList.add(fragment)
         }
     }
