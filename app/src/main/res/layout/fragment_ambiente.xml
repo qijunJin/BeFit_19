@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="12"
     android:orientation="vertical"
+    android:weightSum="12"
     tools:context=".fragmentAmbiente">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,62 +13,103 @@
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        mapbox:mapbox_cameraZoom = "15"/>
+        mapbox:mapbox_cameraZoom="15" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="12">
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:weightSum="10"
-        android:orientation="horizontal"
-        android:layout_weight="1.5">
+        android:weightSum="10">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
             android:orientation="horizontal"
-            tools:ignore="NestedWeights">
-            <Button
-                android:id="@+id/btn_start"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="START"/>
+            android:weightSum="10">
 
-            <Button
-                android:id="@+id/btn_stop"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="STOP"/>
-        </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_finishrun"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="FINISH"/>
+                android:gravity="center"
+                android:orientation="vertical"
+                android:weightSum="10">
 
-        <Chronometer
-            android:id="@+id/chronometer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3.75"
-            android:textSize="40sp"
-            android:textColor="@color/colorAccent"
-            android:gravity="center_vertical|end" />
+                <Chronometer
+                    android:id="@+id/chronometer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="6"
+                    android:background="@drawable/round_rectangle2"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25"/>
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="8"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom|left">
+
+                <Button
+                    android:id="@+id/btn_start"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/button_bg_round"
+                    android:gravity="center"
+                    android:text="START"
+                    android:textColor="#000000"
+                    android:textSize="25dp"></Button>
+
+
+                <Button
+                    android:id="@+id/btn_stop"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/button_bg_round"
+                    android:gravity="center"
+                    android:text="STOP"
+                    android:textColor="#000000"
+                    android:textSize="25dp"
+                    android:visibility="gone"></Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom|right">
+
+                <Button
+                    android:id="@+id/btn_finishrun"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="bottom|right"
+                    android:background="@drawable/button_bg_round"
+                    android:gravity="center"
+                    android:text="FINISH"
+                    android:textColor="#000000"
+                    android:textSize="25dp"
+                    android:visibility="visible"></Button>
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

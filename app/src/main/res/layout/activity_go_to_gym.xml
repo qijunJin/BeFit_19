@@ -11,17 +11,60 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="#FFFFFF"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="5">
+        android:weightSum="12">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
+            android:layout_weight="10"
             android:orientation="vertical"
-            android:weightSum="3">
+            android:weightSum="5">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/intensity_text"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="Intensity"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="25dp"></TextView>
+
+            <TextView
+                android:id="@+id/intensity"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button_bg_round_white"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="45dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/exercisecal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="25dp">
+
+            </TextView>
 
 
         </LinearLayout>
@@ -29,34 +72,8 @@
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:background="#FFFFFF">
+            android:layout_weight="1" />
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:background="@drawable/round_button_male"
-                android:scaleType="centerCrop"
-                android:src="@drawable/male_round" />
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:orientation="vertical"
-            android:weightSum="6">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"></LinearLayout>
-
-
-        </LinearLayout>
     </LinearLayout>
 
     <FrameLayout

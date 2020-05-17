@@ -1,6 +1,7 @@
 package com.example.befit
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -61,12 +62,17 @@ class GymActivities : AppCompatActivity() {
 
         } else {
             txt_repetition!!.setText(repetition.toString() + "/" + totalRepetition.toString())
+            txt_repetition!!.typeface =
+                Typeface.createFromAsset(assets, "font/futura-pt-demibold.otf")
         }
 
         timeLeftInMillis = (timerLength!! * 60000).toLong()
 
         formatText = FormatText(this, R.id.txt_time)
         formatText!!.updateCountDownText(timeLeftInMillis)
+
+
+
         setProgressBarValues()
 
         startTimer()
@@ -79,6 +85,7 @@ class GymActivities : AppCompatActivity() {
         progress = findViewById(R.id.chronoProgressBar)
         play = findViewById(R.id.play)
         imgId = findViewById(R.id.imgId)
+
     }
 
     private fun getData() {

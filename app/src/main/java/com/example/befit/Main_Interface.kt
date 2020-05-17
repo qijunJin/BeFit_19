@@ -108,7 +108,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         txtScale.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
 
-        var exerciseFinish = Exercise(0, "", 0)
+        var exerciseFinish = Exercise(0, "", 0, 0)
 
 
         var ex = intent.getSerializableExtra("EXERCISEFINISH")

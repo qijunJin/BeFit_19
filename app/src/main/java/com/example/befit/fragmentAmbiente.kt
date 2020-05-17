@@ -1,6 +1,7 @@
 package com.example.befit
 
 import android.annotation.SuppressLint
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.LayoutInflater
@@ -40,8 +41,6 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
         savedInstanceState: Bundle?
     ): View? {
         Mapbox.getInstance(requireContext(), getString(R.string.acces_token))
-
-
         var mLinearLayout = inflater.inflate(R.layout.fragment_ambiente, container, false)
 
         btn_start = mLinearLayout.findViewById(R.id.btn_start)
@@ -49,12 +48,23 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
         btn_reset = mLinearLayout.findViewById(R.id.btn_finishrun)
         chrono = mLinearLayout.findViewById(R.id.chronometer)
 
+
+        chrono.typeface =
+            Typeface.createFromAsset(this.activity?.assets, "font/futura-pt-demibold.otf")
+        btn_start.typeface =
+            Typeface.createFromAsset(this.activity?.assets, "font/futura-pt-demibold.otf")
+        btn_reset.typeface =
+            Typeface.createFromAsset(this.activity?.assets, "font/futura-pt-demibold.otf")
+        btn_stop.typeface =
+            Typeface.createFromAsset(this.activity?.assets, "font/futura-pt-demibold.otf")
+
         mapView = mLinearLayout.findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
 
-
         btn_start.setOnClickListener {
+            mapView.onCreate(savedInstanceState)
+            mapView.getMapAsync(this)
             btn_start.visibility = View.GONE
             btn_stop.visibility = View.VISIBLE
             Toast.makeText(requireContext(), "Let's run", Toast.LENGTH_SHORT).show()
@@ -112,16 +122,12 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
         mapboxMap.setStyle(
-            Style.Builder().fromUri(
-                "mapbox://styles/mapbox/cjerxnqt3cgvp2rmyuxbeqme7"
-            )
+            Style.OUTDOORS
         ) {
 
 // Map is set up and the style has loaded. Now you can add data or make other map adjustments
-
-
+            enableLocationComponent(it)
         }
-
     }
 
     @SuppressLint("MissingPermission")
@@ -140,7 +146,6 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
                     .locationComponentOptions(customLocationComponentOptions)
                     .build()
 
-
 // Get an instance of the LocationComponent and then adjust its settings
             mapboxMap.locationComponent.apply {
 
@@ -155,7 +160,6 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
 
 // Set the LocationComponent's render mode
                 renderMode = com.mapbox.mapboxsdk.location.modes.RenderMode.COMPASS
-
             }
         } else {
             permissionsManager = PermissionsManager(this)
@@ -187,7 +191,6 @@ class fragmentAmbiente : Fragment(), OnMapReadyCallback, PermissionsListener {
     override fun onPermissionResult(granted: Boolean) {
         if (granted) {
             enableLocationComponent(mapboxMap.style!!)
-
         } else {
             Toast.makeText(requireContext(), "Permission denegated", Toast.LENGTH_LONG).show()
             // finish()

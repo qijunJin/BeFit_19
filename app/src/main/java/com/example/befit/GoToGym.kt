@@ -31,6 +31,19 @@ class GoToGym : AppCompatActivity() {
         imgId.setBackgroundResource(exercise.imgId)
         exerciseName.text = exercise.exerciseName
         exerciseName.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
+
+        var intensity_text: TextView = findViewById(R.id.intensity_text)
+        var intensity: TextView = findViewById(R.id.intensity)
+        var exercisecal: TextView = findViewById(R.id.exercisecal)
+
+        intensity_text.typeface =
+            Typeface.createFromAsset(assets, "font/futura-pt-book-oblique.otf")
+
+        intensity.text = exercise.intensity.toString()
+        intensity.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
+
+        exercisecal.text = exercise.calories.toString() + " kcal / minute"
+        exercisecal.typeface = Typeface.createFromAsset(assets, "font/futura-pt-demibold.otf")
     }
 
     override fun onBackPressed() {

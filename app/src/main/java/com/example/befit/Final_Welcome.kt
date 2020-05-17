@@ -6,9 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.befit.MainActivity.Companion.database
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 
 class Final_Welcome : AppCompatActivity() {
 
@@ -35,7 +33,7 @@ class Final_Welcome : AppCompatActivity() {
         val message =
             intent.getStringExtra(EXTRA_MESSAGE) //Rebem el nom de l'usuari indicat a l'activity anterior
 
-        final_name.text = MainActivity.user?.displayName
+        final_name.text = MainActivity.user_actual.name
 
         btn_welcome_start.setOnClickListener {
             startActivity(Intent(this, Main_Interface::class.java))

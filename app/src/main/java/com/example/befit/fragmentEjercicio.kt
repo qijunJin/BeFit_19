@@ -52,18 +52,18 @@ class fragmentEjercicio : Fragment() {
 
     private fun GetArrayItems(): ArrayList<Exercise> {
         var listItems = ArrayList<Exercise>()
-        listItems.add(Exercise(R.drawable.pushup, "Push up", 20))
-        listItems.add(Exercise(R.drawable.lateralraise, "Lateral raise", 12))
-        listItems.add(Exercise(R.drawable.concurl, "Concentration curl", 14))
-        listItems.add(Exercise(R.drawable.shoulder, "Shoulder press", 12))
-        listItems.add(Exercise(R.drawable.barbellcurl, "Barbell curl", 14))
-        listItems.add(Exercise(R.drawable.benchpress, "Bench press", 12))
-        listItems.add(Exercise(R.drawable.curl, "Preacher curl", 14))
-        listItems.add(Exercise(R.drawable.declinepress, "Decline bench press", 12))
-        listItems.add(Exercise(R.drawable.dumbbellcurl, "Dumbbell curl", 14))
-        listItems.add(Exercise(R.drawable.frontraise, "Front raise", 12))
-        listItems.add(Exercise(R.drawable.hammercurl, "Hammer curl", 14))
-        listItems.add(Exercise(R.drawable.inclinepress, "Incline bench press", 12))
+        listItems.add(Exercise(R.drawable.pushup, "Push up", 20, 5))
+        listItems.add(Exercise(R.drawable.lateralraise, "Lateral raise", 12, 3))
+        listItems.add(Exercise(R.drawable.concurl, "Concentration curl", 14, 4))
+        listItems.add(Exercise(R.drawable.shoulder, "Shoulder press", 12, 3))
+        listItems.add(Exercise(R.drawable.barbellcurl, "Barbell curl", 14, 4))
+        listItems.add(Exercise(R.drawable.benchpress, "Bench press", 12, 3))
+        listItems.add(Exercise(R.drawable.curl, "Preacher curl", 14, 4))
+        listItems.add(Exercise(R.drawable.declinepress, "Decline bench press", 12, 3))
+        listItems.add(Exercise(R.drawable.dumbbellcurl, "Dumbbell curl", 14, 4))
+        listItems.add(Exercise(R.drawable.frontraise, "Front raise", 12, 3))
+        listItems.add(Exercise(R.drawable.hammercurl, "Hammer curl", 14, 5))
+        listItems.add(Exercise(R.drawable.inclinepress, "Incline bench press", 12, 3))
         return listItems
 
     }
