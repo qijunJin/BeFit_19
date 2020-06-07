@@ -55,6 +55,7 @@ class MainActivity2 : AppCompatActivity() {
                             MainActivity.user_actual.weight =
                                 p0.child("weight").value.toString().toDouble()
                             MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
+                            MainActivity.user_actual.genere = p0.child("genere").value.toString()
                         }
                     }
                 })

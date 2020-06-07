@@ -58,12 +58,12 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1.5" />
+                        android:layout_weight="1" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="4.5"
+                        android:layout_weight="4.75"
                         android:gravity="bottom">
 
                         <FrameLayout
@@ -71,19 +71,20 @@
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
+                                android:id="@+id/welc_image"
+                                android:layout_width="85dp"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:background="@drawable/round_button_male"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/male_round" />
+                                />
                         </FrameLayout>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="4"
+                        android:layout_weight="4."
                         android:orientation="horizontal"
                         android:weightSum="10">
 
@@ -104,7 +105,7 @@
                             android:layout_weight="8.5"
                             android:gravity="center_vertical"
                             android:textColor="#F6DE05"
-                            android:textSize="35sp"
+                            android:textSize="30sp"
                                 android:ems="10"
                             android:textStyle="bold" />
 

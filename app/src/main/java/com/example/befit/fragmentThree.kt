@@ -1,22 +1,27 @@
 package com.example.befit
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.activity_login.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class fragmentThree : Fragment() {
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
 
         var mLinearLayout = inflater.inflate(R.layout.fragment_three, container, false)
         var btn_med = mLinearLayout.findViewById<Button>(R.id.btn_mediterranean)
@@ -32,6 +37,8 @@ class fragmentThree : Fragment() {
         var act_hal = false
         var act_mex = false
         var act_veg = false
+
+
 
         btn_med.setOnClickListener {
             btn_med.setBackgroundColor(Color.parseColor(if (!act_med) "#F6DE05" else "#FFFFFF"))
@@ -67,5 +74,6 @@ class fragmentThree : Fragment() {
         return mLinearLayout
         //return inflater.inflate(R.layout.fragment_three, container, false)
     }
+
 
 }

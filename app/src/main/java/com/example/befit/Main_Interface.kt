@@ -26,7 +26,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_final_welcome.*
 import kotlinx.android.synthetic.main.activity_main_interface.*
+import kotlinx.android.synthetic.main.fragment_one.*
 import kotlinx.android.synthetic.main.header_layout_for_drawer.*
 import kotlinx.android.synthetic.main.register_weight_dialog.*
 
@@ -39,11 +41,14 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var txt_weight : EditText
+    lateinit var btn_f : ImageButton
+    lateinit var btn_m : ImageButton
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_interface)
+
         /*
         var listExercise : ListView = findViewById(R.id.listExercise)
 
@@ -127,6 +132,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                         MainActivity.user_actual.weight =
                             p0.child("weight").value.toString().toDouble()
                         MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
+                        MainActivity.user_actual.genere = p0.child("genere").value.toString()
                     }
                 }
             })
@@ -134,7 +140,13 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         MainActivity.reference.child(acct?.displayName.toString()).child("cal")
             .setValue(MainActivity.user_actual.cal)
 
-
+        if(MainActivity.user_actual.genere == "home"){
+            btn_Statistics.setImageResource(R.drawable.male_round)
+        }else if(MainActivity.user_actual.genere == "dona"){
+            btn_Statistics.setImageResource(R.drawable.female_round)
+        }else{
+            btn_Statistics.setImageResource(R.drawable.male_round) //Per defecte carregem la iamtge de home, en cas que hi hagi algun error, pero no deuria pasar
+        }
 
         var u = MainActivity.user_actual.cal
 

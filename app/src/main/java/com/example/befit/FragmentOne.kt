@@ -22,6 +22,10 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
     lateinit var txt_height : EditText
     lateinit var txt_weight : EditText
 
+    companion object{
+        //var genere : Int = 0   //Variable per controlar quin genere a escollit 1->home 2-> dona
+    }
+
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +50,20 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
 
 
 
+
         btn_male.setOnClickListener {
             btn_female.alpha = 0.5F
             btn_male.alpha = 1F
+            MainActivity.user_actual.genere="home"
+            MainActivity.reference.child(MainActivity.user_actual.complete_name).child("genere").setValue("home") //Guardem a firebase el genere home de lusuari
+
         }
 
         btn_female.setOnClickListener {
             btn_male.alpha = 0.5F
             btn_female.alpha = 1F
+            MainActivity.user_actual.genere="dona"
+            MainActivity.reference.child(MainActivity.user_actual.complete_name).child("genere").setValue("dona") //Guardem a firebase el genere dona de lusuari
         }
 
         // Inflate the layout for this fragment

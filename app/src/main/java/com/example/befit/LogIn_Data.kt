@@ -2,6 +2,7 @@ package com.example.befit
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -21,6 +22,7 @@ class LogIn_Data : AppCompatActivity() {
     lateinit var btn_finish: Button
     lateinit var btn_back: Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -34,7 +36,8 @@ class LogIn_Data : AppCompatActivity() {
             0.0,
             0.0,
             0,
-            0
+            0,
+            ""
         )
 
         val database = FirebaseDatabase.getInstance()
@@ -56,8 +59,7 @@ class LogIn_Data : AppCompatActivity() {
         tabLayout.setupWithViewPager(viewPager, true) //Connectem els dots amb el viewpager
 
 
-        btn_finish =
-            findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
+        btn_finish = findViewById(R.id.btn_finish)  //De moment utilitzem el botó next per canviar a la ultima activity del logIn. Després nomes servirà per fer canviar de slide
         //btn_finish.isEnabled = false
         //btn_finish.alpha = 0F
 
