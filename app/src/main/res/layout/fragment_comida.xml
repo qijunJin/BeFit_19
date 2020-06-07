@@ -7,11 +7,37 @@
     android:weightSum="12"
     tools:context=".fragment_comida">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="@string/your_favorites"
+        android:gravity="center"
+        />
+
+
+    <ListView
+        android:id="@+id/listOfFavorites"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        >
+
+    </ListView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="@string/other"
+        android:gravity="center"
+        />
+
     <ListView
         android:id="@+id/listComida"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12">
+        android:layout_weight="7">
 
     </ListView>
 

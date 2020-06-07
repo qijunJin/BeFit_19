@@ -63,4 +63,6 @@
     <string name="settings">Settings</string>
     <string name="title_register_weight_dialog">Register weight</string>
     <string name="register_weight_dialog">Done</string>
+    <string name="your_favorites">Your Favorites</string>
+    <string name="other">Other</string>
 </resources>
