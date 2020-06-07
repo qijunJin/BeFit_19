@@ -48,7 +48,6 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_interface)
-
         /*
         var listExercise : ListView = findViewById(R.id.listExercise)
 
@@ -61,7 +60,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 */
         val acct = GoogleSignIn.getLastSignedInAccount(this)
-
+        var FoodPreferences : ArrayList<FoodType> = ArrayList()
 
         var txtkcal: TextView = findViewById(R.id.kcal)
         txtkcal.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
@@ -133,12 +132,20 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                             p0.child("weight").value.toString().toDouble()
                         MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
                         MainActivity.user_actual.genere = p0.child("genere").value.toString()
+                        p0.child("arr_comida").children.forEach {
+                            MainActivity.user_actual.arr_comida.add(it.value.toString())
+                            //Toast.makeText(requireContext(),it.value.toString(),Toast.LENGTH_SHORT).show()
+                        }
+
                     }
                 }
             })
 
         MainActivity.reference.child(acct?.displayName.toString()).child("cal")
             .setValue(MainActivity.user_actual.cal)
+
+        MainActivity.reference.child(acct?.displayName.toString()).child("arr_comida")
+            .setValue(MainActivity.user_actual.arr_comida)
 
         if(MainActivity.user_actual.genere == "home"){
             btn_Statistics.setImageResource(R.drawable.male_round)

@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         val user = FirebaseAuth.getInstance().currentUser
-        var user_actual = User("", "", "", 0.0, 0.0, 0, 0, "")  //Dades del usuari que esta a l¡aplicaio
+        var user_actual = User("", "", "", 0.0, 0.0, 0, 0,"",ArrayList())  //Dades del usuari que esta a l¡aplicaio
         val database = FirebaseDatabase.getInstance()
         val reference = database.reference
     }
