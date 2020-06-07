@@ -50,10 +50,8 @@ class MainActivity2 : AppCompatActivity() {
                             MainActivity.user_actual.complete_name = acct?.displayName.toString()
                             MainActivity.user_actual.name = p0.child("name").value.toString()
                             MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
-                            MainActivity.user_actual.height =
-                                p0.child("height").value.toString().toDouble()
-                            MainActivity.user_actual.weight =
-                                p0.child("weight").value.toString().toDouble()
+                            MainActivity.user_actual.height = p0.child("height").value.toString().toDouble()
+                           MainActivity.user_actual.weight = p0.child("weight").value.toString().toDouble()
                             MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
                             MainActivity.user_actual.genere = p0.child("genere").value.toString()
                             p0.child("arr_comida").children.forEach {

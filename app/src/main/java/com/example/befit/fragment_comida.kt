@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.fragment_comida.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,7 +35,6 @@ class fragment_comida : Fragment() {
     var foodList: ArrayList<Comida> = ArrayList()
 
     var FoodPreferences : ArrayList<FoodType> = ArrayList()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,8 +47,7 @@ class fragment_comida : Fragment() {
                     if (p0.child("age").exists()) {
                         MainActivity.user_actual.name = p0.child("name").value.toString()
                         MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
-                        MainActivity.user_actual.height =
-                            p0.child("height").value.toString().toDouble()
+                       MainActivity.user_actual.height = p0.child("height").value.toString().toDouble()
                         MainActivity.user_actual.weight =
                             p0.child("weight").value.toString().toDouble()
                         MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
@@ -70,6 +70,7 @@ class fragment_comida : Fragment() {
                 "VEGETARIAN" -> FoodPreferences.add(FoodType.VEGETARIAN)
             }
         }
+
         //Food initzialization
         foodList.add(Comida(R.drawable.seafood_paella, "Seafood Paella", 379,
             ingredients = mutableListOf("Rice","Fish Stock","Musseles", "Shrimp"), description = "This is the description",
@@ -134,6 +135,13 @@ class fragment_comida : Fragment() {
                 startActivity(intent)
             }
 
+      if(preferenceList.isEmpty()){
+            preferenceListView.visibility = View.GONE
+        }else if(comidaList.isEmpty()){
+            comidaListView.visibility = View.GONE
+        }
+
+
         return mLinearLayout
     }
 
@@ -145,6 +153,7 @@ class fragment_comida : Fragment() {
                 list.add(food)
             }
         }
+
         return list
     }
 

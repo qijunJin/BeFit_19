@@ -67,7 +67,7 @@ class LogIn_Data : AppCompatActivity() {
 
         btn_finish.setOnClickListener {
             //Actualitzem valors de l'usuari a la base de dades
-            reference.setValue(MainActivity.user_actual)//Afegim nou usuari, o actualitzem les dades de un ja registrat si és necessari
+            MainActivity.reference.child(acct?.displayName.toString()).setValue(MainActivity.user_actual)
             val intent = Intent(this, Final_Welcome::class.java)
             startActivity(intent)
         }

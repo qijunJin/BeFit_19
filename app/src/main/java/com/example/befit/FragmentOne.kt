@@ -55,7 +55,7 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
             btn_female.alpha = 0.5F
             btn_male.alpha = 1F
             MainActivity.user_actual.genere="home"
-            MainActivity.reference.child(MainActivity.user_actual.complete_name).child("genere").setValue("home") //Guardem a firebase el genere home de lusuari
+           // MainActivity.reference.child(MainActivity.user_actual.complete_name).child("genere").setValue("home") //Guardem a firebase el genere home de lusuari
 
         }
 
@@ -63,7 +63,7 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
             btn_male.alpha = 0.5F
             btn_female.alpha = 1F
             MainActivity.user_actual.genere="dona"
-            MainActivity.reference.child(MainActivity.user_actual.complete_name).child("genere").setValue("dona") //Guardem a firebase el genere dona de lusuari
+            //MainActivity.reference.child(MainActivity.user_actual.complete_name).child("genere").setValue("dona") //Guardem a firebase el genere dona de lusuari
         }
 
         // Inflate the layout for this fragment
@@ -80,8 +80,10 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun afterTextChanged(editable: Editable) {
             if (txt_age.text.toString()
                     .isNotEmpty()
-            ) MainActivity.reference.child(MainActivity.user_actual.complete_name).child("age")
-                .setValue(txt_age.text.toString())
+            )
+                MainActivity.user_actual.age = txt_age.text.toString().toInt()
+               /* MainActivity.reference.child(MainActivity.user_actual.complete_name).child("age")
+                .setValue(txt_age.text.toString())*/
         }
     }
 
@@ -94,8 +96,9 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun afterTextChanged(editable: Editable) {
             if (txt_height.text.toString()
                     .isNotEmpty()
-            ) MainActivity.reference.child(MainActivity.user_actual.complete_name).child("height")
-                .setValue(txt_height.text.toString())
+            ) /*MainActivity.reference.child(MainActivity.user_actual.complete_name).child("height")
+                .setValue(txt_height.text.toString())*/
+                MainActivity.user_actual.height = txt_height.text.toString().toDouble()
         }
     }
 
@@ -108,8 +111,9 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun afterTextChanged(editable: Editable) {
             if (txt_weight.text.toString()
                     .isNotEmpty()
-            ) MainActivity.reference.child(MainActivity.user_actual.complete_name).child("weight")
-                .setValue(txt_weight.text.toString())
+            ) /*MainActivity.reference.child(MainActivity.user_actual.complete_name).child("weight")
+                .setValue(txt_weight.text.toString())*/
+                MainActivity.user_actual.weight = txt_weight.text.toString().toDouble()
         }
     }
 
@@ -121,8 +125,9 @@ class FragmentOne : Fragment() {  //Primer fragment que apareix per logejarse
         override fun afterTextChanged(editable: Editable) {
             if (txt_name.text.toString()
                     .isNotEmpty()
-            ) MainActivity.reference.child(MainActivity.user_actual.complete_name).child("name")
-                .setValue(txt_name.text.toString())
+            ) /*MainActivity.reference.child(MainActivity.user_actual.complete_name).child("name")
+                .setValue(txt_name.text.toString())*/
+                MainActivity.user_actual.name = txt_name.text.toString()
         }
     }
 

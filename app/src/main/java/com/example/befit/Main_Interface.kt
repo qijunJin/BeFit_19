@@ -126,8 +126,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                     if (p0.child("age").exists()) {
                         MainActivity.user_actual.name = p0.child("name").value.toString()
                         MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
-                        MainActivity.user_actual.height =
-                            p0.child("height").value.toString().toDouble()
+                        MainActivity.user_actual.height = p0.child("height").value.toString().toDouble()
                         MainActivity.user_actual.weight =
                             p0.child("weight").value.toString().toDouble()
                         MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
