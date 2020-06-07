@@ -36,31 +36,37 @@ class fragmentThree : Fragment() {
         btn_med.setOnClickListener {
             btn_med.setBackgroundColor(Color.parseColor(if (!act_med) "#F6DE05" else "#FFFFFF"))
             act_med = !act_med
+            MainActivity.user_actual.arr_comida.add("MEDITERRANEAN")
         }
 
         btn_oriental.setOnClickListener {
             btn_oriental.setBackgroundColor(Color.parseColor(if (!act_ori) "#F6DE05" else "#FFFFFF"))
             act_ori = !act_ori
+            MainActivity.user_actual.arr_comida.add("ORIENTAL")
         }
 
         btn_american.setOnClickListener {
             btn_american.setBackgroundColor(Color.parseColor(if (!act_ame) "#F6DE05" else "#FFFFFF"))
             act_ame = !act_ame
+            MainActivity.user_actual.arr_comida.add("AMERICAN")
         }
 
         btn_halal.setOnClickListener {
             btn_halal.setBackgroundColor(Color.parseColor(if (!act_hal) "#F6DE05" else "#FFFFFF"))
             act_hal = !act_hal
+            MainActivity.user_actual.arr_comida.add("HALAL")
         }
 
         btn_mex.setOnClickListener {
             btn_mex.setBackgroundColor(Color.parseColor(if (!act_mex) "#F6DE05" else "#FFFFFF"))
             act_mex = !act_mex
+            MainActivity.user_actual.arr_comida.add("MEXICAN")
         }
 
         btn_veg.setOnClickListener {
             btn_veg.setBackgroundColor(Color.parseColor(if (!act_veg) "#F6DE05" else "#FFFFFF"))
             act_veg = !act_veg
+            MainActivity.user_actual.arr_comida.add("VEGETARIAN")
         }
 
         // Inflate the layout for this fragment

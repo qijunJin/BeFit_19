@@ -34,12 +34,13 @@ class LogIn_Data : AppCompatActivity() {
             0.0,
             0.0,
             0,
-            0
+            0,
+            ArrayList()
         )
 
         val database = FirebaseDatabase.getInstance()
         val reference = database.reference.child(acct?.displayName.toString())
-        reference.setValue(MainActivity.user_actual)//Afegim nou usuari, o actualitzem les dades de un ja registrat si és necessari
+
 
         viewPager = findViewById(R.id.viewPager)
         val adapter =
@@ -65,6 +66,7 @@ class LogIn_Data : AppCompatActivity() {
 
         btn_finish.setOnClickListener {
             //Actualitzem valors de l'usuari a la base de dades
+            reference.setValue(MainActivity.user_actual)//Afegim nou usuari, o actualitzem les dades de un ja registrat si és necessari
             val intent = Intent(this, Final_Welcome::class.java)
             startActivity(intent)
         }

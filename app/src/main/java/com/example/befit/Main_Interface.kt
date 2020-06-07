@@ -56,7 +56,7 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 */
         val acct = GoogleSignIn.getLastSignedInAccount(this)
-
+        var FoodPreferences : ArrayList<FoodType> = ArrayList()
 
         var txtkcal: TextView = findViewById(R.id.kcal)
         txtkcal.typeface = Typeface.createFromAsset(assets, "font/futura-pt-heavy.otf")
@@ -127,6 +127,11 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                         MainActivity.user_actual.weight =
                             p0.child("weight").value.toString().toDouble()
                         MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
+                        p0.child("arr_comida").children.forEach {
+                            MainActivity.user_actual.arr_comida.add(it.value.toString())
+                            //Toast.makeText(requireContext(),it.value.toString(),Toast.LENGTH_SHORT).show()
+                        }
+
                     }
                 }
             })
@@ -134,7 +139,8 @@ class Main_Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         MainActivity.reference.child(acct?.displayName.toString()).child("cal")
             .setValue(MainActivity.user_actual.cal)
 
-
+        MainActivity.reference.child(acct?.displayName.toString()).child("arr_comida")
+            .setValue(MainActivity.user_actual.arr_comida)
 
         var u = MainActivity.user_actual.cal
 

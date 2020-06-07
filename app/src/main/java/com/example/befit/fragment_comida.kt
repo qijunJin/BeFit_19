@@ -1,12 +1,18 @@
 package com.example.befit
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.GenericTypeIndicator
+import com.google.firebase.database.ValueEventListener
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -14,9 +20,6 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-var foodList: ArrayList<Comida> = ArrayList()
-
-var FoodPreferences : ArrayList<FoodType> = ArrayList()
 
 /**
  * A simple [Fragment] subclass.
@@ -26,26 +29,51 @@ var FoodPreferences : ArrayList<FoodType> = ArrayList()
 class fragment_comida : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var t: GenericTypeIndicator<List<String>>
+    var foodList: ArrayList<Comida> = ArrayList()
+
+    var FoodPreferences : ArrayList<FoodType> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        var mLinearLayout = inflater.inflate(R.layout.fragment_comida, container, false)
-        var comidaListView: ListView = mLinearLayout.findViewById(R.id.listComida)
-        var preferenceListView: ListView = mLinearLayout.findViewById(R.id.listOfFavorites)
-        var comidaList = GetArrayItems()
-        var preferenceList = GetArrayFavorites()
-        var comidaAdapter = ComidaAdapter(this.context, comidaList)
-        var preferenceAdapter = ComidaAdapter(this.context, preferenceList)
-        comidaListView.adapter = comidaAdapter
-        preferenceListView.adapter = preferenceAdapter
 
+        MainActivity.reference.child(MainActivity.user_actual.complete_name)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {}
+                override fun onDataChange(p0: DataSnapshot) {  //Mirem si el nom d'usuari ja existeix a firebase. En cas que existeixi no ha de registrar i passem a Main_Interface directament
+                    if (p0.child("age").exists()) {
+                        MainActivity.user_actual.name = p0.child("name").value.toString()
+                        MainActivity.user_actual.age = p0.child("age").value.toString().toInt()
+                        MainActivity.user_actual.height =
+                            p0.child("height").value.toString().toDouble()
+                        MainActivity.user_actual.weight =
+                            p0.child("weight").value.toString().toDouble()
+                        MainActivity.user_actual.cal = p0.child("cal").value.toString().toInt()
+
+                        p0.child("arr_comida").children.forEach {
+                            MainActivity.user_actual.arr_comida.add(it.value.toString())
+                            //Toast.makeText(requireContext(),it.value.toString(),Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            })
+
+        for(i in MainActivity.user_actual.arr_comida){
+            when(i){
+                "MEDITERRANEAN" -> FoodPreferences.add(FoodType.MEDITERRANEAN)
+                "ORIENTAL" -> FoodPreferences.add(FoodType.ORIENTAL)
+                "AMERICAN" -> FoodPreferences.add(FoodType.AMERICAN)
+                "HALAL" -> FoodPreferences.add(FoodType.HALAL)
+                "MEXICAN" -> FoodPreferences.add(FoodType.MEXICAN)
+                "VEGETARIAN" -> FoodPreferences.add(FoodType.VEGETARIAN)
+            }
+        }
         //Food initzialization
         foodList.add(Comida(R.drawable.seafood_paella, "Seafood Paella", 379,
             ingredients = mutableListOf("Rice","Fish Stock","Musseles", "Shrimp"), description = "This is the description",
-        type= FoodType.MEDITERRANEAN))
+            type= FoodType.MEDITERRANEAN))
         foodList.add(Comida(R.drawable.baked_italian_chicken, "Baked Chicken", 340,
             ingredients = mutableListOf("Chicken","Potatoes","Cherry Tomatoes", "Olive oil"), description = "This is the description",
             type= FoodType.MEDITERRANEAN))
@@ -77,7 +105,20 @@ class fragment_comida : Fragment() {
             ingredients = mutableListOf("Diced Mushrooms","Onion","Egg Replacer", "Pinto Beans"), description = "This is the description",
             type= FoodType.VEGETARIAN))
 
-        FoodPreferences.add(FoodType.MEDITERRANEAN) //TODO: CHANGE
+
+       // FoodPreferences.add(FoodType.MEDITERRANEAN) //TODO: CHANGE
+
+        // Inflate the layout for this fragment
+        var mLinearLayout = inflater.inflate(R.layout.fragment_comida, container, false)
+        var comidaListView: ListView = mLinearLayout.findViewById(R.id.listComida)
+        var preferenceListView: ListView = mLinearLayout.findViewById(R.id.listOfFavorites)
+        var comidaList = GetArrayItems()
+        var preferenceList = GetArrayFavorites()
+        var comidaAdapter = ComidaAdapter(this.context, comidaList)
+        var preferenceAdapter = ComidaAdapter(this.context, preferenceList)
+        comidaListView.adapter = comidaAdapter
+        preferenceListView.adapter = preferenceAdapter
+
 
         comidaListView.onItemClickListener =
             AdapterView.OnItemClickListener { _: AdapterView<*>, _: View, i: Int, _: Long ->
